@@ -1,6 +1,6 @@
 const express = require("express");
 const loginRouter = express.Router();
-const employee = require("../data/employee");
+
 
 loginRouter.get("/login", function (req, res) {
     var checkemployee = {

@@ -1,0 +1,10 @@
+{
+"EmployeeID" : "001",
+"Username" : "Sreeja P M",
+"Password" : "admin"
+},
+{
+"EmployeeID" : "005",
+"Username" : "Meera Mathew",
+"Password" : "123456"
+}
