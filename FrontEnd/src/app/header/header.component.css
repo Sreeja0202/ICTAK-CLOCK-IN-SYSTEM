@@ -1,0 +1,34 @@
+
+.navbar{
+    height: 100px;
+    border-radius: 10px;
+}
+
+
+
+
+.navbar-brand{
+    margin-left: 100px;
+    color: white;
+    font-weight: 500;
+    font-style: normal;
+
+}
+.nav-link {
+    
+    border: solid 1px white;
+    border-radius: 10px;
+    color: white;
+    margin: 2px;
+    font-style: normal;
+    font-size: 14pt;
+    
+}
+
+
+.navbar-toggler{
+    color: white;
+}
+i{  
+    color: white;
+}
