@@ -8,7 +8,7 @@ import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.comp
 
 const routes: Routes = [{path:'',component:LoginComponent},
                         {path:'home',component:HomeComponent},
-                        {path:'time-tracker',component:TimetrackerpageComponent}];
+                        {path:'home/timetrackerpage',component:TimetrackerpageComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
