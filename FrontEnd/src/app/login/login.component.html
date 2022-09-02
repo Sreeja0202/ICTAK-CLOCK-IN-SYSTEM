@@ -2,7 +2,7 @@
 <div>
   <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand me-3" href="#"><img src="https://img.icons8.com/color/48/000000/hourglass-sand-top.png"/></a>
+        <a class="navbar-brand me-3" href="#"><img src="https://img.icons8.com/color/48/000000/hurry.png"/></a>
  
       </div>
     </nav>
@@ -16,36 +16,28 @@
 </div>
 
 <!-- login form starts -->
-
-<div class="col col-6">
-     
-    <form action="new1.html" onsubmit="" >
-       <h2>LOGIN</h2>
-      <br>
+<div class="col col-lg-8">
+     <form>
+          <h2>LOGIN</h2>
+    <br>
         <div class="form1">
              <label  class="form-label">UserId</label>
-            <input type="text"  placeholder="enter userid" class="form-control" id="exampleInputname" required>
-           
-            <br>          
-        </div>
-         
-           
+
+             <input type="text"  placeholder="enter userid" class="form-control" id="exampleInputname" required>
+    <br>
+        </div> 
         <div class="form1">
               <label  class="form-label">Password</label>
               <input type="password" placeholder="enter password"  class="form-control" id="password1" required>
-              
-             <label id="one"></label>
-             <br>
-            <label id="three"></label> 
+              <label id="one"></label>
+    <br>
+            <label id="three"></label>
             </div>
-                  
-         
-            <button type="submit" class="btn btn-primary " id="submit">Submit</button>
-             
-
-       </form>
-        
-      </div>
-  <!-- login form ends -->
+            
+            <!-- Given a router link instead of onSubmit  -->
+             <button type="submit" class="btn btn-primary" routerLink="home" id="submit">Submit</button>
+        </form>
+</div>
+  
 </div>
 </div>
