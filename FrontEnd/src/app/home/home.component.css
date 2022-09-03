@@ -6,6 +6,7 @@
   top: 80px;
   bottom: 80px;
   margin-top: 50px;
+  height: 450px;
 }
 
 .example-sidenav-content {
@@ -17,7 +18,7 @@
 
 .profilecard {
   width: 200px;
-  height:450px;
+  height:380px;
   background-color: #efefef;
   border: none;
   cursor: pointer;
@@ -64,11 +65,12 @@
 
 .btn1 {
   height: 40px;
-  width: 150px;
+  width: 90px;
   border: none;
-  background-color: #000;
-  color: #aeaeae;
-  font-size: 15px
+  background-color: lightseagreen;
+  color:white;
+  font-size: 15px;
+
 }
 
 .text span {
