@@ -1,6 +1,11 @@
+*{
+    margin:0;
+    padding:0;
+}
+
 form{
     
-    width: 400px;
+    width: 450px;
     height: 400px;
     border: solid 2px black;
     margin-top: 50px;
@@ -13,7 +18,7 @@ color:black;
 padding-left: 20px;
 padding-right: 30px;
 }
-h2{
+h3{
     text-align: center;
 }
 button{
@@ -21,5 +26,15 @@ button{
 }
 i{  margin-right: 2px;
     color: white;
+}
+
+.container
+{
+    width:100%;
+}
+#bimage
+{
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
