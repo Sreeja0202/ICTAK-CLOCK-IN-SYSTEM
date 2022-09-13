@@ -8,9 +8,8 @@ describe('TimetrackerpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimetrackerpageComponent ]
-    })
-    .compileComponents();
+      declarations: [TimetrackerpageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TimetrackerpageComponent);
     component = fixture.componentInstance;

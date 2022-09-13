@@ -1,17 +1,44 @@
 <!-- Nav bar starts -->
 <div>
-<nav class="navbar navbar-expand-lg bg-dark">
+  <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand me-3"><img src="https://img.icons8.com/color/48/000000/hourglass-sand-top.png"/></a>
+      <a class="navbar-brand me-3"
+        ><img
+          src="https://img.icons8.com/color/48/000000/hourglass-sand-top.png"
+      /></a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-item  btn btn-outline-primary me-3" aria-current="page">
-              <h4 class="pt-2" style="color: white; font-family:'Times New Roman', Times, serif ;"><i class="bi bi-house-door"></i> Home</h4></a>
+            <a
+              class="nav-item btn btn-outline-primary me-3"
+              aria-current="page"
+            >
+              <h4
+                class="pt-2"
+                style="
+                  color: white;
+                  font-family: 'Times New Roman', Times, serif;
+                "
+              >
+                <i class="bi bi-house-door"></i> Home
+              </h4></a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-item  btn btn-outline-primary"  routerLink="timetrackerpage">
-              <h4 class="pt-2" style="color: white; font-family:'Times New Roman', Times, serif ;"><i class="fa-regular fa-clock"></i> Time-Tracker</h4></a>
+            <a
+              class="nav-item btn btn-outline-primary"
+              routerLink="timetrackerpage"
+            >
+              <h4
+                class="pt-2"
+                style="
+                  color: white;
+                  font-family: 'Times New Roman', Times, serif;
+                "
+              >
+                <i class="fa-regular fa-clock"></i> Time-Tracker
+              </h4></a
+            >
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
@@ -25,73 +52,83 @@
         <ul>
           <li>
             <button type="button" mat-button (click)="drawer.toggle()">
-              <img src="/assets/images/usericon.webp" alt=""  class="prof">            </button>
-            </li>
+              <img src="/assets/images/usericon.webp" alt="" class="prof" />
+            </button>
+          </li>
         </ul>
-
       </div>
     </div>
   </nav>
   <mat-drawer-container class="example-container">
     <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-        <div class=" profilecard p-4">
-          <div class=" image d-flex flex-column justify-content-center align-items-center">
-            <button class="btn btn-secondary"> <img src="/assets/images/usericon.webp" height="90" width="100" /></button><br><br>
-            <span class="name mt-3" style="color: black;">Name</span> <br><span class="idd" style="color:black">Email</span>
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                </div>
-                <br><div class="text mt-3"> <span style="color:black ;">My Account</span> </div>
+        <div class="profilecard p-4">
+          <div
+            class="image d-flex flex-column justify-content-center align-items-center"
+          >
+            <button class="btn btn-secondary">
+              <img
+                src="/assets/images/usericon.webp"
+                height="90"
+                width="100"
+              /></button
+            ><br /><br />
+            <span class="name mt-3" style="color: black">Name</span> <br /><span
+              class="idd"
+              style="color: black"
+              >Email</span
+            >
+            <div
+              class="d-flex flex-row justify-content-center align-items-center gap-2"
+            ></div>
+            <br />
+            <div class="text mt-3">
+              <span style="color: black">My Account</span>
+            </div>
 
-                <div class=" d-flex mt-2"> <button class="btn1 " routerLink="">Logout</button> </div>
-
-
-                </div> </div>
-    </div>
+            <div class="d-flex mt-2">
+              <button class="btn1" routerLink="">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-drawer>
 
-    <div class="example-sidenav-content">
-
-    </div>
-
+    <div class="example-sidenav-content"></div>
   </mat-drawer-container>
-
 </div>
 <!-- nav bar ends -->
 
 <!-- body starts -->
 <div class="container row">
-
-
-<div class="card bg-dark mt-5 mx-5  col-3" style="max-width: 400px; max-height:400px;  align-content: center;">
+  <div
+    class="card bg-dark mt-5 mx-5 col-3"
+    style="max-width: 400px; max-height: 400px; align-content: center"
+  >
     <!-- <img src="images/timetracker.jpg" class="card-img-top" alt="timetracker image"> -->
-    <div class="card-body text-sm-center mt-5 col" >
-      <img src="https://img.icons8.com/color/100/000000/overtime.png"/>
+    <div class="card-body text-sm-center mt-5 col">
+      <img src="https://img.icons8.com/color/100/000000/overtime.png" />
       <h5 class="card-title">Time Tracker Page</h5>
-      <p class="card-text text-light">Know the amount of time you have worked for each day in ecan Project</p>
-      <a routerLink="timetrackerpage" class="btn btn-primary">Time Tracker Page</a>
-
+      <p class="card-text text-light">
+        Know the amount of time you have worked for each day in ecan Project
+      </p>
+      <a routerLink="timetrackerpage" class="btn btn-primary"
+        >Time Tracker Page</a
+      >
     </div>
-
   </div>
 
-  <div class="card bg-dark mt-5 mx-auto col-3" style="align-content: center; max-width:400px; max-height: 400px;">
+  <div
+    class="card bg-dark mt-5 mx-auto col-3"
+    style="align-content: center; max-width: 400px; max-height: 400px"
+  >
     <!-- <img src="images/timetracker.jpg" class="card-img-top" alt="timetracker image"> -->
-    <div class="card-body text-sm-center mt-5 col" >
-      <img src="./Plus image.jpg" alt="">
-      <br>
+    <div class="card-body text-sm-center mt-5 col">
+      <img src="./Plus image.jpg" alt="" />
+      <br />
       <h5 class="card-title">Add Project</h5>
       <p class="card-text text-light"></p>
-      <a class="btn btn-primary" style="text-decoration: none;">Add Project</a>
-
+      <a class="btn btn-primary" style="text-decoration: none">Add Project</a>
     </div>
-
-
   </div>
-
-
 </div>
-
-
-

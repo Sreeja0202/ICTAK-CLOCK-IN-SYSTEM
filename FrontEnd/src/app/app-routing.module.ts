@@ -5,13 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.component';
 
-
-const routes: Routes = [{path:'',component:LoginComponent},
-                        {path:'home',component:HomeComponent},
-                        {path:'home/timetrackerpage',component:TimetrackerpageComponent}];
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'home/timetrackerpage', component: TimetrackerpageComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
