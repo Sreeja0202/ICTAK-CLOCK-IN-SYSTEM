@@ -83,6 +83,7 @@
             id="password1"
             name="password"
             formControlName="password"
+            minlength="6"
           />
           <br />
 
@@ -93,6 +94,7 @@
             id="submit"
             (click)="loginSubmit(login.value)"
             [disabled]="login.invalid"
+            routerLink="home"
           >
             Login
           </button>
