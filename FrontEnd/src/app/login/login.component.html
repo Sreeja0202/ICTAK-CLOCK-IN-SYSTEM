@@ -37,7 +37,7 @@
       />
     </div>
     <div class="col col-lg-5 mt-5">
-      <form class="bg-dark" #userlogin="ngForm" (ngSubmit)="userVerify()">
+      <form class="bg-dark" [formGroup]="login">
         <img src="https://img.icons8.com/color/48/000000/hurry.png" />
         <h2
           class="text-center"
@@ -61,10 +61,7 @@
             placeholder="Email-id"
             class="form-control"
             id="exampleInputname"
-            [(ngModel)]="user.username"
-            name="uname"
-            pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}"
-            required
+            formControlName="email"
           />
 
           <br />
@@ -85,22 +82,19 @@
             class="form-control"
             id="password1"
             name="password"
-            [(ngModel)]="user.password"
-            minlength="6"
-            required
+            formControlName="password"
           />
           <br />
 
           <br />
           <!-- Given a router link instead of onSubmit  -->
           <button
-            type="Submit"
-            class="button-85"
+            class="button-1"
             id="submit"
-            routerLink="home"
-            [disabled]="userlogin.form.invalid"
+            (click)="loginSubmit(login.value)"
+            [disabled]="login.invalid"
           >
-            Submit
+            Login
           </button>
         </div>
 
@@ -109,3 +103,5 @@
     </div>
   </div>
 </div>
+
+<!-- pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" -->

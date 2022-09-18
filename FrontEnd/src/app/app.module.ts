@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms'; //!validation changes 1
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation changes 1
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms'; //!validation changes 1
     MatSidenavModule,
     BrowserAnimationsModule,
     FormsModule, //!2
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
