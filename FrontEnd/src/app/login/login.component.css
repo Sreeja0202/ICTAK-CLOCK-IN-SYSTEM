@@ -4,19 +4,26 @@
 }
 
 form {
-  width: 450px;
-  height: 400px;
+  width: 400px;
+  height: 380px;
   border: solid 2px black;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 5px;
   padding-top: 40px;
-  margin-left: 150px;
+  margin-left: 100px;
   margin-right: 100px;
   border-radius: 30px;
-  color: black;
-  padding-left: 20px;
+  color: rgb(39, 21, 180);
+  padding-left: 40px;
   padding-right: 30px;
+  background-color: rgb(182, 196, 255);
 }
+
+.mat-label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 h3 {
   text-align: center;
 }

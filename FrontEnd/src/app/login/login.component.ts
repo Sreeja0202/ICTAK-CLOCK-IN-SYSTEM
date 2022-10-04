@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   //     timer: 1800,
   //   });
   // }
-  //
+  hide = true;
 
   login: any = FormGroup; //---used for reactive forms
   constructor(private fb: FormBuilder) {}
