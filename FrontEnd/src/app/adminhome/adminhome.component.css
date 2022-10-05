@@ -1,0 +1,104 @@
+.example-container {
+  /* width: 500px; */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 0;
+  top: 80px;
+  bottom: 80px;
+  margin-top: 50px;
+  height: 450px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilecard {
+  width: 200px;
+  height: 380px;
+  background-color: #efefef;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.image img {
+  transition: all 0.5s;
+}
+
+.profilecard:hover .image img {
+  transform: scale(1.5);
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.idd {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.idd1 {
+  font-size: 12px;
+}
+
+.number {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.follow {
+  font-size: 12px;
+  font-weight: 500;
+  color: #444444;
+}
+
+.btn1 {
+  height: 40px;
+  width: 90px;
+  border: none;
+  background-color: lightseagreen;
+  color: white;
+  font-size: 15px;
+}
+
+.text span {
+  font-size: 13px;
+  color: #545454;
+  font-weight: 500;
+}
+
+.icons i {
+  font-size: 19px;
+}
+
+hr .new1 {
+  border: 1px solid;
+}
+
+.join {
+  font-size: 14px;
+  color: #a0a0a0;
+  font-weight: bold;
+}
+
+.date {
+  background-color: #ccc;
+}
+
+.prof {
+  height: 80px;
+  width: 80px;
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 64px 65px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,
