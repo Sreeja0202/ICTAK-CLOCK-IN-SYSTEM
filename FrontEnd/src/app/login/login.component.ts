@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, 3000);
     } else {
-      alert('User not Found');
+      Swal.fire('User not Found!!', '', 'error');
     }
   }
 

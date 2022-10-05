@@ -1,16 +1,6 @@
 <!-- nav bar starts -->
 <nav class="navbar p-3" style="background-color: #071d3d">
-  <div style="max-width: 100px; text-align: center">
-    <h4
-      style="
-        color: white;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-          'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      "
-    >
-      <b>ICTAK CLOCK-IN SYSTEM</b>
-    </h4>
-  </div>
+  <img src="/assets/images/you! (5) (3).png" />
 </nav>
 <!-- nav bar ends -->
 
@@ -18,88 +8,85 @@
 
 <div class="container">
   <div class="row">
-    <div class="col col-7" id="bimage"></div>
+    <div class="col col-7"></div>
     <div class="col col-lg-5 mt-5">
-      <mat-card>
-        <mat-card-content>
-          <form [formGroup]="login" (ngSubmit)="userVerify()">
+      <mat-card-content>
+        <div class="example-container">
+          <form
+            class="example-container"
+            [formGroup]="login"
+            (ngSubmit)="userVerify()"
+          >
             <h2
               class="text-center"
-              style="font-family: 'Times New Roman', Times, serif; color: white"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: rgb(0, 0, 0);
+              "
             >
-              LOGIN FORM
+              <b> LOGIN FORM</b>
             </h2>
 
             <br />
-            <div class="form-group">
-              <div class="email-input">
-                <mat-form-field
-                  appearance="outline"
-                  placeholder="Enter your  Email"
-                  class="full-width"
-                >
-                  <mat-label>Email</mat-label>
 
-                  <input
-                    formControlName="email"
-                    placeholder="Email-id"
-                    class="form-control"
-                    id="exampleInputname"
-                    matInput
-                    required
-                  />
-                  <mat-error *ngIf="login.get('email')?.errors?.['required']"
-                    >Required email address
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="form-group">
-              <br />
+            <div class="email-input">
               <mat-form-field
                 appearance="outline"
-                placeholder="Enter your  password"
+                placeholder="Enter your  Email"
                 class="full-width"
               >
-                <mat-label>Enter your password</mat-label>
+                <mat-label>Email</mat-label>
+
                 <input
-                  matInput
-                  type="password"
-                  placeholder="Password"
+                  formControlName="email"
+                  placeholder="Email-id"
                   class="form-control"
-                  id="password1"
-                  name="password"
-                  formControlName="password"
-                  [type]="hide ? 'password' : 'text'"
+                  id="exampleInputname"
+                  matInput
+                  required
                 />
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="hide = !hide"
-                  [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide"
-                >
-                  <mat-icon>{{
-                    hide ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                </button>
+                <mat-error *ngIf="login.get('email')?.errors?.['required']"
+                  >Required email address
+                </mat-error>
               </mat-form-field>
             </div>
-            <!-- Given a router link instead of onSubmit  -->
-            <button
-              mat-flat-button
-              class="button-1"
-              id="submit"
-              (click)="loginSubmit(login.value)"
-              [disabled]="login.invalid"
+
+            <br />
+            <mat-form-field
+              appearance="outline"
+              placeholder="Enter your  password"
             >
-              Login
-            </button>
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                class="form-control"
+                id="password1"
+                name="password"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <!-- Given a router link instead of onSubmit  -->
+            <button mat-flat-button class="button-1" id="submit">Login</button>
 
             <!--   -->
           </form>
-        </mat-card-content>
-      </mat-card>
+        </div>
+      </mat-card-content>
     </div>
   </div>
 
