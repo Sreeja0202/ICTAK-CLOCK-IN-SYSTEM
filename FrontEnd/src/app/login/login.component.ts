@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
       Swal.fire('Login Succesfull', '', 'success');
       setTimeout(() => {
         this.router.navigate(['/home']);
-      }, 2500);
+      }, 3000);
     } else {
-      alert('User not Found');
+      Swal.fire('User not Found!!', '', 'error');
     }
   }
 

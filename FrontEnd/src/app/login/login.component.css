@@ -16,7 +16,7 @@ form {
   color: rgb(0, 0, 0);
   padding-left: 40px;
   padding-right: 30px;
-  background-color: rgb(182, 196, 255);
+  background-color: rgb(169, 251, 255);
 }
 
 .mat-label {
@@ -79,4 +79,9 @@ i {
   opacity: 0.8;
   color: aliceblue;
   cursor: not-allowed;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
 }
