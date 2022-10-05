@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,19 +9,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // userVerify() {
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'Login Successfull',
-  //     showConfirmButton: false,
-  //     timer: 1800,
-  //   });
-  // }
   hide = true;
 
   login: any = FormGroup; //---used for reactive forms
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.login = this.fb.group({
@@ -30,6 +22,19 @@ export class LoginComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(6)]),
       ],
     });
+  }
+
+  userVerify() {
+    // Swal.fire('Good job!', 'You clicked the button!', 'success');
+    // this.router.navigate(['/signup']);
+    if (this.login.valid) {
+      Swal.fire('Login Succesfull', '', 'success');
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 2500);
+    } else {
+      alert('User not Found');
+    }
   }
 
   loginSubmit(data: any) {
