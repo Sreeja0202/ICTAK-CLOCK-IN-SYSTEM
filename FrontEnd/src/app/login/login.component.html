@@ -1,109 +1,96 @@
 <!-- nav bar starts -->
-<div>
-  <nav class="navbar bg-dark">
-    <div class="container p-3">
-      <a class="navbar-brand me-3"
-        ><img
-          src="https://img.icons8.com/color/48/000000/hourglass-sand-top.png"
-      /></a>
-      <!-- </div>
-      <div class="container"> -->
-      <h1
-        style="
-          color: white;
-          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-            'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        "
-      >
-        <b>ICTAK CLOCK-IN SYSTEM</b>
-      </h1>
-      <!-- <nav class="navbar navbar-expand-lg bg-dark">
-      <div class="container-fluid"> -->
-      <a class="navbar-brand me-3"></a>
-    </div>
-  </nav>
-</div>
+<nav class="navbar p-3" style="background-color: #071d3d">
+  <img src="/assets/images/you! (5) (3).png" />
+</nav>
 <!-- nav bar ends -->
 
 <!-- login form starts -->
 
 <div class="container">
   <div class="row">
-    <div class="col col-7" id="bimage">
-      <img
-        src="../../assets/images/background1.jpg"
-        alt=""
-        style="height: 800px"
-      />
-    </div>
+    <div class="col col-7"></div>
     <div class="col col-lg-5 mt-5">
-      <form class="bg-dark" [formGroup]="login">
-        <img src="https://img.icons8.com/color/48/000000/hurry.png" />
-        <h2
-          class="text-center"
-          style="font-family: 'Times New Roman', Times, serif; color: white"
-        >
-          LOGIN FORM
-        </h2>
-
-        <br />
-        <div class="form1">
-          <label class="form-label"
-            ><h4
-              style="font-family: 'Times New Roman', Times, serif; color: white"
+      <mat-card-content>
+        <div class="example-container">
+          <form
+            class="example-container"
+            [formGroup]="login"
+            (ngSubmit)="userVerify()"
+          >
+            <h2
+              class="text-center"
+              style="
+                font-family: 'Times New Roman', Times, serif;
+                color: rgb(0, 0, 0);
+              "
             >
-              Enter your UserId
-            </h4></label
-          >
+              <b> LOGIN FORM</b>
+            </h2>
 
-          <input
-            type="email"
-            placeholder="Email-id"
-            class="form-control"
-            id="exampleInputname"
-            formControlName="email"
-          />
+            <br />
 
-          <br />
-        </div>
+            <div class="email-input">
+              <mat-form-field
+                appearance="outline"
+                placeholder="Enter your  Email"
+                class="full-width"
+              >
+                <mat-label>Email</mat-label>
 
-        <div class="form1">
-          <label class="form-label"
-            ><h4
-              style="font-family: 'Times New Roman', Times, serif; color: white"
+                <input
+                  formControlName="email"
+                  placeholder="Email-id"
+                  class="form-control"
+                  id="exampleInputname"
+                  matInput
+                  required
+                />
+                <mat-error *ngIf="login.get('email')?.errors?.['required']"
+                  >Required email address
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <br />
+            <mat-form-field
+              appearance="outline"
+              placeholder="Enter your  password"
             >
-              Enter your Password
-            </h4></label
-          >
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                type="password"
+                placeholder="Password"
+                class="form-control"
+                id="password1"
+                name="password"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
 
-          <input
-            type="password"
-            placeholder="Password"
-            class="form-control"
-            id="password1"
-            name="password"
-            formControlName="password"
-            minlength="6"
-          />
-          <br />
+            <!-- Given a router link instead of onSubmit  -->
+            <button mat-flat-button class="button-1" id="submit">Login</button>
 
-          <br />
-          <!-- Given a router link instead of onSubmit  -->
-          <button
-            class="button-1"
-            id="submit"
-            (click)="loginSubmit(login.value)"
-            [disabled]="login.invalid"
-            routerLink="home"
-          >
-            Login
-          </button>
+            <!--   -->
+          </form>
         </div>
-
-        <!--   -->
-      </form>
+      </mat-card-content>
     </div>
   </div>
+
+  <!-- pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" -->
 </div>
 
-<!-- pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" -->
+<!-- nav bar ends -->

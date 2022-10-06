@@ -12,6 +12,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation changes 1
 
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation
     MatSidenavModule,
     BrowserAnimationsModule,
     FormsModule, //!2
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
