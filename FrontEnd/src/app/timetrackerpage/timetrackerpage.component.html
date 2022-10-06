@@ -33,6 +33,51 @@
   </nav>
 </div>
 <!-- nav bar ends -->
+
 <div class="backgound-image">
   <img src="/assets/images/newnewclock.jpg" alt="" class="prof" />
+</div>
+
+
+<!-- Large button groups (default and split) -->
+<div class="dropdowni">
+  
+  <button mat-button [matMenuTriggerFor]="aboveMenu" >Select Project</button>
+  <mat-menu #menu="matMenu" >
+    <button mat-menu-item>Academic</button>
+    <button mat-menu-item>Corporate</button>
+    <button mat-menu-item>Government</button>
+    <button mat-menu-item>Knowledge Office</button>
+    <button mat-menu-item>Retail</button>
+    <button mat-menu-item>Administration</button>
+  </mat-menu>
+  
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Select Task</button>
+  <mat-menu #menu="matMenu" >
+    <button mat-menu-item>Training</button>
+    <button mat-menu-item>Meetings & Discussions</button>
+    <button mat-menu-item>Lark Activity</button>
+    <button mat-menu-item>Content Development</button>
+  </mat-menu>
+  
+ 
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Select Mode of Work</button>
+  <mat-menu #aboveMenu="matMenu">
+    <button mat-menu-item>Work from Office</button>
+    <button mat-menu-item>Work from Home</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Job Description</button>
+  <mat-menu #aboveMenu="matMenu">
+    <button mat-menu-item>Non-Billable</button>
+    <button mat-menu-item>Billable</button>
+  </mat-menu>
+
+ 
+
+ 
+<button class="timer">
+
+</button>
+
 </div>

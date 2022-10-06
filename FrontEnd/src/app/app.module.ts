@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
-    AdminhomeComponent,
+    AdminhomeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,9 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     MatInputModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatSliderModule,
+    MatMenuModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
