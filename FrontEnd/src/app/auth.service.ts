@@ -21,7 +21,7 @@ export class AuthService {
     return this.http.post(this.url, pro);
   }
 
-  loginUser(user: any) {
+  loginUser(user: Employee) {
     return this.http.post<any>(this.loginurl, user);
   }
 }
