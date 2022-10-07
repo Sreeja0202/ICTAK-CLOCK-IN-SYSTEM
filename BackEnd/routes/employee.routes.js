@@ -2,6 +2,10 @@ const express = require("express");
 const emprouter = express.Router();
 const Employee = require("../models/employee.model.js");
 
+const cors = require("cors");
+
+app.use(cors());
+
 // login
 emprouter.post("/login", (req, res) => {
   let userData = req.body;
@@ -44,3 +48,5 @@ emprouter.post("/", (req, res) => {
     }
   });
 });
+
+module.exports = emprouter;
