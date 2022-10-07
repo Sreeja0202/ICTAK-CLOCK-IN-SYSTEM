@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.component';
@@ -18,18 +16,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatSelectModule} from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
     AdminhomeComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -44,8 +39,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatSliderModule,
     MatMenuModule,
-    MatSelectModule
-   
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

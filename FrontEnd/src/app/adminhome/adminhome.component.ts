@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeService } from '../employee.service';
+// import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-adminhome',
@@ -19,12 +19,12 @@ export class AdminhomeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private empservice: EmployeeService,
+    // private empservice: EmployeeService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.getEmployees();
+    // this.getEmployees();
     this.empForm = this.fb.group({
       _id: '',
       ename: ['', [Validators.required]],
@@ -61,39 +61,39 @@ export class AdminhomeComponent implements OnInit {
     this.showProjectModal = false;
   }
 
-  onEmpSubmit() {
-    if (this.empForm.valid) {
-      this.empservice.addEmployee(this.empForm.value).subscribe(
-        (res) => {
-          // this.getEmployees();
-          console.log(res);
-          this.onCloseEmployeeModal();
-          alert('Employee Details successfully added!!!');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    } else {
-      alert('Please enter valid Credentials');
-    }
-  }
-  getEmployees() {}
-  onProjectSubmit() {
-    if (this.projectForm.valid) {
-      this.empservice.addProject(this.projectForm.value).subscribe(
-        (res) => {
-          // this.getEmployees();
-          console.log(res);
-          this.onCloseProjectModal();
-          alert('Project Details successfully added!!!');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    } else {
-      alert('Please enter valid Credentials');
-    }
-  }
+  // onEmpSubmit() {
+  //   if (this.empForm.valid) {
+  //     this.empservice.addEmployee(this.empForm.value).subscribe(
+  //       (res) => {
+  //         // this.getEmployees();
+  //         console.log(res);
+  //         this.onCloseEmployeeModal();
+  //         alert('Employee Details successfully added!!!');
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   } else {
+  //     alert('Please enter valid Credentials');
+  //   }
+  // }
+  // getEmployees() {}
+  // onProjectSubmit() {
+  //   if (this.projectForm.valid) {
+  //     this.empservice.addProject(this.projectForm.value).subscribe(
+  //       (res) => {
+  //         // this.getEmployees();
+  //         console.log(res);
+  //         this.onCloseProjectModal();
+  //         alert('Project Details successfully added!!!');
+  //       },
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   } else {
+  //     alert('Please enter valid Credentials');
+  //   }
+  // }
 }
