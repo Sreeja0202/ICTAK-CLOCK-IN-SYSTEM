@@ -3,5 +3,5 @@ export interface Employee {
   ename: string;
   erole: string;
   eemail: string;
-  epassword: number;
+  epassword: string;
 }

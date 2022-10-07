@@ -24,7 +24,6 @@
         <li class="nav-item">
           <button
             class="nav-link btn btn-outline-warning mx-2 text-light"
-            aria-current="page"
             (click)="onAddProject()"
           >
             Add Project
@@ -48,7 +47,11 @@
         </li>
       </ul>
       <div class="d-flex">
-        <button class="btn btn-outline-warning text-light" type="submit">
+        <button
+          class="btn btn-outline-warning text-light"
+          type="submit"
+          (click)="logoutUser()"
+        >
           Logout
         </button>
       </div>
@@ -88,7 +91,7 @@
           </div>
           <div class="form-group">
             <label for="eemail">Enter Email</label>
-            <input type="email" class="form-control" formControlName="eemail" />
+            <input type="text" class="form-control" formControlName="eemail" />
           </div>
           <div class="form-group">
             <label for="epassword">Enter Password</label>

@@ -18,10 +18,10 @@ export class AuthService {
   }
 
   addProject(pro: Project) {
-    return this.http.post(this.url, pro);
+    return this.http.post(this.prourl, pro);
   }
 
-  loginUser(user: Employee) {
-    return this.http.post<any>(this.loginurl, user);
+  loginUser(user: any) {
+    return this.http.post(this.loginurl, user);
   }
 }

@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   loginForm: any = FormGroup; //---used for reactive forms
   respondeData: any;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
+    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
       this.authservice.loginUser(this.loginForm.value).subscribe(
         (res) => {
           console.log(res);
