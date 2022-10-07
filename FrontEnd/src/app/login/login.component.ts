@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +10,40 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   loginForm: any = FormGroup; //---used for reactive forms
-  constructor(private fb: FormBuilder, private router: Router) {}
+  respondeData: any;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authservice: AuthService
+  ) {
+    localStorage.clear();
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       eemail: ['', [Validators.required, Validators.email]],
       epassword: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  logIn() {
+    if (this.loginForm.valid) {
+      this.authservice.loginUser(this.loginForm.value).subscribe(
+        (res) => {
+          console.log(res);
+          this.respondeData = res;
+          localStorage.setItem('token', this.respondeData.token);
+          alert('Login Successfull!!!');
+          this.loginForm.reset();
+          this.router.navigate(['/adminhome']);
+        },
+        (err) => {
+          alert('Some error occured');
+          console.log(err);
+        }
+      );
+    } else {
+      alert('Please enter valid login  credentials');
+    }
   }
 }

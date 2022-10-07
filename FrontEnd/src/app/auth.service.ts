@@ -20,4 +20,8 @@ export class AuthService {
   addProject(pro: Project) {
     return this.http.post(this.url, pro);
   }
+
+  loginUser(user: any) {
+    return this.http.post<any>(this.loginurl, user);
+  }
 }
