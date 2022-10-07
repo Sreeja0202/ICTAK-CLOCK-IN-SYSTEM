@@ -20,11 +20,6 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
-<<<<<<< HEAD
-
-=======
-import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
->>>>>>> 7d1cdf1b461507d09373e80a9a5fa61f53919c44
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +29,7 @@ import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimet
     HomeComponent,
     TimetrackerpageComponent,
     AdminhomeComponent,
-    AdmintimetrackerpageComponent
+   
   ],
   imports: [
     BrowserModule,
