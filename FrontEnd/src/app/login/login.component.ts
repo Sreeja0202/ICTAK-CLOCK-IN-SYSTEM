@@ -9,35 +9,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  hide = true;
-
-  login: any = FormGroup; //---used for reactive forms
+  loginForm: any = FormGroup; //---used for reactive forms
   constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
-    this.login = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: [
-        '',
-        Validators.compose([Validators.required, Validators.minLength(6)]),
-      ],
+    this.loginForm = this.fb.group({
+      eemail: ['', [Validators.required, Validators.email]],
+      epassword: ['', [Validators.required, Validators.minLength(6)]],
     });
-  }
-
-  userVerify() {
-    // Swal.fire('Good job!', 'You clicked the button!', 'success');
-    // this.router.navigate(['/signup']);
-    if (this.login.valid) {
-      Swal.fire('Login Succesfull', '', 'success');
-      setTimeout(() => {
-        this.router.navigate(['/home']);
-      }, 3000);
-    } else {
-      Swal.fire('User not Found!!', '', 'error');
-    }
-  }
-
-  loginSubmit(data: any) {
-    console.log(data);
   }
 }

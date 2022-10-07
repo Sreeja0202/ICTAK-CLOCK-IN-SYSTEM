@@ -1,96 +1,63 @@
-<!-- nav bar starts -->
-<nav class="navbar p-3" style="background-color: #071d3d">
-  <img src="/assets/images/you! (5) (3).png" />
-</nav>
-<!-- nav bar ends -->
-
-<!-- login form starts -->
-
-<div class="container">
-  <div class="row">
-    <div class="col col-7"></div>
-    <div class="col col-lg-5 mt-5">
-      <mat-card-content>
-        <div class="example-container">
-          <form
-            class="example-container"
-            [formGroup]="login"
-            (ngSubmit)="userVerify()"
-          >
-            <h2
-              class="text-center"
-              style="
-                font-family: 'Times New Roman', Times, serif;
-                color: rgb(0, 0, 0);
-              "
-            >
-              <b> LOGIN FORM</b>
-            </h2>
-
-            <br />
-
-            <div class="email-input">
-              <mat-form-field
-                appearance="outline"
-                placeholder="Enter your  Email"
-                class="full-width"
-              >
-                <mat-label>Email</mat-label>
-
-                <input
-                  formControlName="email"
-                  placeholder="Email-id"
-                  class="form-control"
-                  id="exampleInputname"
-                  matInput
-                  required
-                />
-                <mat-error *ngIf="login.get('email')?.errors?.['required']"
-                  >Required email address
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <br />
-            <mat-form-field
-              appearance="outline"
-              placeholder="Enter your  password"
-            >
-              <mat-label>Enter your password</mat-label>
-              <input
-                matInput
-                type="password"
-                placeholder="Password"
-                class="form-control"
-                id="password1"
-                name="password"
-                formControlName="password"
-                [type]="hide ? 'password' : 'text'"
-              />
-              <button
-                mat-icon-button
-                matSuffix
-                (click)="hide = !hide"
-                [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide"
-              >
-                <mat-icon>{{
-                  hide ? "visibility_off" : "visibility"
-                }}</mat-icon>
-              </button>
-            </mat-form-field>
-
-            <!-- Given a router link instead of onSubmit  -->
-            <button mat-flat-button class="button-1" id="submit">Login</button>
-
-            <!--   -->
-          </form>
-        </div>
-      </mat-card-content>
-    </div>
+<!-- navbar starts here -->
+<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+  <div class="container-fluid text-light p-3">
+    <!-- remove the text and place the icon here to ANU -->
+    ICTAK TIME TRACKER APP
   </div>
+</nav>
 
-  <!-- pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" -->
+<!-- navbar ends here -->
+<div class="container">
+  <form
+    class="col-md-6 mt-5 loginForm p-3"
+    [formGroup]="loginForm"
+    (ngSubmit)="logIn()"
+  >
+    <div class="text-center mt-3">
+      <h1>LOGIN HERE</h1>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        formControlName="eemail"
+      />
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        formControlName="epassword"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <br />
+    <br />
+    <div>
+      <button type="button" class="btn btn-primary btn-lg" style="width: 100%">
+        Submit
+      </button>
+    </div>
+    <br />
+    <div class="text-center">
+      <small class="text-primary"
+        ><a routerLink="/login" style="text-decoration: none"
+          >Forgot Password</a
+        ></small
+      >
+    </div>
+  </form>
 </div>
+<!-- login form ends here -->
 
-<!-- nav bar ends -->
+<!-- footer starts here -->
+<footer style="background-color: #240c30; margin-top: 250px" class="p-2">
+  <div class="text-center">
+    <h5 class="text-muted text-light">Copyright @2016</h5>
+  </div>
+</footer>

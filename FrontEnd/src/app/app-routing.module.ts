@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'adminhome',
     component: AdminhomeComponent,
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({

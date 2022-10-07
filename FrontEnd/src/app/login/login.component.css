@@ -3,85 +3,13 @@
   padding: 0;
 }
 
-form {
-  width: 400px;
-  height: 380px;
-  border: solid 2px black;
-  margin-top: 40px;
-  margin-bottom: 5px;
-  padding-top: 40px;
-  margin-left: 100px;
-  margin-right: 100px;
-  border-radius: 30px;
-  color: rgb(0, 0, 0);
-  padding-left: 40px;
-  padding-right: 30px;
-  background-color: rgb(169, 251, 255);
-}
-
-.mat-label {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-h3 {
-  text-align: center;
-}
-button {
-  align-items: center;
-}
-i {
-  margin-right: 2px;
-  color: white;
-}
-
 .container {
-  width: 100%;
-}
-
-/* CSS */
-.button-1 {
-  background-color: #ea4c89;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 40px;
-  line-height: 20px;
-  margin: 0;
-  list-style: none;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  cursor: pointer;
-}
-
-.button-1:hover,
-.button-1:focus {
-  background-color: #f082ac;
-}
-
-.button-1:disabled {
-  background-color: gray;
-  opacity: 0.8;
-  color: aliceblue;
-  cursor: not-allowed;
-}
-
-.example-container {
   display: flex;
-  flex-direction: column;
+  justify-content: end;
+}
+
+.loginForm {
+  box-shadow: 2px 3px 2px 3px gray;
+  border-radius: 10px;
+  margin-top: 50px;
 }
