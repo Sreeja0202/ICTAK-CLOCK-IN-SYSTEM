@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 // import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class AdminhomeComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    // private empservice: EmployeeService,
+    private authservice: AuthService,
     private router: Router
   ) {}
 
@@ -63,7 +64,7 @@ export class AdminhomeComponent implements OnInit {
 
   onEmpSubmit() {
     if (this.empForm.valid) {
-      this.empservice.addEmployee(this.empForm.value).subscribe(
+      this.authservice.addEmployee(this.empForm.value).subscribe(
         (res) => {
           // this.getEmployees();
           console.log(res);
@@ -81,7 +82,7 @@ export class AdminhomeComponent implements OnInit {
   getEmployees() {}
   onProjectSubmit() {
     if (this.projectForm.valid) {
-      this.empservice.addProject(this.projectForm.value).subscribe(
+      this.authservice.addProject(this.projectForm.value).subscribe(
         (res) => {
           // this.getEmployees();
           console.log(res);
