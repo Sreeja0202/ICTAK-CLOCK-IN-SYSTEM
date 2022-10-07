@@ -57,3 +57,62 @@
 </nav>
 
 <!-- navbar ends here -->
+
+<!--  add employee modal starts here-->
+<div class="modal fade show" [class.show]="showEmployeeModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ editEmployeeMode ? "Update Employee" : "Add Employee" }}
+        </h5>
+        <button
+          (click)="onCloseEmployeeModal()"
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="empForm" (ngSubmit)="onEmpSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="ename">Enter Name</label>
+            <input type="text" class="form-control" formControlName="ename" />
+          </div>
+          <div class="form-group">
+            <label for="erole">Enter Role</label>
+            <input type="text" class="form-control" formControlName="erole" />
+          </div>
+          <div class="form-group">
+            <label for="eemail">Enter Email</label>
+            <input type="email" class="form-control" formControlName="eemail" />
+          </div>
+          <div class="form-group">
+            <label for="epassword">Enter Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="epassword"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onCloseEmployeeModal()"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">
+            {{ editEmployeeMode ? "Update Employee" : "Add Employee" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

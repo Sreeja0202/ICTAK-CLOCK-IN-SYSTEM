@@ -61,39 +61,39 @@ export class AdminhomeComponent implements OnInit {
     this.showProjectModal = false;
   }
 
-  // onEmpSubmit() {
-  //   if (this.empForm.valid) {
-  //     this.empservice.addEmployee(this.empForm.value).subscribe(
-  //       (res) => {
-  //         // this.getEmployees();
-  //         console.log(res);
-  //         this.onCloseEmployeeModal();
-  //         alert('Employee Details successfully added!!!');
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   } else {
-  //     alert('Please enter valid Credentials');
-  //   }
-  // }
-  // getEmployees() {}
-  // onProjectSubmit() {
-  //   if (this.projectForm.valid) {
-  //     this.empservice.addProject(this.projectForm.value).subscribe(
-  //       (res) => {
-  //         // this.getEmployees();
-  //         console.log(res);
-  //         this.onCloseProjectModal();
-  //         alert('Project Details successfully added!!!');
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   } else {
-  //     alert('Please enter valid Credentials');
-  //   }
-  // }
+  onEmpSubmit() {
+    if (this.empForm.valid) {
+      this.empservice.addEmployee(this.empForm.value).subscribe(
+        (res) => {
+          // this.getEmployees();
+          console.log(res);
+          this.onCloseEmployeeModal();
+          alert('Employee Details successfully added!!!');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      alert('Please enter valid Credentials');
+    }
+  }
+  getEmployees() {}
+  onProjectSubmit() {
+    if (this.projectForm.valid) {
+      this.empservice.addProject(this.projectForm.value).subscribe(
+        (res) => {
+          // this.getEmployees();
+          console.log(res);
+          this.onCloseProjectModal();
+          alert('Project Details successfully added!!!');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      alert('Please enter valid Credentials');
+    }
+  }
 }
