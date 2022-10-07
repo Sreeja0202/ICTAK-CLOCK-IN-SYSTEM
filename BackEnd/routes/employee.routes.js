@@ -1,7 +1,7 @@
 const express = require("express");
 const emprouter = express.Router();
 const Employee = require("../models/employee.model.js");
-
+const app = new express();
 const cors = require("cors");
 
 app.use(cors());

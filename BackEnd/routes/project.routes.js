@@ -1,13 +1,14 @@
 const express = require("express");
 const prorouter = express.Router();
-const Employee = require("../models/employee.model.js");
+const Project = require("../models/project.model.js");
 const cors = require("cors");
+const app = new express();
 
 app.use(cors());
 
 // login
 prorouter.get("/", (req, res) => {
-  Employee.find((err, doc) => {
+  Project.find((err, doc) => {
     if (err) {
       console.log("Error in getting data", +err);
     } else {
@@ -18,13 +19,11 @@ prorouter.get("/", (req, res) => {
 // Posting all data
 
 prorouter.post("/", (req, res) => {
-  let emp = new Employee({
-    ename: req.body.ename,
-    erole: req.body.erole,
-    eemail: req.body.eemail,
-    epassword: req.body.epassword,
+  let pro = new Project({
+    pname: req.body.pname,
+    pcategory: req.body.pcategory,
   });
-  emp.save((err, doc) => {
+  pro.save((err, doc) => {
     if (err) {
       console.log("Error in Posting Data", +err);
     } else {
