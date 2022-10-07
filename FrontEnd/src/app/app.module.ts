@@ -20,6 +20,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatSliderModule,
     MatMenuModule,
     MatSelectModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent],

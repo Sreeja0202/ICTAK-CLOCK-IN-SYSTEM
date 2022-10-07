@@ -3,7 +3,7 @@
   padding: 0;
 }
 .dropdowni{
-  padding-left: 5%;
+  padding-left: 10%;
  background-color: #071d3d ;
   margin-top: 10%;
   border: 1px solid black;
@@ -15,7 +15,6 @@
 nav{
   height: 100px;
 }
-
 .timer{ 
   border-radius: 2px;
   border: 0.5px;
@@ -25,14 +24,26 @@ nav{
   width: 130px;
 margin-left: 30px;
 }
+mat-form-field{
+  background-color: rgb(219, 188, 9);
+}
+
+
+
+
+
 .backgound-image{
   position: absolute;
 }
 
 
+
+
+
 .forspace{
-  height: 500px;
+  height: 400px;
 }
-mat-form-field{
-  background-color: rgb(219, 188, 9);
+
+mat-drawer{
+  background-color: #071d3d;
 }
