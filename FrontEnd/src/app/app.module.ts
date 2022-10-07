@@ -20,6 +20,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import {MatSelectModule} from '@angular/material/select';
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
-    AdminhomeComponent
+    AdminhomeComponent,
+    AdmintimetrackerpageComponent
   ],
   imports: [
     BrowserModule,
