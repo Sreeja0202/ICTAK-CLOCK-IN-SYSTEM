@@ -27,10 +27,7 @@ margin-left: 30px;
 mat-form-field{
   background-color: rgb(219, 188, 9);
 }
-mat-option{
-  background-color: #071d3d;
-  color: white;
-}
+
 
 
 
@@ -44,13 +41,11 @@ mat-option{
 
 
 .forspace{
-  height: 400px;
+  height: 500px;
 }
 
 mat-drawer{
+ 
   background-color: #071d3d;
 }
 
-.time{
-  border: 1px solid violet;
-}

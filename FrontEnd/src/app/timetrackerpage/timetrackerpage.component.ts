@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-timetrackerpage',
@@ -6,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timetrackerpage.component.css'],
 })
 export class TimetrackerpageComponent implements OnInit {
-  constructor() {}
- 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {}
 
-  
-
-
+  logoutUser() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }
