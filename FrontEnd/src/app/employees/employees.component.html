@@ -1,0 +1,51 @@
+<!-- navbar starts here -->
+<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+  <div class="container-fluid">
+    <button
+      class="navbar-brand text-light btn btn-outline-warning mx-2"
+      routerLink="/adminhome"
+      routerLinkActive="active"
+    >
+      EMPLOYEES
+    </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button class="nav-link text-light btn btn-outline-warning mx-2">
+            HOME
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link btn btn-outline-warning mx-2 text-light"
+            (click)="onAddEmployee()"
+          >
+            Add Employee
+          </button>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button
+          class="btn btn-outline-warning text-light"
+          type="submit"
+          (click)="logoutUser()"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends here -->
