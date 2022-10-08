@@ -24,6 +24,7 @@ const routes: Routes = [
   {
     path: 'admintimetrackerpage',
     component: AdmintimetrackerpageComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

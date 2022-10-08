@@ -24,6 +24,7 @@ emprouter.post("/login", (req, res) => {
           res.status(401).send("Invalid Password");
         } else {
           let payload = { subject: user._id };
+          // let payload = { subject: user.eemail + user.epassword };
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });
         }
@@ -49,5 +50,13 @@ emprouter.post("/", (req, res) => {
     }
   });
 });
+
+// updating employee
+
+// getting all employee
+
+// get by id
+
+// deleting by id
 
 module.exports = emprouter;
