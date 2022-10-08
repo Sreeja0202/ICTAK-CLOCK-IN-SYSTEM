@@ -11,7 +11,7 @@ import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.comp
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'timetracker', component: TimetrackerpageComponent },
+  { path: 'timetrackerpage', component: TimetrackerpageComponent },
   {
     path: 'adminhome',
     component: AdminhomeComponent,
