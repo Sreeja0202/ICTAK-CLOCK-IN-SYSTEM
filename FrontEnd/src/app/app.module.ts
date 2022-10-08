@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     TimetrackerpageComponent,
     AdminhomeComponent,
+    AdmintimetrackerpageComponent,
   ],
   imports: [
     BrowserModule,

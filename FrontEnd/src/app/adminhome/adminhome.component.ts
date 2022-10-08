@@ -81,6 +81,7 @@ export class AdminhomeComponent implements OnInit {
   }
   getEmployees() {}
   onProjectSubmit() {
+    console.log(this.projectForm.value);
     if (this.projectForm.valid) {
       this.authservice.addProject(this.projectForm.value).subscribe(
         (res) => {

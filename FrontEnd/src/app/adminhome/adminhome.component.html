@@ -40,7 +40,7 @@
         <li class="nav-item">
           <button
             class="nav-link text-light btn btn-outline-warning mx-2"
-            touterLink="/timetrackerpage"
+            touterLink="/admintimetrackerpage"
           >
             Time Tracker Page
           </button>
@@ -140,7 +140,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form [formGroup]="empForm" (ngSubmit)="onProjectSubmit()">
+      <form [formGroup]="projectForm" (ngSubmit)="onProjectSubmit()">
         <div class="modal-body">
           <div class="form-group">
             <label for="pname">Enter Project Name</label>
@@ -157,7 +157,7 @@
         </div>
         <div class="modal-footer">
           <button
-            type="button"
+            type="submit"
             (click)="onCloseProjectModal()"
             class="btn btn-secondary"
             data-dismiss="modal"
@@ -176,7 +176,7 @@
 <!-- project modal ends here -->
 
 <!-- footer starts here -->
-<footer style="background-color: #240c30; margin-top: 250px" class="p-2">
+<footer style="background-color: #240c30; margin-top: 635px" class="p-2">
   <div class="text-center">
     <h5 class="text-muted text-light">Copyright @2016</h5>
   </div>
