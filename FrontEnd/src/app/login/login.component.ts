@@ -26,9 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn() {
-    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
       this.authservice.loginUser(this.loginForm.value).subscribe(
         (res) => {
           console.log(res);
@@ -44,7 +42,7 @@ export class LoginComponent implements OnInit {
         }
       );
     } else {
-      alert('Please enter valid login  credentials');
+      alert('Please enter valid login credentials');
     }
   }
 }
