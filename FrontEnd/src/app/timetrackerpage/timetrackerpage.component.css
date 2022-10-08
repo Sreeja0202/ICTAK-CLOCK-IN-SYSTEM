@@ -41,10 +41,11 @@ mat-form-field{
 
 
 .forspace{
-  height: 400px;
+  height: 500px;
 }
 
 mat-drawer{
+ 
   background-color: #071d3d;
 }
 
