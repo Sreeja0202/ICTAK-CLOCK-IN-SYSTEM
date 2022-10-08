@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,17 +33,17 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.respondeData = res;
           localStorage.setItem('token', this.respondeData.token);
-          alert('Login Successfull!!!');
+          Swal.fire('', 'Login Successfull', 'success');
           this.loginForm.reset();
           this.router.navigate(['/adminhome']);
         },
         (err) => {
-          alert('Some error occured');
+          Swal.fire('', 'Some error occured', 'error');
           console.log(err);
         }
       );
     } else {
-      alert('Please enter valid login credentials');
+      Swal.fire('', 'Some error occured', 'error');
     }
   }
 }
