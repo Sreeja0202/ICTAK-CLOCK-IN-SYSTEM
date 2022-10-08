@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 // import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -69,14 +70,14 @@ export class AdminhomeComponent implements OnInit {
           // this.getEmployees();
           console.log(res);
           this.onCloseEmployeeModal();
-          alert('Employee Details successfully added!!!');
+          Swal.fire('', 'Employee Details successfully added!!!', 'success');
         },
         (err) => {
           console.log(err);
         }
       );
     } else {
-      alert('Please enter valid Credentials');
+      Swal.fire('', 'Please enter valid Credentials', 'error');
     }
   }
   getEmployees() {}
@@ -88,14 +89,14 @@ export class AdminhomeComponent implements OnInit {
           // this.getEmployees();
           console.log(res);
           this.onCloseProjectModal();
-          alert('Project Details successfully added!!!');
+          Swal.fire('', 'Project Details successfully added!!!', 'success');
         },
         (err) => {
           console.log(err);
         }
       );
     } else {
-      alert('Please enter valid Credentials');
+      Swal.fire('', 'Please enter valid Credentials', 'error');
     }
   }
 }
