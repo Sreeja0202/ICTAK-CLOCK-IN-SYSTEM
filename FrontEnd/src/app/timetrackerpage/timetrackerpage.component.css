@@ -1,51 +1,73 @@
-* {
-  margin: 0%;
-  padding: 0;
-}
-.dropdowni{
-  padding-left: 10%;
- background-color: #071d3d ;
-  margin-top: 10%;
-  border: 1px solid black;
-  height: 80px;
-  position: relative;
-  
-  width:100%;
+mat-drawer {
+  width: 250px;
 }
 nav{
   height: 100px;
 }
-.timer{ 
-  border-radius: 2px;
-  border: 0.5px;
-  background-color: rgb(224, 205, 28);
-  margin-top: 10px;
+.navbar-toggler-icon{
+  padding-top: 10px;
+ padding-left:18px;
   height: 50px;
-  width: 130px;
-margin-left: 30px;
+  width: 150px;
+  border: 1px solid rgb(214, 154, 25);
+  color: white;
+}
+button{
+  height: 50px;
+}
+.options{
+ 
+  background-color: #240c30 ;
+  border:1px solid rgb(81, 81, 196) ;
 }
 mat-form-field{
-  background-color: rgb(219, 188, 9);
+  margin-left: 10px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(81, 81, 196);
+}
+mat-label{
+  color: white;
+}
+.space{
+height: 250px;
 }
 
 
 
 
-
-.backgound-image{
-  position: absolute;
+.container{
+  height: 600px;
 }
 
+.employeedetail{
+  margin-top: 2%;
+  width: 45%;
+  margin-left: 60%;
+  height: 150px;
+}mat-card{
+  border-radius: 10px;
+  background-color: #240c30;
+  color: white;
+}mat-card-subtitle{
+  color: white;
+}
 
-
-
-
-.forspace{
+.projectdetails{
+  color: white;
+ background-color: #240c30;
+  margin-top: 4%;
   height: 500px;
-}
-
-mat-drawer{
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 5%;
  
-  background-color: #071d3d;
 }
-
+.timerbutton{
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-left: 80%;
+}.timerbutton:hover{
+  background-color: #240c30;
+  color: white;
+}

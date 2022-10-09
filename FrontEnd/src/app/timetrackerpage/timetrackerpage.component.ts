@@ -7,12 +7,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./timetrackerpage.component.css'],
 })
 export class TimetrackerpageComponent implements OnInit {
+
+ 
+  cardtitle=`USER`;
+  cardcontent = `User details`;
+  name="Name";
+project=`Project Details`;
+
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
 
+
+  ngOnInit(): void {}
+ 
   logoutUser() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+
+
+
+
+ 
 }
