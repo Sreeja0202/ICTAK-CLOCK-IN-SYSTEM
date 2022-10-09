@@ -114,7 +114,7 @@ emprouter.put("/:id", (req, res) => {
       { new: true },
       (err, doc) => {
         if (err) {
-          console.log("Error in updating data by salary", +err);
+          console.log("Error in updating data", +err);
         } else {
           res.send(doc);
         }

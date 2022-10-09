@@ -53,6 +53,7 @@ export class EmployeesComponent implements OnInit {
   onCloseEmployeeModal() {
     this.empForm.reset();
     this.showEmployeeModal = false;
+    this.editEmployeeMode = false;
   }
 
   onEditEmployee(emp: Employee) {

@@ -1,1 +1,161 @@
-<p>projects works!</p>
+<!-- navbar starts here -->
+<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+  <div class="container-fluid">
+    <button
+      class="navbar-brand text-light btn btn-outline-warning mx-2"
+      routerLink="/projects"
+      routerLinkActive="active"
+    >
+      PROJECTS
+    </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button class="nav-link text-light btn btn-outline-warning mx-2">
+            HOME
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link btn btn-outline-warning mx-2 text-light"
+            (click)="onAddProject()"
+          >
+            Add Project
+          </button>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button
+          class="btn btn-outline-warning text-light"
+          type="submit"
+          (click)="logoutUser()"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- navbar ends here -->
+
+<!-- //////////////////////////////////// -->
+
+<!-- card for employees -->
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let item of Project">
+      <!-- where item just a variable to hold employee details and employees is the main array -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.pname }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.pcategory }}</h6>
+          <hr />
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-primary mx-2"
+            (click)="onEditProject(item)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger mx-2"
+            (click)="onDeleteProject(item._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- card for employee ends here -->
+
+<!-- /////////////////////////// -->
+
+<!--  add employee modal starts here-->
+
+<div class="modal fade show" [class.show]="showProjectModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          {{ editProjectMode ? "Update Project" : "Add Project" }}
+        </h5>
+        <button
+          (click)="onCloseProjectModal()"
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="pname">Enter Name</label>
+            <input type="text" class="form-control" formControlName="pname" />
+          </div>
+          <div class="form-group">
+            <label for="pcaregory">Enter Category</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="pcategory"
+            />
+          </div>
+          <!-- <div class="form-group">
+            <label for="eemail">Enter Email</label>
+            <input type="text" class="form-control" formControlName="eemail" />
+          </div>
+          <div class="form-group">
+            <label for="epassword">Enter Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="epassword"
+            />
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onCloseProjectModal()"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">
+            {{ editProjectMode ? "Update Project" : "Add Project" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- employee modal ends here -->
+
+<!-- footer starts here -->
+<footer style="background-color: #240c30; margin-top: 635px" class="p-2">
+  <div class="text-center">
+    <h5 class="text-muted text-light">Copyright @2022</h5>
+  </div>
+</footer>
+<!-- footer ends here -->
