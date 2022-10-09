@@ -21,8 +21,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +29,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     TimetrackerpageComponent,
     AdminhomeComponent,
     AdmintimetrackerpageComponent,
+    ProjectsComponent,
+    EmployeesComponent,
   ],
   imports: [
     BrowserModule,

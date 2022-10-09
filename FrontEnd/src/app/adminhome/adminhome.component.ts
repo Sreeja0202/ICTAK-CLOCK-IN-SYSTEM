@@ -58,6 +58,7 @@ export class AdminhomeComponent implements OnInit {
     this.empForm.reset();
     this.showEmployeeModal = false;
   }
+
   onCloseProjectModal() {
     this.projectForm.reset();
     this.showProjectModal = false;

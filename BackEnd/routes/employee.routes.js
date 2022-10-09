@@ -4,6 +4,7 @@ const Employee = require("../models/employee.model.js");
 const app = new express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
+const objectId = require("mongoose").Types.ObjectId;
 
 app.use(cors());
 
@@ -51,12 +52,79 @@ emprouter.post("/", (req, res) => {
   });
 });
 
-// updating employee
-
 // getting all employee
+
+emprouter.get("/", (req, res) => {
+  Employee.find((err, doc) => {
+    if (err) {
+      console.log("Error in getting data", +err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
 
 // get by id
 
+emprouter.get("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    Employee.findById(req.params.id, (err, doc) => {
+      if (err) {
+        console.log("Error in getting data by id", +err);
+      } else {
+        res.send(doc);
+      }
+    });
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with Employee with id ${req.params.id}`);
+  }
+});
+
 // deleting by id
+emprouter.delete("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    Employee.findByIdAndRemove(req.params.id, (err, doc) => {
+      if (err) {
+        console.log("Error in Deleting data by id", +err);
+      } else {
+        res.send(doc);
+      }
+    });
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with Employee with id ${req.params.id}`);
+  }
+});
+
+// updating employee
+emprouter.put("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    let emp = {
+      ename: req.body.ename,
+      eposition: req.body.eposition,
+      elocation: req.body.elocation,
+      esalary: req.body.esalary,
+    };
+    Employee.findByIdAndUpdate(
+      req.params.id,
+      { $set: emp },
+      { new: true },
+      (err, doc) => {
+        if (err) {
+          console.log("Error in updating data", +err);
+        } else {
+          res.send(doc);
+        }
+      }
+    );
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with Employee with id ${req.params.id}`);
+  }
+});
 
 module.exports = emprouter;

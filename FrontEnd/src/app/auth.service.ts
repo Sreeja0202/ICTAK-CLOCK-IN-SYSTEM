@@ -17,15 +17,39 @@ export class AuthService {
     return this.http.post(this.url, emp);
   }
 
-  addProject(pro: Project) {
-    return this.http.post(this.prourl, pro);
-  }
-
   loginUser(user: any) {
     return this.http.post(this.loginurl, user);
   }
 
   IsloggedIn() {
     return !!localStorage.getItem('token');
+  }
+
+  getEmployeeList() {
+    return this.http.get<Employee[]>(this.url);
+  }
+
+  deleteEmployee(id: any) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+  updateEmployee(emp: Employee) {
+    return this.http.put(`${this.url}/${emp._id}`, emp);
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////// // project url starting /////////////////////////////
+
+  getProjectList() {
+    return this.http.get<Project[]>(this.prourl);
+  }
+  deleteProject(id: any) {
+    return this.http.delete(`${this.prourl}/${id}`);
+  }
+  addProject(pro: Project) {
+    return this.http.post(this.prourl, pro);
+  }
+  updateProject(pro: Project) {
+    return this.http.put(`${this.prourl}/${pro._id}`, pro);
   }
 }
