@@ -9,6 +9,9 @@ import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.comp
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation changes 1
+import { ProjectsComponent } from './projects/projects.component';
+import { EmployeesComponent } from './employees/employees.component';
+
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
