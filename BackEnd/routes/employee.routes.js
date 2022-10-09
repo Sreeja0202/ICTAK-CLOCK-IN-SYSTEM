@@ -104,9 +104,9 @@ emprouter.put("/:id", (req, res) => {
   if (objectId.isValid(req.params.id)) {
     let emp = {
       ename: req.body.ename,
-      eposition: req.body.eposition,
-      elocation: req.body.elocation,
-      esalary: req.body.esalary,
+      erole: req.body.erole,
+      eemail: req.body.eemail,
+      epassword: req.body.epassword,
     };
     Employee.findByIdAndUpdate(
       req.params.id,

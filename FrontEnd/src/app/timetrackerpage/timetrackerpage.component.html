@@ -1,15 +1,16 @@
 <!--top nav-->
 <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
   <div class="container-fluid">
-    
-   
-      <span class="navbar-toggler-icon">TIME TRACKER </span>
-   
+    <span class="navbar-toggler-icon">TIME TRACKER </span>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-         </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
       <div class="d-flex">
-        <button class="btn btn-outline-warning text-light"  type="submit"(click)="logoutUser()">
+        <button
+          class="btn btn-outline-warning text-light"
+          type="submit"
+          (click)="logoutUser()"
+        >
           LOGOUT
         </button>
       </div>
@@ -21,99 +22,85 @@
 <!--sidebar-->
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
-<div class="options">
-  <br>
-  <br>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label >Select Project</mat-label>
-    <mat-select disableRipple >
-      <mat-option value="1">Academic</mat-option>
-      <mat-option value="2">Corporate</mat-option>
-      <mat-option value="3">Government</mat-option>
-      <mat-option value="4">Knowledge Office</mat-option>
-      <mat-option value="5">Retail</mat-option>
-      <mat-option value="6">Administration</mat-option>
-    </mat-select>
- </mat-form-field>
- <br>
- <br>
- <br>
- <mat-form-field appearance="fill">
-  <mat-label>Select Task</mat-label>
-  <mat-select disableRipple>
-    <mat-option value="1">Training</mat-option>
-    <mat-option value="2">Meetings & Discussions</mat-option>
-    <mat-option value="3">Lark Activity</mat-option>
-    <mat-option value="4">Content Development</mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<br>
-<br>
- <mat-form-field appearance="fill">
-  <mat-label>Select Mode of Work</mat-label>
-  <mat-select disableRipple>
-    <mat-option value="1">Work from Office</mat-option>
-    <mat-option value="2">Work from Home</mat-option>
-  </mat-select>
-</mat-form-field>
-    <br>
-    <br>
-    <br>
-    <mat-form-field appearance="fill">
-      <mat-label>Job Description</mat-label>
-      <mat-select disableRipple>
-        <mat-option value="1">Non-Billable</mat-option>
-        <mat-option value="2">Billable</mat-option>   
-      </mat-select>
-    </mat-form-field>
+    <div class="options">
+      <br />
+      <br />
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Select Project</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Academic</mat-option>
+          <mat-option value="2">Corporate</mat-option>
+          <mat-option value="3">Government</mat-option>
+          <mat-option value="4">Knowledge Office</mat-option>
+          <mat-option value="5">Retail</mat-option>
+          <mat-option value="6">Administration</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <br />
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Select Task</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Training</mat-option>
+          <mat-option value="2">Meetings & Discussions</mat-option>
+          <mat-option value="3">Lark Activity</mat-option>
+          <mat-option value="4">Content Development</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <br />
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Select Mode of Work</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Work from Office</mat-option>
+          <mat-option value="2">Work from Home</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <br />
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label>Job Description</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Non-Billable</mat-option>
+          <mat-option value="2">Billable</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-
-<div class="space"></div>
- 
-</div>
+      <div class="space"></div>
+    </div>
   </mat-drawer>
-<!--sidebar ends-->
+  <!--sidebar ends-->
 
+  <!--main body-->
+  <mat-drawer-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-7">
+          <div class="projectdetails">
+            <h2>{{ project }}</h2>
+            <button class="timerbutton">00:00:00</button>
+          </div>
+        </div>
 
-<!--main body-->
-<mat-drawer-content>
-
-<div class="container">
-
-<div class="row">
-
-
-<div class="col-7">
- <div class="projectdetails">
-  <h2> {{project}}  </h2>
-  <button class="timerbutton">00:00:00</button>
-</div>
+        <div class="col-5">
+          <div class="employeedetail">
+            <mat-card class="example-card">
+              <mat-card-title-group>
+                <mat-card-title>{{ cardtitle }}</mat-card-title>
+                <mat-card-subtitle>{{ name }}</mat-card-subtitle>
+                <img mat-card-sm-image src="/assets/images/usericon.webp" />
+              </mat-card-title-group>
+              <mat-card-content>
+                {{ cardcontent }}
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
       </div>
-
-
-
-<div class="col-5">
-   <div class="employeedetail">
-  
-    <mat-card class="example-card">
-     <mat-card-title-group>
-      <mat-card-title>{{cardtitle}}</mat-card-title>
-      <mat-card-subtitle>{{name}}</mat-card-subtitle>
-      <img mat-card-sm-image src="/assets/images/usericon.webp" >
-      </mat-card-title-group>
-     <mat-card-content>
-      {{cardcontent}}
-    </mat-card-content>
-  </mat-card>
-
-  </div>
-         </div>
-
-
- </div>
- </div>
-    
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
