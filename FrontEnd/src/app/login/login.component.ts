@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         (res) => {
           console.log(res);
           this.respondeData = res;
+          console.log(this.respondeData.token);
           localStorage.setItem('token', this.respondeData.token);
           if (this.authservice.HaveAccess()) {
             Swal.fire('', 'Login Successfull', 'success');
