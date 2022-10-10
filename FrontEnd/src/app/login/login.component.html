@@ -33,6 +33,14 @@
         formControlName="eemail"
       />
       <label for="floatingInput">Email address</label>
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.get('eemail').hasError('required') &&
+          loginForm.get('eemail').touched
+        "
+        ><b>Email is required</b></span
+      >
     </div>
     <div class="form-floating">
       <input
@@ -42,7 +50,16 @@
         placeholder="Password"
         formControlName="epassword"
       />
+
       <label for="floatingPassword">Password</label>
+      <span
+        class="text-danger"
+        *ngIf="
+          loginForm.get('epassword').hasError('required') &&
+          loginForm.get('epassword').touched
+        "
+        ><b>Password is required</b></span
+      >
     </div>
     <br />
     <br />
