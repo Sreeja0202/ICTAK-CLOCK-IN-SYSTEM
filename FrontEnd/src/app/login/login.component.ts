@@ -33,9 +33,15 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.respondeData = res;
           localStorage.setItem('token', this.respondeData.token);
-          Swal.fire('', 'Login Successfull', 'success');
-          this.loginForm.reset();
-          this.router.navigate(['/adminhome']);
+          if (this.authservice.HaveAccess()) {
+            Swal.fire('', 'Login Successfull', 'success');
+            this.loginForm.reset();
+            this.router.navigate(['/adminhome']);
+          } else {
+            Swal.fire('', 'Login Successfull', 'success');
+            this.loginForm.reset();
+            this.router.navigate(['/timetrackerpage']);
+          }
         },
         (err) => {
           Swal.fire('', 'Some error occured', 'error');
@@ -43,7 +49,7 @@ export class LoginComponent implements OnInit {
         }
       );
     } else {
-      Swal.fire('', 'Some error occured', 'error');
+      Swal.fire('', 'Please enter Valid Credentials', 'error');
     }
   }
 }

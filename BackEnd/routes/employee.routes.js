@@ -5,6 +5,7 @@ const app = new express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const objectId = require("mongoose").Types.ObjectId;
+// bcrypt password - next modification
 
 app.use(cors());
 
@@ -24,8 +25,12 @@ emprouter.post("/login", (req, res) => {
         } else if (user.epassword !== userData.epassword) {
           res.status(401).send("Invalid Password");
         } else {
-          let payload = { subject: user._id };
-          // let payload = { subject: user.eemail + user.epassword };
+          let payload = {
+            name: user.ename,
+            email: user.eemail,
+            // password: user.epassword,
+            roles: user.erole,
+          };
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });
         }
