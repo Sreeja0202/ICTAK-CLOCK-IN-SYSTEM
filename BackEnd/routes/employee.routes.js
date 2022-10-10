@@ -24,7 +24,11 @@ emprouter.post("/login", (req, res) => {
         } else if (user.epassword !== userData.epassword) {
           res.status(401).send("Invalid Password");
         } else {
-          let payload = { subject: user._id };
+          let payload = {
+            email: user.eemail,
+            password: user.epassword,
+            roles: user.erole,
+          };
           // let payload = { subject: user.eemail + user.epassword };
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });

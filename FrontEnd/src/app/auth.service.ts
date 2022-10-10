@@ -37,6 +37,23 @@ export class AuthService {
     return this.http.put(`${this.url}/${emp._id}`, emp);
   }
 
+  HaveAccess() {
+    var logintoken = localStorage.getItem('token') || '';
+    console.log(logintoken);
+    if (logintoken == '') {
+      return false;
+    }
+    var extractedToken = logintoken.split('.')[1];
+    var atobdata = atob(extractedToken);
+    var finalData = JSON.parse(atobdata);
+    console.log(finalData);
+    if (finalData.roles === 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////// // project url starting /////////////////////////////
 

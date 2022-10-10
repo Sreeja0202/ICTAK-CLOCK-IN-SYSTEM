@@ -32,10 +32,17 @@ export class LoginComponent implements OnInit {
         (res) => {
           console.log(res);
           this.respondeData = res;
+          console.log(this.respondeData.token);
           localStorage.setItem('token', this.respondeData.token);
-          Swal.fire('', 'Login Successfull', 'success');
-          this.loginForm.reset();
-          this.router.navigate(['/adminhome']);
+          if (this.authservice.HaveAccess()) {
+            Swal.fire('', 'Login Successfull', 'success');
+            this.loginForm.reset();
+            this.router.navigate(['/adminhome']);
+          } else {
+            Swal.fire('', 'Login Successfull', 'success');
+            this.loginForm.reset();
+            this.router.navigate(['/timetrackerpage']);
+          }
         },
         (err) => {
           Swal.fire('', 'Some error occured', 'error');
