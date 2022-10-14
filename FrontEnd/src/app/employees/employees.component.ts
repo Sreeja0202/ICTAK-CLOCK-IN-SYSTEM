@@ -29,7 +29,7 @@ export class EmployeesComponent implements OnInit {
     this.empForm = this.fb.group({
       _id: '',
       ename: ['', [Validators.required]],
-      erole: ['', [Validators.required]],
+      erole: ['1', [Validators.required]],
       eemail: ['', [Validators.required, Validators.email]],
       epassword: ['', [Validators.required, Validators.minLength(4)]],
     });
