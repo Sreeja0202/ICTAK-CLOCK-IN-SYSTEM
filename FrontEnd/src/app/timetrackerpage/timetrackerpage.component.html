@@ -84,62 +84,54 @@
   </mat-drawer>
   <!--sidebar ends-->
 
-
-
-<!--main body-->
+  <!--main body-->
 
   <mat-drawer-content>
-    
     <div class="container">
-      
       <div class="row">
-         
-        <!--full project details--> 
-       <div class="col-6">
-        <div class="projectdetails">
+        <!--full project details-->
+        <div class="col-6">
+          <div class="projectdetails">
             <h2>{{ project }}</h2>
-           
           </div>
-      </div>
-          <!--end-->
+        </div>
+        <!--end-->
 
-
-        <!--timer button-->    
-      <div class="col-3">
-        <div class="sw-container">
-          <div class="stopwatch">
-              <span>{{hr}}:</span>
-              <span>{{min}}:</span>
-              <span>{{sec}}:</span>
-              <span>{{ms}}</span>
-          </div>
-          <div class="buttoncontainer">
+        <!--timer button-->
+        <div class="col-3">
+          <div class="sw-container">
+            <div class="stopwatch">
+              <span>{{ hr }}:</span>
+              <span>{{ min }}:</span>
+              <span>{{ sec }}:</span>
+              <span>{{ ms }}</span>
+            </div>
+            <div class="buttoncontainer">
               <button class="btn" (click)="start()">
-                  <div class="collapsible-header" ><i class="material-icons" *ngIf="!showFirst">play_circle_outline</i><i class="material-icons" *ngIf="showFirst">pause_circle_outline</i></div>
+                <div class="collapsible-header">
+                  <i class="material-icons" *ngIf="!showFirst"
+                    >play_circle_outline</i
+                  ><i class="material-icons" *ngIf="showFirst"
+                    >pause_circle_outline</i
+                  >
+                </div>
               </button>
               <button class="btn" (click)="reset()">
-                  <span class="material-icons">restart_alt</span>
+                <span class="material-icons">restart_alt</span>
               </button>
+            </div>
           </div>
-      </div>
-     </div>
+        </div>
 
-       <!--end-->
-
-
-
-
-
-
+        <!--end-->
 
         <div class="col-3">
-          
           <div class="employeedetail">
             <mat-card class="example-card">
               <mat-card-title-group>
                 <mat-card-title>{{ cardtitle }}</mat-card-title>
                 <mat-card-subtitle>{{ name }}</mat-card-subtitle>
-                </mat-card-title-group>
+              </mat-card-title-group>
               <mat-card-content>
                 {{ cardcontent }}
               </mat-card-content>
@@ -149,6 +141,4 @@
       </div>
     </div>
   </mat-drawer-content>
-
-
 </mat-drawer-container>
