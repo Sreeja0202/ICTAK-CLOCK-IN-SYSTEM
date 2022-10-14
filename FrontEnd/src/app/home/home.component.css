@@ -102,3 +102,15 @@ hr .new1 {
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+.modal.fade.show {
+  display: block;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}

@@ -47,7 +47,7 @@ export class AuthService {
     var atobdata = atob(extractedToken);
     var finalData = JSON.parse(atobdata);
     console.log(finalData);
-    if (finalData.roles === 'admin') {
+    if (finalData.roles === 'Admin') {
       return true;
     } else {
       return false;

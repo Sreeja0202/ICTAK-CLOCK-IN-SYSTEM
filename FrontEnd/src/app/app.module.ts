@@ -12,20 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; //!validation
 import { ProjectsComponent } from './projects/projects.component';
 import { EmployeesComponent } from './employees/employees.component';
 
-
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -33,8 +30,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     LoginComponent,
     HomeComponent,
     TimetrackerpageComponent,
-    AdminhomeComponent,
-    AdmintimetrackerpageComponent,
     ProjectsComponent,
     EmployeesComponent,
   ],
@@ -52,9 +47,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSliderModule,
     MatMenuModule,
     MatSelectModule,
-    HttpClientModule,   
+    HttpClientModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

@@ -1,8 +1,6 @@
 import { compileClassMetadata } from '@angular/compiler';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminhomeComponent } from './adminhome/adminhome.component';
-import { AdmintimetrackerpageComponent } from './admintimetrackerpage/admintimetrackerpage.component';
 import { AuthGuard } from './auth.guard';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
@@ -18,18 +16,8 @@ const routes: Routes = [
   { path: 'employees', component: EmployeesComponent },
   { path: 'projects', component: ProjectsComponent },
   {
-    path: 'adminhome',
-    component: AdminhomeComponent,
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'admintimetrackerpage',
-    component: AdmintimetrackerpageComponent,
-    canActivate: [AuthGuard],
   },
 ];
 

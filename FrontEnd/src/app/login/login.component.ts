@@ -37,11 +37,11 @@ export class LoginComponent implements OnInit {
           if (this.authservice.HaveAccess()) {
             Swal.fire('', 'Login Successfull', 'success');
             this.loginForm.reset();
-            this.router.navigate(['/adminhome']);
+            this.router.navigate(['/home']);
           } else {
             Swal.fire('', 'Login Successfull', 'success');
             this.loginForm.reset();
-            this.router.navigate(['/timetrackerpage']);
+            this.router.navigate(['/home']);
           }
         },
         (err) => {
