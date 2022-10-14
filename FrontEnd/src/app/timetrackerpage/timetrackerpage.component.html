@@ -1,4 +1,26 @@
 <!--top nav-->
+<<<<<<< HEAD
+=======
+<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+  <div class="container-fluid">
+    <button
+      class="btn btn-outline-warning"
+      routerLink="/timetrackerpage"
+      routerLinkActive="active"
+    >
+      TIME TRACKER
+    </button>
+    <button class="btn btn-outline-warning ms-3" routerLink="/home">
+      HOME
+    </button>
+    <button
+      class="btn btn-outline-warning ms-3"
+      routerLink="/timetrackerpage"
+      (click)="onStart()"
+    >
+      Start
+    </button>
+>>>>>>> 083c364277e32d284e983adcdb90a11bcfdbbab9
 
 
       <div>
@@ -125,23 +147,27 @@
       <div class="space"></div>
     </div>
   </mat-drawer>
-  <!--sidebar ends-->
+  <!-- </div>
+    </div>
+  </mat-drawer-content> -->
+</mat-drawer-container>
+<!--sidebar ends-->
 
-  <!--main body-->
+<!--main body-->
 
-  <mat-drawer-content>
+<!-- <mat-drawer-content>
     <div class="container">
       <div class="row">
-        <!--full project details-->
-        <div class="col-6">
+        full project details-->
+<!-- <div class="col-6">
           <div class="projectdetails">
             <h2>{{ project }}</h2>
           </div>
-        </div>
-        <!--end-->
+        </div> -->
+<!--end-->
 
-        <!--timer button-->
-        <div class="col-3">
+<!--timer button-->
+<!-- <div class="col-3">
           <div class="sw-container">
             <div class="stopwatch">
               <span>{{ hr }}:</span>
@@ -164,12 +190,139 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <!--end-->
-
-
+<!-- tracker modal form -->
+<div class="modal fade show" [class.show]="showTrackerModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Details</h5>
+        <button
+          (click)="onCloseTrackerModal()"
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="tdate">Date</label>
+            <input type="date" class="form-control" formControlName="tdate" />
+          </div>
+
+          <div class="form-group">
+            <label for="tproject">Projects</label>
+            <input
+              type="text"
+              list="projects"
+              class="form-control"
+              formControlName="tproject"
+            />
+            <datalist id="projects">
+              <option value="Academic"></option>
+              <option value="Corporate"></option>
+              <option value="Government"></option>
+              <option value="Knowledge Office"></option>
+              <option value="Retail"></option>
+              <option value="Administration"></option>
+              <option
+                value="Add New Project"
+                *ngIf="authservice.HaveAccess()"
+                routerLink="/projects"
+              ></option>
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="ttask">Tasks</label>
+            <input
+              type="text"
+              list="tasks"
+              class="form-control"
+              formControlName="ttask"
+            />
+            <datalist id="tasks">
+              <option value="Training"></option>
+              <option value="Meeting and Discussions"></option>
+              <option value="Lark Activity"></option>
+              <option value="Content Development"></option>
+              <option
+                value="Add New Task"
+                *ngIf="authservice.HaveAccess()"
+                routerLink="/projects"
+              ></option>
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="tmode">Mode</label>
+            <input
+              type="text"
+              list="modes"
+              class="form-control"
+              formControlName="tmode"
+            />
+            <datalist id="modes">
+              <option value="Work from Home"></option>
+              <option value="Work from Office"></option>
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="tdesc">Description</label>
+            <input
+              type="text"
+              list="description"
+              class="form-control"
+              formControlName="tdesc"
+            />
+            <datalist id="description">
+              <option value="Billable"></option>
+              <option value="Non-Billable"></option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label for="tmode">Time</label>
+            <input type="time" class="form-control" formControlName="ttime" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onCloseTrackerModal()"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--end-->
+
+<div class="col-3">
+  <div class="employeedetail">
+    <mat-card class="example-card">
+      <mat-card-title-group>
+        <mat-card-title>{{ cardtitle }}</mat-card-title>
+        <mat-card-subtitle>{{ name }}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        {{ cardcontent }}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<!-- </div>
     </div>
   </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> -->

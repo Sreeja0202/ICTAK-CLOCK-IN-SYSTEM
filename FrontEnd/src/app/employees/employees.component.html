@@ -24,7 +24,7 @@
         <li class="nav-item">
           <button
             class="nav-link text-light btn btn-outline-warning mx-2"
-            routerLink="/adminhome"
+            routerLink="/home"
           >
             HOME
           </button>
@@ -111,10 +111,35 @@
             <label for="ename">Enter Name</label>
             <input type="text" class="form-control" formControlName="ename" />
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="erole">Enter Role</label>
             <input type="text" class="form-control" formControlName="erole" />
+          </div> -->
+          <!-- /////////// -->
+          <div class="form-group">
+            <label for="erole">Gender</label>
+            <div class="radio">
+              <label>
+                <input
+                  type="radio"
+                  name="erole"
+                  formControlName="erole"
+                  value="Admin"
+                />Admin
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input
+                  type="radio"
+                  name="erole"
+                  formControlName="erole"
+                  value="Employee"
+                />Employee
+              </label>
+            </div>
           </div>
+          <!-- ////////////////////////////// -->
           <div class="form-group">
             <label for="eemail">Enter Email</label>
             <input type="text" class="form-control" formControlName="eemail" />
