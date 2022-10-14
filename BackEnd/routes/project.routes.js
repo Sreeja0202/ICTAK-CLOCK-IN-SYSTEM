@@ -6,7 +6,6 @@ const app = new express();
 const objectId = require("mongoose").Types.ObjectId;
 app.use(cors());
 
-// login
 prorouter.get("/", (req, res) => {
   Project.find((err, doc) => {
     if (err) {

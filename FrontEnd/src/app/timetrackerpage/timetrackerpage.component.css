@@ -1,98 +1,100 @@
 mat-drawer {
   width: 250px;
 }
-nav{
+nav {
   height: 100px;
 }
-.navbar-toggler-icon{
+.navbar-toggler-icon {
   padding-top: 10px;
- padding-left:18px;
+  padding-left: 18px;
   height: 50px;
   width: 150px;
   border: 1px solid rgb(214, 154, 25);
   color: white;
 }
-nav button{
+nav button {
   height: 50px;
 }
-.options{
- 
-  background-color: #240c30 ;
-  border:1px solid rgb(81, 81, 196) ;
+.options {
+  background-color: #240c30;
+  border: 1px solid rgb(81, 81, 196);
 }
-mat-form-field{
+mat-form-field {
   margin-left: 10px;
   height: 50px;
   border-radius: 5px;
   background-color: rgb(81, 81, 196);
 }
-mat-label{
+mat-label {
   color: white;
 }
-.space{
-height: 250px;
+.space {
+  height: 250px;
 }
 
-
-
-
-.container{
+.container {
   height: 600px;
 }
 
-.employeedetail{
+.employeedetail {
   margin-top: 2%;
   width: 50%;
   margin-left: 50%;
   height: 150px;
-}mat-card{
+}
+mat-card {
   border-radius: 10px;
   background-color: #240c30;
   color: white;
-}mat-card-subtitle{
+}
+mat-card-subtitle {
   color: white;
 }
 
-
-
-.projectdetails{
+.projectdetails {
   color: white;
- background-color: #240c30;
+  background-color: #240c30;
   margin-top: 4%;
   height: 600px;
   border: 1px solid black;
   border-radius: 5px;
   margin-left: 5%;
- width: 100%;
+  width: 100%;
 }
 
-
-
-
-
-.sw-container{
+.sw-container {
   margin-left: 10%;
-    margin-top: 8%;
+  margin-top: 8%;
   height: 80px;
   background-color: rgb(81, 81, 196);
   padding: 5px;
   text-align: center;
   border-radius: 40px;
   width: 140px;
-  box-shadow: 0 3px 6px rgb(81, 81, 196),
-  0 3px 6px rgb(81, 81, 196);
+  box-shadow: 0 3px 6px rgb(81, 81, 196), 0 3px 6px rgb(81, 81, 196);
 }
-.stopwatch{
+.stopwatch {
   color: white;
   font-size: 25px;
   margin-bottom: 2px;
 }
-.buttoncontainer{
+.buttoncontainer {
   height: 250px;
-
-}.btn{
+}
+.btn {
   color: white;
-border-radius: 70px;
-
+  border-radius: 70px;
 }
 
+.modal.fade.show {
+  display: block;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card-title {
+  color: black;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}

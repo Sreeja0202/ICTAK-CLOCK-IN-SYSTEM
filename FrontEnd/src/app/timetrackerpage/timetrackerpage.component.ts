@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -13,7 +14,12 @@ export class TimetrackerpageComponent implements OnInit {
   name = 'Name';
   project = `Project Details`;
 
+  // for tracker modal
+  showTrackerModal: boolean = false;
+
   showFirst: boolean = false;
+  // editTrackerMode: boolean = false;
+  TrackerForm: any = FormGroup;
 
   ms: any = '0' + 0;
   sec: any = '0' + 0;
@@ -22,10 +28,34 @@ export class TimetrackerpageComponent implements OnInit {
 
   startTimer: any;
 
-  constructor(private router: Router, public authservice: AuthService) {}
+  constructor(
+    private router: Router,
+    public authservice: AuthService,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.TrackerForm = this.fb.group({
+      _id: '',
+      tdate: ['', [Validators.required]],
+      tproject: ['', [Validators.required]],
+      ttask: ['', [Validators.required]],
+      tmode: ['', [Validators.required]],
+      tdesc: ['', [Validators.required]],
+      ttime: ['', [Validators.required]],
+    });
+  }
 
+  onTrackSubmit() {
+    alert('Success!!');
+  }
+  onStart() {
+    this.showTrackerModal = true;
+  }
+
+  onCloseTrackerModal() {
+    this.showTrackerModal = false;
+  }
   logoutUser() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
