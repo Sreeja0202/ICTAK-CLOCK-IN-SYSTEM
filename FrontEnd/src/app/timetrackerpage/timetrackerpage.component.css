@@ -12,7 +12,7 @@ nav{
   border: 1px solid rgb(214, 154, 25);
   color: white;
 }
-button{
+nav button{
   height: 50px;
 }
 .options{
@@ -42,8 +42,8 @@ height: 250px;
 
 .employeedetail{
   margin-top: 2%;
-  width: 45%;
-  margin-left: 60%;
+  width: 50%;
+  margin-left: 50%;
   height: 150px;
 }mat-card{
   border-radius: 10px;
@@ -53,21 +53,46 @@ height: 250px;
   color: white;
 }
 
+
+
 .projectdetails{
   color: white;
  background-color: #240c30;
   margin-top: 4%;
-  height: 500px;
+  height: 600px;
   border: 1px solid black;
   border-radius: 5px;
   margin-left: 5%;
- 
+ width: 100%;
 }
-.timerbutton{
-  border: 1px solid white;
-  border-radius: 5px;
-  margin-left: 80%;
-}.timerbutton:hover{
-  background-color: #240c30;
+
+
+
+
+
+.sw-container{
+  margin-left: 10%;
+    margin-top: 8%;
+  height: 80px;
+  background-color: rgb(81, 81, 196);
+  padding: 5px;
+  text-align: center;
+  border-radius: 40px;
+  width: 140px;
+  box-shadow: 0 3px 6px rgb(81, 81, 196),
+  0 3px 6px rgb(81, 81, 196);
+}
+.stopwatch{
   color: white;
+  font-size: 25px;
+  margin-bottom: 2px;
 }
+.buttoncontainer{
+  height: 250px;
+
+}.btn{
+  color: white;
+border-radius: 70px;
+
+}
+
