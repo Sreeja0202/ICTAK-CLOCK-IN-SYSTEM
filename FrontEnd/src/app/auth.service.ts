@@ -11,7 +11,14 @@ export class AuthService {
   loginurl = 'http://localhost:3000/employees/login';
   prourl = 'http://localhost:3000/projects';
 
-  constructor(private http: HttpClient) {}
+  userData: any;
+
+  constructor(private http: HttpClient) {
+    const data = localStorage.getItem("userData");
+    if (data) {
+      this.userData = JSON.parse(data);
+    }
+  }
 
   addEmployee(emp: Employee) {
     return this.http.post(this.url, emp);
@@ -45,15 +52,19 @@ export class AuthService {
     }
     var extractedToken = logintoken.split('.')[1];
     var atobdata = atob(extractedToken);
-    var finalData = JSON.parse(atobdata);
-    console.log(finalData.email);
-    if (finalData.roles === 'Admin') {
+    localStorage.setItem("userData", atobdata);
+    this.userData = JSON.parse(atobdata);
+    console.log(this.userData);
+
+    if (this.userData.roles === 'Admin') {
       return true;
     } else {
       return false;
     }
   }
-
+  getUserData() {
+    return this.userData;
+  }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////// // project url starting /////////////////////////////
 

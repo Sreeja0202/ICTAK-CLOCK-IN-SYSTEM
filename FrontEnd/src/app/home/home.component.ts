@@ -9,10 +9,13 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
   showFiller = false;
-
+  userData: any;
   constructor(private router: Router, public authservice: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userData = this.authservice.getUserData();
+    console.log('user data is home component -- > ', this.userData);
+  }
   logoutUser() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
