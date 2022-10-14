@@ -18,6 +18,7 @@ export class TimetrackerpageComponent implements OnInit {
   showTrackerModal: boolean = false;
 
   showFirst: boolean = false;
+  userData: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
 
@@ -35,6 +36,9 @@ export class TimetrackerpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userData = this.authservice.getUserData();
+    console.log('user data is home component -- > ', this.userData);
+
     this.TrackerForm = this.fb.group({
       _id: '',
       tdate: ['', [Validators.required]],

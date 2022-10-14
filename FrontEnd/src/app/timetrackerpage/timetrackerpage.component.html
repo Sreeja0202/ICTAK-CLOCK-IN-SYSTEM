@@ -1,4 +1,5 @@
 <!--top nav-->
+<div>
 <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
   <div class="container-fluid">
     <button
@@ -20,24 +21,8 @@
     </button>
 
 
-      <div>
-        <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
-          <div class="container-fluid">
-            <button
-            class="btn btn-outline-warning"
-            routerLink="/timetrackerpage"
-            routerLinkActive="active"
-            >
-              TIME TRACKER
-            </button>
 
-            <button
-            class="navbar-brand text-light btn btn-outline-warning mx-2"
-            routerLink="/home"
-            routerLinkActive="active"
-          >
-            HOME
-          </button>
+
 
             <div class="nav_right">
               <ul>
@@ -64,17 +49,16 @@
                       width="100"
                     /></button
                   ><br /><br />
-                  <span class="name mt-3" style="color: black"></span> <br /><span
+                  <span class="name mt-3" style="color: black">{{userData?.name}}</span> <br /><span
                     class="idd"
-                    style="color: black"
-                    ></span
+                    style="color: black">{{userData?.email}}</span
                   >
                   <div
                     class="d-flex flex-row justify-content-center align-items-center gap-2"
                   ></div>
                   <br />
                   <div class="text mt-3">
-                    <span style="color: black"></span>
+                    <span style="color: black">{{userData?.roles}}</span>
                   </div>
 
                   <div class="d-flex mt-2">
@@ -306,7 +290,7 @@
 
 <!--end-->
 
-<div class="col-3">
+<!-- <div class="col-3">
   <div class="employeedetail">
     <mat-card class="example-card">
       <mat-card-title-group>
@@ -318,7 +302,7 @@
       </mat-card-content>
     </mat-card>
   </div>
-</div>
+</div> -->
 <!-- </div>
     </div>
   </mat-drawer-content>
