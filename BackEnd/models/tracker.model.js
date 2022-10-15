@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Tracker = mongoose.model("tracker", {
+  empmail: {
+    type: String,
+  },
   tdate: {
     type: String,
   },

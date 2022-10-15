@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from './employee.model';
 import { Project } from './project.model';
+import { Tracker } from './tracker.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +11,12 @@ export class AuthService {
   url = 'http://localhost:3000/employees';
   loginurl = 'http://localhost:3000/employees/login';
   prourl = 'http://localhost:3000/projects';
+  trackerurl = 'http://localhost:3000/trackers';
 
   userData: any;
 
   constructor(private http: HttpClient) {
-    const data = localStorage.getItem("userData");
+    const data = localStorage.getItem('userData');
     if (data) {
       this.userData = JSON.parse(data);
     }
@@ -22,6 +24,14 @@ export class AuthService {
 
   addEmployee(emp: Employee) {
     return this.http.post(this.url, emp);
+  }
+
+  addTracker(trac: Tracker) {
+    return this.http.post(this.trackerurl, trac);
+  }
+
+  getTrackerList() {
+    return this.http.get<Tracker[]>(this.trackerurl);
   }
 
   loginUser(user: any) {
@@ -52,7 +62,7 @@ export class AuthService {
     }
     var extractedToken = logintoken.split('.')[1];
     var atobdata = atob(extractedToken);
-    localStorage.setItem("userData", atobdata);
+    localStorage.setItem('userData', atobdata);
     this.userData = JSON.parse(atobdata);
     console.log(this.userData);
 
@@ -62,6 +72,7 @@ export class AuthService {
       return false;
     }
   }
+
   getUserData() {
     return this.userData;
   }

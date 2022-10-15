@@ -20,6 +20,7 @@ trackerrouter.get("/", (req, res) => {
 // posting data
 trackerrouter.post("/", (req, res) => {
   let track = new Tracker({
+    empmail: req.body.empmail,
     tdate: req.body.tdate,
     tproject: req.body.tproject,
     ttask: req.body.ttask,
@@ -35,5 +36,22 @@ trackerrouter.post("/", (req, res) => {
     }
   });
 });
+
+// getting all data
+// trackerrouter.get("/", (req, res) => {
+//   let userData = req.body;
+//   Tracker.findOne(
+//     {
+//       empmail: userData.empmail,
+//     },
+//     (err, user) => {
+//       if (user.empmail == userData.empmail) {
+//         res.send(user);
+//       } else {
+//         console.log(err);
+//       }
+//     }
+//   );
+// });
 
 module.exports = trackerrouter;
