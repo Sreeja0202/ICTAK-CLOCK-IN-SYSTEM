@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -51,7 +51,7 @@ export class TimetrackerpageComponent implements OnInit {
   }
 
   onTrackSubmit() {
-    alert('Success!!');
+    Swal.fire('', 'Success!!!', 'success');
   }
   onStart() {
     this.showTrackerModal = true;
