@@ -37,21 +37,20 @@ trackerrouter.post("/", (req, res) => {
   });
 });
 
-// getting all data
-// trackerrouter.get("/", (req, res) => {
-//   let userData = req.body;
-//   Tracker.findOne(
-//     {
-//       empmail: userData.empmail,
-//     },
-//     (err, user) => {
-//       if (user.empmail == userData.empmail) {
-//         res.send(user);
-//       } else {
-//         console.log(err);
-//       }
-//     }
-//   );
-// });
-
+// deleting data
+trackerrouter.delete("/:id", (req, res) => {
+  if (objectId.isValid(req.params.id)) {
+    Tracker.findByIdAndRemove(req.params.id, (err, doc) => {
+      if (err) {
+        console.log("Error in Deleting data by id", +err);
+      } else {
+        res.send(doc);
+      }
+    });
+  } else {
+    return res
+      .status(400)
+      .send(`No record found with Employee with id ${req.params.id}`);
+  }
+});
 module.exports = trackerrouter;
