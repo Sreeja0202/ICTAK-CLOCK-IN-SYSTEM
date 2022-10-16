@@ -40,6 +40,10 @@ export class TimetrackerpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.userData = this.authservice.getUserData();
+    console.log(' ', this.userData);
+
     this.getTrackers();
     this.TrackerForm = this.fb.group({
       _id: '',

@@ -12,7 +12,10 @@ export class HomeComponent implements OnInit {
   userData: any;
   constructor(private router: Router, public authservice: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userData = this.authservice.getUserData();
+    console.log('', this.userData);
+  }
   logoutUser() {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
