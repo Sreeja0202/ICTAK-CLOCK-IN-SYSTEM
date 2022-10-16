@@ -53,17 +53,17 @@ export class TimetrackerpageComponent implements OnInit {
     });
   }
 
-  getTrackers() {
-    this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
-      this.userdetails = res;
-      this.userdetails.forEach((element: any) => {
-        if (element.empmail === this.authservice.userData.email) {
-          this.trackers = element;
-          console.log(element);
-        }
-      });
-    });
-  }
+  // getTrackers() {
+  //   this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
+  //     this.userdetails = res;
+  //     this.userdetails.forEach((element: any) => {
+  //       if (element.empmail === this.authservice.userData.email) {
+  //         this.trackers = element;
+  //         console.log(element);
+  //       }
+  //     });
+  //   });
+  // }
 
   // console.log(this.userdetails);
 
@@ -90,6 +90,42 @@ export class TimetrackerpageComponent implements OnInit {
   //     }
   //   });
   // }
+
+  OnEditTracker() {}
+  onDeleteTracker(id: any) {
+    console.log(id);
+    if (confirm('Are you sure you want to delete this employee?')) {
+      this.authservice.deleteTracker(id).subscribe(
+        (res) => {
+          console.log(res);
+          this.getTrackers();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  // to filter the tracker list for that specific employee
+  getTrackers() {
+    console.log(this.authservice.userData.email);
+    const variables = this.authservice.userData.email;
+
+    this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
+      var newdoc = res.filter((element) => {
+        return element.empmail === variables;
+      });
+      this.trackers = newdoc;
+      console.log(this.trackers);
+    });
+  }
+
+  onReset() {
+    this.TrackerForm.reset({
+      empmail: this.TrackerForm.get('empmail').value,
+    });
+  }
 
   onTrackSubmit() {
     if (this.TrackerForm.valid) {

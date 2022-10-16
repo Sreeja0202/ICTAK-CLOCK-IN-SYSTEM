@@ -38,6 +38,10 @@ export class AuthService {
     return this.http.post(this.loginurl, user);
   }
 
+  deleteTracker(id: any) {
+    return this.http.delete(`${this.trackerurl}/${id}`);
+  }
+
   IsloggedIn() {
     return !!localStorage.getItem('token');
   }
