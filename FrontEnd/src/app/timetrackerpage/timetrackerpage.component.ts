@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-
+import Swal from 'sweetalert2';
+import { Tracker } from '../tracker.model';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -13,12 +14,15 @@ export class TimetrackerpageComponent implements OnInit {
   cardcontent = `User details`;
   name = 'Name';
   project = `Project Details`;
+  trackers!: Tracker[];
+  // userdetails!: Tracker[];
 
   // for tracker modal
   showTrackerModal: boolean = false;
 
   showFirst: boolean = false;
   userData: any;
+  userdetails: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
 
@@ -36,11 +40,10 @@ export class TimetrackerpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userData = this.authservice.getUserData();
-    console.log('user data is home component -- > ', this.userData);
-
+    this.getTrackers();
     this.TrackerForm = this.fb.group({
       _id: '',
+      empmail: this.authservice.userData.email,
       tdate: ['', [Validators.required]],
       tproject: ['', [Validators.required]],
       ttask: ['', [Validators.required]],
@@ -50,9 +53,63 @@ export class TimetrackerpageComponent implements OnInit {
     });
   }
 
-  onTrackSubmit() {
-    alert('Success!!');
+  getTrackers() {
+    this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
+      this.userdetails = res;
+      this.userdetails.forEach((element: any) => {
+        if (element.empmail === this.authservice.userData.email) {
+          this.trackers = element;
+          console.log(element);
+        }
+      });
+    });
   }
+
+  // console.log(this.userdetails);
+
+  // this.trackers = res;
+
+  //     console.log(res);
+
+  //     let item1 = this.userdetails.filter(
+  //       (item: any) => item.empmail === this.authservice.userData.email
+  //     )[0];
+  //     console.log(item1);
+  //     this.trackers = item1;
+  //   });
+  // }
+
+  //     for (let i = 0; i < this.userdetails.length; i++) {
+  //       if (this.userdetails[i].empmail === this.authservice.userData.email) {
+  //         console.log(this.userdetails[i].empmail);
+  //         console.log(this.authservice.userData.email);
+  //         this.trackers = this.userdetails[i];
+
+  //         console.log(this.trackers);
+  //       }
+  //     }
+  //   });
+  // }
+
+  onTrackSubmit() {
+    if (this.TrackerForm.valid) {
+      console.log(this.TrackerForm.value);
+      this.authservice.addTracker(this.TrackerForm.value).subscribe(
+        (res) => {
+          this.getTrackers();
+          this.onCloseTrackerModal();
+          this.TrackerForm.reset();
+          Swal.fire('', 'Project Details successfully added!!!', 'success');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      Swal.fire('', 'Enter All Fields', 'error');
+    }
+  }
+
   onStart() {
     this.showTrackerModal = true;
   }

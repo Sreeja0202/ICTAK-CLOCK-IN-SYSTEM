@@ -1,181 +1,65 @@
 <!--top nav-->
 <div>
-<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
-  <div class="container-fluid">
-    <button
-      class="btn btn-outline-warning"
-      routerLink="/timetrackerpage"
-      routerLinkActive="active"
-    >
-      TIME TRACKER
-    </button>
-    <button class="btn btn-outline-warning ms-3" routerLink="/home">
-      HOME
-    </button>
-    <button
-      class="btn btn-outline-warning ms-3"
-      routerLink="/timetrackerpage"
-      (click)="onStart()"
-    >
-      Start
-    </button>
+  <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+    <div class="container-fluid">
+      <button class="btn btn-outline-warning" routerLink="/timetrackerpage" routerLinkActive="active">
+        TIME TRACKER
+      </button>
+      <button class="btn btn-outline-warning ms-3" routerLink="/home">
+        HOME
+      </button>
+      <button class="btn btn-outline-warning ms-3" routerLink="/timetrackerpage" (click)="onStart()">
+        Start
+      </button>
 
-<div class="iconlist">
-    <span class="hom">
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="color: white"></mat-icon></span>
-    <span class="help">
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="help" style="color: white"></mat-icon>
-  </span>
+      <div class="iconlist">
+        <span class="hom">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="color: white"></mat-icon>
+        </span>
+        <span class="help">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="help" style="color: white"></mat-icon>
+        </span>
+      </div>
+      <div class="nav_right">
+        <ul class="navlist">
+          <li>
+            <button type="button" mat-button (click)="drawer.toggle()">
+              <img src="/assets/images/usericon.webp" alt="" class="prof" />
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-            <div class="nav_right">
-              <ul class="navlist">
-                <li>
-                  <button type="button" mat-button (click)="drawer.toggle()">
-                    <img src="/assets/images/usericon.webp" alt="" class="prof" />
-                  </button>
-                </li>
-              </ul>
+  </nav>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+      <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="profilecard p-4">
+          <div class="image d-flex flex-column justify-content-center align-items-center">
+            <button class="btn btn-secondary">
+              <img src="/assets/images/usericon.webp" height="90" width="100" /></button><br /><br />
+            <span class="name mt-3" style="color: black">{{userData?.name}}</span> <br /><span class="idd"
+              style="color: black">{{userData?.email}}</span>
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2"></div>
+            <br />
+            <div class="text mt-3">
+              <span style="color: black">{{userData?.roles}}</span>
+            </div>
+
+            <div class="d-flex mt-2">
+              <button class="btn1" routerLink="">Logout</button>
             </div>
           </div>
         </div>
-        </nav>
-        <mat-drawer-container class="example-container">
-          <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-            <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-              <div class="profilecard p-4">
-                <div
-                  class="image d-flex flex-column justify-content-center align-items-center"
-                >
-                  <button class="btn btn-secondary">
-                    <img
-                      src="/assets/images/usericon.webp"
-                      height="90"
-                      width="100"
-                    /></button
-                  ><br /><br />
-                  <span class="name mt-3" style="color: black">{{userData?.name}}</span> <br /><span
-                    class="idd"
-                    style="color: black">{{userData?.email}}</span
-                  >
-                  <div
-                    class="d-flex flex-row justify-content-center align-items-center gap-2"
-                  ></div>
-                  <br />
-                  <div class="text mt-3">
-                    <span style="color: black">{{userData?.roles}}</span>
-                  </div>
+      </div>
+    </mat-drawer>
+    <div class="example-sidenav-content"></div>
+  </mat-drawer-container>
+</div>
 
-                  <div class="d-flex mt-2">
-                    <button class="btn1" routerLink="">Logout</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </mat-drawer>
-          <div class="example-sidenav-content"></div>
-        </mat-drawer-container>
-        </div>
 
-<!--top navbar ends here -->
-
-<!--sidebar-->
-<mat-drawer-container class="example">
-  <mat-drawer mode="side" opened>
-    <div class="options">
-      <br />
-      <br />
-      <br />
-      <mat-form-field appearance="fill">
-        <mat-label>Select Project</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Academic</mat-option>
-          <mat-option value="2">Corporate</mat-option>
-          <mat-option value="3">Government</mat-option>
-          <mat-option value="4">Knowledge Office</mat-option>
-          <mat-option value="5">Retail</mat-option>
-          <mat-option value="6">Administration</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br />
-      <br />
-      <br />
-      <mat-form-field appearance="fill">
-        <mat-label>Select Task</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Training</mat-option>
-          <mat-option value="2">Meetings & Discussions</mat-option>
-          <mat-option value="3">Lark Activity</mat-option>
-          <mat-option value="4">Content Development</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br />
-      <br />
-      <br />
-      <mat-form-field appearance="fill">
-        <mat-label>Select Mode of Work</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Work from Office</mat-option>
-          <mat-option value="2">Work from Home</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br />
-      <br />
-      <br />
-      <mat-form-field appearance="fill">
-        <mat-label>Job Description</mat-label>
-        <mat-select disableRipple>
-          <mat-option value="1">Non-Billable</mat-option>
-          <mat-option value="2">Billable</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div class="space"></div>
-    </div>
-  </mat-drawer>
-  <!-- </div>
-    </div>
-  </mat-drawer-content> -->
-</mat-drawer-container>
-<!--sidebar ends-->
-
-<!--main body-->
-
-<!-- <mat-drawer-content>
-    <div class="container">
-      <div class="row">
-        full project details-->
-<!-- <div class="col-6">
-          <div class="projectdetails">
-            <h2>{{ project }}</h2>
-          </div>
-        </div> -->
-<!--end-->
-
-<!--timer button-->
-<!-- <div class="col-3">
-          <div class="sw-container">
-            <div class="stopwatch">
-              <span>{{ hr }}:</span>
-              <span>{{ min }}:</span>
-              <span>{{ sec }}:</span>
-              <span>{{ ms }}</span>
-            </div>
-            <div class="buttoncontainer">
-              <button class="btn" (click)="start()">
-                <div class="collapsible-header">
-                  <i class="material-icons" *ngIf="!showFirst"
-                    >play_circle_outline</i
-                  ><i class="material-icons" *ngIf="showFirst"
-                    >pause_circle_outline</i
-                  >
-                </div>
-              </button>
-              <button class="btn" (click)="reset()">
-                <span class="material-icons">restart_alt</span>
-              </button>
-            </div>
-          </div>
-        </div> -->
+<!-- right user details and ends here -->
 
 <!-- tracker modal form -->
 <div class="modal fade show" [class.show]="showTrackerModal">
@@ -183,13 +67,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Details</h5>
-        <button
-          (click)="onCloseTrackerModal()"
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
+        <button (click)="onCloseTrackerModal()" class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -202,12 +80,7 @@
 
           <div class="form-group">
             <label for="tproject">Projects</label>
-            <input
-              type="text"
-              list="projects"
-              class="form-control"
-              formControlName="tproject"
-            />
+            <input type="text" list="projects" class="form-control" formControlName="tproject" />
             <datalist id="projects">
               <option value="Academic"></option>
               <option value="Corporate"></option>
@@ -215,43 +88,25 @@
               <option value="Knowledge Office"></option>
               <option value="Retail"></option>
               <option value="Administration"></option>
-              <option
-                value="Add New Project"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option>
+              <option value="Add New Project" *ngIf="authservice.HaveAccess()" routerLink="/projects"></option>
             </datalist>
           </div>
 
           <div class="form-group">
             <label for="ttask">Tasks</label>
-            <input
-              type="text"
-              list="tasks"
-              class="form-control"
-              formControlName="ttask"
-            />
+            <input type="text" list="tasks" class="form-control" formControlName="ttask" />
             <datalist id="tasks">
               <option value="Training"></option>
               <option value="Meeting and Discussions"></option>
               <option value="Lark Activity"></option>
               <option value="Content Development"></option>
-              <option
-                value="Add New Task"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option>
+              <option value="Add New Task" *ngIf="authservice.HaveAccess()" routerLink="/projects"></option>
             </datalist>
           </div>
 
           <div class="form-group">
             <label for="tmode">Mode</label>
-            <input
-              type="text"
-              list="modes"
-              class="form-control"
-              formControlName="tmode"
-            />
+            <input type="text" list="modes" class="form-control" formControlName="tmode" />
             <datalist id="modes">
               <option value="Work from Home"></option>
               <option value="Work from Office"></option>
@@ -260,12 +115,7 @@
 
           <div class="form-group">
             <label for="tdesc">Description</label>
-            <input
-              type="text"
-              list="description"
-              class="form-control"
-              formControlName="tdesc"
-            />
+            <input type="text" list="description" class="form-control" formControlName="tdesc" />
             <datalist id="description">
               <option value="Billable"></option>
               <option value="Non-Billable"></option>
@@ -277,12 +127,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            (click)="onCloseTrackerModal()"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-          >
+          <button type="button" (click)="onCloseTrackerModal()" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -291,23 +136,33 @@
     </div>
   </div>
 </div>
+<!-- tracker modal form ends here -->
 
-<!--end-->
-
-<!-- <div class="col-3">
-  <div class="employeedetail">
-    <mat-card class="example-card">
-      <mat-card-title-group>
-        <mat-card-title>{{ cardtitle }}</mat-card-title>
-        <mat-card-subtitle>{{ name }}</mat-card-subtitle>
-      </mat-card-title-group>
-      <mat-card-content>
-        {{ cardcontent }}
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div> -->
-<!-- </div>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container> -->
+<!-- main body starts here-->
+<!-- table starts here -->
+<div class="container m-5">
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Project</th>
+        <th scope="col">Task</th>
+        <th scope="col">Mode</th>
+        <th scope="col">Bill</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of trackers">
+        <th scope="col">{{ item.tdate }}</th>
+        <th scope="col">{{ item.tproject }}</th>
+        <th scope="col">{{ item.ttask }}</th>
+        <th scope="col">{{ item.tmode }}</th>
+        <th scope="col">{{ item.tdesc }}</th>
+        <th scope="col">{{ item.ttime }}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- table ends here -->
+<!-- main body ends here -->

@@ -23,6 +23,8 @@ import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     MatGridListModule,
     MatToolbarModule,
+    Ng2SearchPipeModule,
+    MatSidenavModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
