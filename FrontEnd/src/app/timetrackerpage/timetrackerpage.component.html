@@ -20,12 +20,15 @@
       Start
     </button>
 
-
-
-
+<div class="iconlist">
+    <span class="hom">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="color: white"></mat-icon></span>
+    <span class="help">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="help" style="color: white"></mat-icon>
+  </span>
 
             <div class="nav_right">
-              <ul>
+              <ul class="navlist">
                 <li>
                   <button type="button" mat-button (click)="drawer.toggle()">
                     <img src="/assets/images/usericon.webp" alt="" class="prof" />
@@ -34,6 +37,7 @@
               </ul>
             </div>
           </div>
+        </div>
         </nav>
         <mat-drawer-container class="example-container">
           <mat-drawer #drawer class="example-sidenav" mode="side" position="end">

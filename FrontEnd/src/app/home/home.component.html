@@ -50,8 +50,15 @@
         </li>
       </ul>
     </div>
+
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="color: white"></mat-icon>
+      <span class="help">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="help" style="color: white"></mat-icon>
+    </span>
+
+
     <div class="nav_right">
-      <ul>
+      <ul class="navlist">
         <li>
           <button type="button" mat-button (click)="drawer.toggle()">
             <img src="/assets/images/usericon.webp" alt="" class="prof" />
@@ -70,16 +77,12 @@
         >
           <button class="btn btn-secondary">
             <img
-              src="/assets/images/usericon.webp"
-              height="90"
-              width="100"
-            /></button
-          ><br /><br />
-          <span class="name mt-3" style="color: black">{{userData?.name}}</span> <br />
+              src="/assets/images/usericon.webp" height="90" width="100" class="new"/></button
+          ><br />
+          <span class="name mt-3" style="color: black">{{userData?.name}}</span><br>
           <span class="idd" style="color: black">{{userData?.email}}</span>
-          <div
-            class="d-flex flex-row justify-content-center align-items-center gap-2"></div>
-          <br />
+
+
           <div class="text mt-3">
             <span style="color: black">{{userData?.roles}}</span>
           </div>
