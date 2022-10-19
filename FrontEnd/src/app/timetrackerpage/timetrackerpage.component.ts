@@ -40,7 +40,6 @@ export class TimetrackerpageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.userData = this.authservice.getUserData();
     console.log(' ', this.userData);
 
@@ -57,48 +56,11 @@ export class TimetrackerpageComponent implements OnInit {
     });
   }
 
-  // getTrackers() {
-  //   this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
-  //     this.userdetails = res;
-  //     this.userdetails.forEach((element: any) => {
-  //       if (element.empmail === this.authservice.userData.email) {
-  //         this.trackers = element;
-  //         console.log(element);
-  //       }
-  //     });
-  //   });
-  // }
-
-  // console.log(this.userdetails);
-
-  // this.trackers = res;
-
-  //     console.log(res);
-
-  //     let item1 = this.userdetails.filter(
-  //       (item: any) => item.empmail === this.authservice.userData.email
-  //     )[0];
-  //     console.log(item1);
-  //     this.trackers = item1;
-  //   });
-  // }
-
-  //     for (let i = 0; i < this.userdetails.length; i++) {
-  //       if (this.userdetails[i].empmail === this.authservice.userData.email) {
-  //         console.log(this.userdetails[i].empmail);
-  //         console.log(this.authservice.userData.email);
-  //         this.trackers = this.userdetails[i];
-
-  //         console.log(this.trackers);
-  //       }
-  //     }
-  //   });
-  // }
-
+  // tracker modal based functions starts here
   OnEditTracker() {}
   onDeleteTracker(id: any) {
     console.log(id);
-    if (confirm('Are you sure you want to delete this employee?')) {
+    if (confirm('Are you sure you want to delete this project?')) {
       this.authservice.deleteTracker(id).subscribe(
         (res) => {
           console.log(res);
@@ -138,7 +100,7 @@ export class TimetrackerpageComponent implements OnInit {
         (res) => {
           this.getTrackers();
           this.onCloseTrackerModal();
-          this.TrackerForm.reset();
+          this.onReset();
           Swal.fire('', 'Project Details successfully added!!!', 'success');
         },
         (err) => {
@@ -161,6 +123,8 @@ export class TimetrackerpageComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+  // tracker modal based functions ends here
 
   start(): void {
     if (!this.showFirst) {
