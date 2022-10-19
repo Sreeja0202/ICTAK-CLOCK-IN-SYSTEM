@@ -17,26 +17,6 @@
       >
         Start
       </button>
-
-      <!-- <div class="iconlist">
-        <span class="hom">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="home"
-            style="color: white"
-          ></mat-icon>
-        </span>
-        <span class="help">
-          <mat-icon
-            aria-hidden="false"
-            aria-label="Example home icon"
-            fontIcon="help"
-            style="color: white"
-          ></mat-icon>
-        </span>
-      </div> -->
-
       <div class="nav_right">
         <ul class="navlist d-flex">
           <li>
@@ -58,6 +38,7 @@
       </div>
     </div>
   </nav>
+
   <mat-drawer-container class="example-container">
     <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
       <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
@@ -99,10 +80,10 @@
     </mat-drawer>
     <div class="example-sidenav-content"></div>
   </mat-drawer-container>
+  <!--  </div> -->
 </div>
 
 <!-- right user details and ends here -->
-<<<<<<< Updated upstream
 <!-- /////sidenav -->
 <div class="sidebar">
   <a class="active" routerLink="/home">Home</a>
@@ -117,214 +98,135 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Add Details</h5>
-=======
 
-<!-- tracker modal form -->
-<div class="modal fade show" [class.show]="showTrackerModal">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Details</h5>
-        <button
-          (click)="onCloseTrackerModal()"
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="tdate">Date</label>
-            <input type="date" class="form-control" formControlName="tdate" />
-          </div>
+          <!-- tracker modal form -->
+          <div class="modal fade show" [class.show]="showTrackerModal">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Add Details</h5>
+                  <button
+                    (click)="onCloseTrackerModal()"
+                    class="close"
+                    type="button"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="tdate">Date</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        formControlName="tdate"
+                      />
+                    </div>
 
-          <div class="form-group">
-            <label for="tproject">Projects</label>
-            <input
-              type="text"
-              list="projects"
-              class="form-control"
-              formControlName="tproject"
-            />
-            <datalist id="projects">
-              <option value="Academic"></option>
-              <option value="Corporate"></option>
-              <option value="Government"></option>
-              <option value="Knowledge Office"></option>
-              <option value="Retail"></option>
-              <option value="Administration"></option>
-              <!-- <option
+                    <div class="form-group">
+                      <label for="tproject">Projects</label>
+                      <input
+                        type="text"
+                        list="projects"
+                        class="form-control"
+                        formControlName="tproject"
+                      />
+                      <datalist id="projects">
+                        <option value="Academic"></option>
+                        <option value="Corporate"></option>
+                        <option value="Government"></option>
+                        <option value="Knowledge Office"></option>
+                        <option value="Retail"></option>
+                        <option value="Administration"></option>
+                        <!-- <option
                 value="Add New Project"
                 *ngIf="authservice.HaveAccess()"
                 routerLink="/projects"
               ></option> -->
-            </datalist>
-          </div>
+                      </datalist>
+                    </div>
 
-          <div class="form-group">
-            <label for="ttask">Tasks</label>
-            <input
-              type="text"
-              list="tasks"
-              class="form-control"
-              formControlName="ttask"
-            />
-            <datalist id="tasks">
-              <option value="Training"></option>
-              <option value="Meeting and Discussions"></option>
-              <option value="Lark Activity"></option>
-              <option value="Content Development"></option>
-              <!-- <option
+                    <div class="form-group">
+                      <label for="ttask">Tasks</label>
+                      <input
+                        type="text"
+                        list="tasks"
+                        class="form-control"
+                        formControlName="ttask"
+                      />
+                      <datalist id="tasks">
+                        <option value="Training"></option>
+                        <option value="Meeting and Discussions"></option>
+                        <option value="Lark Activity"></option>
+                        <option value="Content Development"></option>
+                        <!-- <option
                 value="Add New Task"
                 *ngIf="authservice.HaveAccess()"
                 routerLink="/projects"
               ></option> -->
-            </datalist>
-          </div>
+                      </datalist>
+                    </div>
 
-          <div class="form-group">
-            <label for="tmode">Mode</label>
-            <input
-              type="text"
-              list="modes"
-              class="form-control"
-              formControlName="tmode"
-            />
-            <datalist id="modes">
-              <option value="Work from Home"></option>
-              <option value="Work from Office"></option>
-            </datalist>
-          </div>
+                    <div class="form-group">
+                      <label for="tmode">Mode</label>
+                      <input
+                        type="text"
+                        list="modes"
+                        class="form-control"
+                        formControlName="tmode"
+                      />
+                      <datalist id="modes">
+                        <option value="Work from Home"></option>
+                        <option value="Work from Office"></option>
+                      </datalist>
+                    </div>
 
-          <div class="form-group">
-            <label for="tdesc">Description</label>
-            <input
-              type="text"
-              list="description"
-              class="form-control"
-              formControlName="tdesc"
-            />
-            <datalist id="description">
-              <option value="Billable"></option>
-              <option value="Non-Billable"></option>
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label for="tmode">Time</label>
-            <input type="time" class="form-control" formControlName="ttime" />
+                    <div class="form-group">
+                      <label for="tdesc">Description</label>
+                      <input
+                        type="text"
+                        list="description"
+                        class="form-control"
+                        formControlName="tdesc"
+                      />
+                      <datalist id="description">
+                        <option value="Billable"></option>
+                        <option value="Non-Billable"></option>
+                      </datalist>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="tmode">Time</label>
+                      <input
+                        type="time"
+                        class="form-control"
+                        formControlName="ttime"
+                      />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      (click)="onCloseTrackerModal()"
+                      class="close"
+                      type="button"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="modal-footer">
->>>>>>> Stashed changes
-          <button
-            (click)="onCloseTrackerModal()"
-            class="close"
-            type="button"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="tdate">Date</label>
-              <input type="date" class="form-control" formControlName="tdate" />
-            </div>
-
-            <div class="form-group">
-              <label for="tproject">Projects</label>
-              <input
-                type="text"
-                list="projects"
-                class="form-control"
-                formControlName="tproject"
-              />
-              <datalist id="projects">
-                <option value="Academic"></option>
-                <option value="Corporate"></option>
-                <option value="Government"></option>
-                <option value="Knowledge Office"></option>
-                <option value="Retail"></option>
-                <option value="Administration"></option>
-                <option
-                  value="Add New Project"
-                  *ngIf="authservice.HaveAccess()"
-                  routerLink="/projects"
-                ></option>
-              </datalist>
-            </div>
-
-            <div class="form-group">
-              <label for="ttask">Tasks</label>
-              <input
-                type="text"
-                list="tasks"
-                class="form-control"
-                formControlName="ttask"
-              />
-              <datalist id="tasks">
-                <option value="Training"></option>
-                <option value="Meeting and Discussions"></option>
-                <option value="Lark Activity"></option>
-                <option value="Content Development"></option>
-                <option
-                  value="Add New Task"
-                  *ngIf="authservice.HaveAccess()"
-                  routerLink="/projects"
-                ></option>
-              </datalist>
-            </div>
-
-            <div class="form-group">
-              <label for="tmode">Mode</label>
-              <input
-                type="text"
-                list="modes"
-                class="form-control"
-                formControlName="tmode"
-              />
-              <datalist id="modes">
-                <option value="Work from Home"></option>
-                <option value="Work from Office"></option>
-              </datalist>
-            </div>
-
-            <div class="form-group">
-              <label for="tdesc">Description</label>
-              <input
-                type="text"
-                list="description"
-                class="form-control"
-                formControlName="tdesc"
-              />
-              <datalist id="description">
-                <option value="Billable"></option>
-                <option value="Non-Billable"></option>
-              </datalist>
-            </div>
-            <div class="form-group">
-              <label for="tmode">Time</label>
-              <input type="time" class="form-control" formControlName="ttime" />
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              (click)="onCloseTrackerModal()"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
@@ -385,5 +287,3 @@
     </table>
   </div>
 </div>
-<!-- table ends here -->
-<!-- main body ends here -->
