@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
 import { Tracker } from '../tracker.model';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
   styleUrls: ['./timetrackerpage.component.css'],
+  providers: [DatePipe],
 })
 export class TimetrackerpageComponent implements OnInit {
   cardtitle = `USER`;
@@ -15,9 +17,6 @@ export class TimetrackerpageComponent implements OnInit {
   name = 'Name';
   project = `Project Details`;
   trackers!: Tracker[];
-  // userdetails!: Tracker[];
-
-  // for tracker modal
   showTrackerModal: boolean = false;
 
   showFirst: boolean = false;
@@ -32,12 +31,15 @@ export class TimetrackerpageComponent implements OnInit {
   hr: any = '0' + 0;
 
   startTimer: any;
-
+  myDate: any = new Date();
   constructor(
     private router: Router,
     public authservice: AuthService,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private datePipe: DatePipe
+  ) {
+    this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+  }
 
   ngOnInit(): void {
     this.userData = this.authservice.getUserData();
@@ -163,4 +165,7 @@ export class TimetrackerpageComponent implements OnInit {
     this.showFirst = false;
     this.hr = this.min = this.sec = this.ms = '0' + 0;
   }
+
+  // timer related functions
+  startstopTimer() {}
 }

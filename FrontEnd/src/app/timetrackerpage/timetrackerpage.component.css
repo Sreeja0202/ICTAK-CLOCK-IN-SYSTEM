@@ -281,3 +281,31 @@ div.content {
 .homebell {
   font-size: x-large;
 }
+
+/* body */
+
+.filter_nav,
+.table_details {
+  width: 90%;
+}
+.emp_details,
+.date_details,
+.filter_details,
+.work_details {
+  border: 1px solid gray;
+}
+
+.work_details {
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.filter_button {
+  cursor: pointer;
+}
+.timer_icon {
+  cursor: pointer;
+}
+.filter_option {
+  outline: none;
+}

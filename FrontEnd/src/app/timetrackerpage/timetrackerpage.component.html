@@ -1,213 +1,113 @@
-<!--top nav-->
-<div>
-  <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
-    <div class="container-fluid ms-5">
-      <button
-        class="btn btn-outline-warning"
-        routerLink="/timetrackerpage"
-        routerLinkActive="active"
-      >
-        TIME TRACKER
-      </button>
+<main>
+  <!--top nav-->
+  <div>
+    <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+      <div class="container-fluid ms-5">
+        <button
+          class="btn btn-outline-warning"
+          routerLink="/timetrackerpage"
+          routerLinkActive="active"
+        >
+          TIME TRACKER
+        </button>
 
-      <button
-        class="btn btn-outline-warning"
-        routerLink="/timetrackerpage"
-        (click)="onStart()"
-      >
-        Start
-      </button>
-      <div class="nav_right">
-        <ul class="navlist d-flex">
-          <li>
-            <div class="fw-bold text-white me-3 mt-2 homebell ps-3">
-              <i class="bi bi-house-door-fill" routerLink="/home"></i>
-            </div>
-          </li>
-          <li>
-            <div class="fw-bold text-white me-3 mt-2 homebell ps-3">
-              <i class="bi bi-bell"></i>
-            </div>
-          </li>
-          <li>
-            <button type="button" mat-button (click)="drawer.toggle()">
-              <img src="/assets/images/usericon.webp" alt="" class="prof" />
-            </button>
-          </li>
-        </ul>
+        <button
+          class="btn btn-outline-warning"
+          routerLink="/timetrackerpage"
+          (click)="onStart()"
+        >
+          Start
+        </button>
+        <div class="nav_right">
+          <ul class="navlist d-flex">
+            <li>
+              <div class="fw-bold text-white me-3 mt-2 homebell ps-3">
+                <i class="bi bi-house-door-fill" routerLink="/home"></i>
+              </div>
+            </li>
+            <li>
+              <div class="fw-bold text-white me-3 mt-2 homebell ps-3">
+                <i class="bi bi-bell"></i>
+              </div>
+            </li>
+            <li>
+              <button type="button" mat-button (click)="drawer.toggle()">
+                <img src="/assets/images/usericon.webp" alt="" class="prof" />
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-      <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-        <div class="profilecard p-4">
-          <div
-            class="image d-flex flex-column justify-content-center align-items-center"
-          >
-            <button class="btn btn-secondary">
-              <img
-                src="/assets/images/usericon.webp"
-                height="90"
-                width="100"
-              /></button
-            ><br /><br />
-            <span class="name mt-3" style="color: black">{{
-              userData?.name
-            }}</span>
-            <br /><span class="idd" style="color: black">{{
-              userData?.email
-            }}</span>
+    <mat-drawer-container class="example-container">
+      <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+          <div class="profilecard p-4">
             <div
-              class="d-flex flex-row justify-content-center align-items-center gap-2"
-            ></div>
-            <br />
-            <div class="text mt-3">
-              <span style="color: black">{{ userData?.roles }}</span>
-            </div>
-
-            <div class="d-flex mt-2">
-              <div>
-                <i class="uil uil-bell"></i>
+              class="image d-flex flex-column justify-content-center align-items-center"
+            >
+              <button class="btn btn-secondary">
+                <img
+                  src="/assets/images/usericon.webp"
+                  height="90"
+                  width="100"
+                /></button
+              ><br /><br />
+              <span class="name mt-3" style="color: black">{{
+                userData?.name
+              }}</span>
+              <br /><span class="idd" style="color: black">{{
+                userData?.email
+              }}</span>
+              <div
+                class="d-flex flex-row justify-content-center align-items-center gap-2"
+              ></div>
+              <br />
+              <div class="text mt-3">
+                <span style="color: black">{{ userData?.roles }}</span>
               </div>
 
-              <button class="btn1" routerLink="">Logout</button>
+              <div class="d-flex mt-2">
+                <div>
+                  <i class="uil uil-bell"></i>
+                </div>
+
+                <button class="btn1" routerLink="">Logout</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </mat-drawer>
-    <div class="example-sidenav-content"></div>
-  </mat-drawer-container>
-  <!--  </div> -->
-</div>
+      </mat-drawer>
+      <div class="example-sidenav-content"></div>
+    </mat-drawer-container>
+    <!--  </div> -->
+  </div>
+  <!-- right user details and ends here -->
+  <!-- /////sidenav -->
+  <div class="sidebar">
+    <p class="m-3 h4">Dashboard</p>
+    <!-- <a class="active" routerLink="/timetrackerpage">Time Tracker</a> -->
+    <a class="" routerLink="/home">Home</a>
 
-<!-- right user details and ends here -->
-<!-- /////sidenav -->
-<div class="sidebar">
-  <a class="active" routerLink="/home">Home</a>
-  <a routerLink="#">My Details</a>
-  <a routerLink="#">My Calendar</a>
-</div>
-<!-- ////sidenav end -->
-<div class="content">
+    <a class="active" routerLink="#filter-nav">Time Sheet</a>
+    <a routerLink="#">My Calendar</a>
+  </div>
+  <!-- ////sidenav end -->
   <!-- tracker modal form -->
-  <div class="modal fade show" [class.show]="showTrackerModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Add Details</h5>
+  <div class="content">
+    <div class="modal fade show" [class.show]="showTrackerModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Details</h5>
 
-          <!-- tracker modal form -->
-          <div class="modal fade show" [class.show]="showTrackerModal">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Add Details</h5>
-                  <button
-                    (click)="onCloseTrackerModal()"
-                    class="close"
-                    type="button"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="tdate">Date</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        formControlName="tdate"
-                      />
-                    </div>
-
-                    <div class="form-group">
-                      <label for="tproject">Projects</label>
-                      <input
-                        type="text"
-                        list="projects"
-                        class="form-control"
-                        formControlName="tproject"
-                      />
-                      <datalist id="projects">
-                        <option value="Academic"></option>
-                        <option value="Corporate"></option>
-                        <option value="Government"></option>
-                        <option value="Knowledge Office"></option>
-                        <option value="Retail"></option>
-                        <option value="Administration"></option>
-                        <!-- <option
-                value="Add New Project"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option> -->
-                      </datalist>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="ttask">Tasks</label>
-                      <input
-                        type="text"
-                        list="tasks"
-                        class="form-control"
-                        formControlName="ttask"
-                      />
-                      <datalist id="tasks">
-                        <option value="Training"></option>
-                        <option value="Meeting and Discussions"></option>
-                        <option value="Lark Activity"></option>
-                        <option value="Content Development"></option>
-                        <!-- <option
-                value="Add New Task"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option> -->
-                      </datalist>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="tmode">Mode</label>
-                      <input
-                        type="text"
-                        list="modes"
-                        class="form-control"
-                        formControlName="tmode"
-                      />
-                      <datalist id="modes">
-                        <option value="Work from Home"></option>
-                        <option value="Work from Office"></option>
-                      </datalist>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="tdesc">Description</label>
-                      <input
-                        type="text"
-                        list="description"
-                        class="form-control"
-                        formControlName="tdesc"
-                      />
-                      <datalist id="description">
-                        <option value="Billable"></option>
-                        <option value="Non-Billable"></option>
-                      </datalist>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="tmode">Time</label>
-                      <input
-                        type="time"
-                        class="form-control"
-                        formControlName="ttime"
-                      />
-                    </div>
-                  </div>
-                  <div class="modal-footer">
+            <!-- tracker modal form -->
+            <div class="modal fade show" [class.show]="showTrackerModal">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Add Details</h5>
                     <button
                       (click)="onCloseTrackerModal()"
                       class="close"
@@ -217,73 +117,201 @@
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>
-
-                    <button type="submit" class="btn btn-primary">
-                      Submit
-                    </button>
                   </div>
-                </form>
+                  <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="tdate">Date</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          formControlName="tdate"
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tproject">Projects</label>
+                        <input
+                          type="text"
+                          list="projects"
+                          class="form-control"
+                          formControlName="tproject"
+                        />
+                        <datalist id="projects">
+                          <option value="Academic"></option>
+                          <option value="Corporate"></option>
+                          <option value="Government"></option>
+                          <option value="Knowledge Office"></option>
+                          <option value="Retail"></option>
+                          <option value="Administration"></option>
+                          <!-- <option
+                value="Add New Project"
+                *ngIf="authservice.HaveAccess()"
+                routerLink="/projects"
+              ></option> -->
+                        </datalist>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="ttask">Tasks</label>
+                        <input
+                          type="text"
+                          list="tasks"
+                          class="form-control"
+                          formControlName="ttask"
+                        />
+                        <datalist id="tasks">
+                          <option value="Training"></option>
+                          <option value="Meeting and Discussions"></option>
+                          <option value="Lark Activity"></option>
+                          <option value="Content Development"></option>
+                          <!-- <option
+                value="Add New Task"
+                *ngIf="authservice.HaveAccess()"
+                routerLink="/projects"
+              ></option> -->
+                        </datalist>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tmode">Mode</label>
+                        <input
+                          type="text"
+                          list="modes"
+                          class="form-control"
+                          formControlName="tmode"
+                        />
+                        <datalist id="modes">
+                          <option value="Work from Home"></option>
+                          <option value="Work from Office"></option>
+                        </datalist>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tdesc">Description</label>
+                        <input
+                          type="text"
+                          list="description"
+                          class="form-control"
+                          formControlName="tdesc"
+                        />
+                        <datalist id="description">
+                          <option value="Billable"></option>
+                          <option value="Non-Billable"></option>
+                        </datalist>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tmode">Time</label>
+                        <input
+                          type="time"
+                          class="form-control"
+                          formControlName="ttime"
+                        />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        (click)="onCloseTrackerModal()"
+                        class="close"
+                        type="button"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+
+                      <button type="submit" class="btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- tracker modal form ends here -->
+    <!-- tracker modal form ends here -->
 
-  <!-- main body starts here-->
-  <!-- table starts here -->
-  <div class="m-5">
-    <table class="table table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Project</th>
-          <th scope="col">Task</th>
-          <th scope="col">Mode</th>
-          <th scope="col">Description</th>
-          <th scope="col">Time</th>
-          <th scope="col" colspan="3" class="text-center">Timer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of trackers">
-          <th scope="col">{{ item.tdate }}</th>
-          <th scope="col">{{ item.tproject }}</th>
-          <th scope="col">{{ item.ttask }}</th>
-          <th scope="col">{{ item.tmode }}</th>
-          <th scope="col">{{ item.tdesc }}</th>
-          <th scope="col">{{ item.ttime }}</th>
-          <th scope="col">
-            <button
-              type="submit"
-              class="btn btn-success text-dark"
-              (click)="OnEditTracker()"
-            >
-              <i class="uil uil-play"></i>
-            </button>
-          </th>
-          <th scope="col">
-            <button
-              type="submit"
-              class="btn btn-danger text-light"
-              (click)="onDeleteTracker(item._id)"
-            >
-              <i class="uil uil-stop-circle"></i>
-            </button>
-          </th>
-          <th scope="col">
-            <button
-              type="submit"
-              class="btn btn-light text-dark"
-              (click)="onDeleteTracker(item._id)"
-            >
-              <i class="uil uil-pause-circle"></i>
-            </button>
-          </th>
-        </tr>
-      </tbody>
-    </table>
+    <!-- main body starts here-->
+
+    <section id="filter-nav" class="filter_nav mt-3">
+      <div class="work_details d-flex p-3" id="emp-details">
+        <div class="emp_details d-flex">
+          <p class="m-2">
+            <i class="uil uil-envelope"></i> {{ userData.email }}
+          </p>
+          <p class="m-2"><i class="uil uil-user"></i> {{ userData.name }}</p>
+        </div>
+
+        <div class="date_details">
+          <p class="m-2">
+            <i class="uil uil-calendar-alt"></i>
+            {{ myDate | date: "dd MMM yyyy" }}
+          </p>
+        </div>
+
+        <div class="filter_details">
+          <div class="m-2 filter_button d-flex">
+            <i class="uil uil-filter me-2 mt-1"></i>
+            <div class="filter_option">
+              <select class="form-select">
+                <option value="Filter" selected>Filter</option>
+                <optgroup label="Period">
+                  Period
+
+                  <option>Yesterday</option>
+                  <option>Last Week</option>
+                  <option>This Week</option>
+                  <option>This Month</option>
+                  <option>This Year</option>
+                </optgroup>
+                <option>Projects</option>
+                <option>Jobs</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="start_project">
+          <button class="btn btn-success mt-2">Start</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- table body starts here -->
+    <section class="mt-3 table_details">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Project</th>
+            <th scope="col">Task</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time</th>
+            <th scope="col" colspan="3" class="text-center">Timer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of trackers">
+            <td scope="col">{{ item.tdate }}</td>
+            <td scope="col">{{ item.tproject }}</td>
+            <td scope="col">{{ item.ttask }}</td>
+            <td scope="col">{{ item.tmode }}</td>
+            <td scope="col">{{ item.tdesc }}</td>
+            <td scope="col">{{ item.ttime }}</td>
+            <td scope="col">
+              <i
+                class="uil uil-play ms-4 timer_icon"
+                (click)="startstopTimer()"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
-</div>
+</main>
