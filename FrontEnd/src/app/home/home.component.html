@@ -51,14 +51,22 @@
       </ul>
     </div>
 
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" style="color: white"></mat-icon>
-      <span class="help">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="help" style="color: white"></mat-icon>
-    </span>
-
-
     <div class="nav_right">
-      <ul class="navlist">
+      <ul class="navlist d-flex">
+        <div class="fw-bold text-white mt-2 ps-3">
+          <img
+            src="https://img.icons8.com/material-rounded/35/FFFFFF/appointment-reminders.png"
+            class="mx-2"
+          />
+
+          <img
+            src="https://img.icons8.com/ios-glyphs/35/FFFFFF/question-mark.png"
+          />
+
+          <img
+            src="https://img.icons8.com/ios-glyphs/35/FFFFFF/menu-2.png"
+          />
+        </div>
         <li>
           <button type="button" mat-button (click)="drawer.toggle()">
             <img src="/assets/images/usericon.webp" alt="" class="prof" />
@@ -75,13 +83,7 @@
         <div
           class="image d-flex flex-column justify-content-center align-items-center"
         >
-          <button class="btn btn-secondary">
-            <img
-              src="/assets/images/usericon.webp"
-              height="90"
-              width="100"
-            /></button
-          ><br /><br />
+
           <span class="name mt-3" style="color: black">{{userData.name}}</span> <span
             class="idd"
             style="color: black">{{userData.email}}</span
@@ -89,7 +91,7 @@
           <div
             class="d-flex flex-row justify-content-center align-items-center gap-2"
           ></div>
-        
+
           <div class="text mt-3">
             <span style="color: black">{{userData.roles}}</span>
           </div>
@@ -108,8 +110,62 @@
 
 <!-- navbar ends here -->
 
+<div class="sidebar-container">
+ <!-- Sidebar -->
+ <div class="sidebar">
+  <a class="active" routerLink="/home">Home</a>
+  <a (click)="mydetailstoggle()">My Details</a>
+  <a routerLink="#">My Calendar</a>
+</div>
+<!-- end of sidebar -->
+
+<!-- my details page -->
+<div class="container" *ngIf="showtoggle">
+  <div class="main">
+    <div class=" col-md-8 mt-1">
+      <div class="card mb-3 use">
+        <h1 class="m-3 pt-3 about">My Profile</h1>
+        <br>
+        <h2>Upload</h2>
+
+          <img [src]="url" title="profile picture" height="150px" width="150px">
+          <input type="file" id="img" style="display: none;" (change)="onSelect($event)">
+          <label for="img">Upload Image</label>
+
+
+        <br>
+        <div class="card body background">
+          <div class="row">
+            <div class="col-md-3">
+              <h5 style="text-align: center;">Name</h5>
+            </div>
+            <div class=" col-md-9 text-secondary">{{userData.name}}</div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-3">
+              <h5 style="text-align: center;">Email</h5>
+            </div>
+            <div class="col-md-9 text-secondary">{{userData.email}}</div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-3">
+              <h5 style="text-align: center;">Role</h5>
+            </div>
+            <div class="col-md-9 text-secondary">{{userData.roles}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- end of my details -->
+
+</div>
 <!-- footer starts here -->
-<footer style="background-color: #240c30; margin-top: 635px" class="p-2">
+<footer style="background-color: #240c30;" class="p-2">
   <div class="text-center">
     <h5 class="text-muted text-light">Copyright @2022</h5>
   </div>

@@ -15,7 +15,7 @@
         <!-- <button
           class="btn btn-outline-warning"
           routerLink="/timetrackerpage"
-        
+
         >
           Start
         </button> -->
@@ -29,7 +29,7 @@
           <span style="color: rgb(214, 154, 25)"> {{ hr }} :</span>
           <span style="color: rgb(214, 154, 25)"> {{ min }} :</span>
           <span style="color: rgb(214, 154, 25)"> {{ sec }} </span>
-          <button (click)="startstopTimer()">
+          <button (click)="startTimer()">
             <mat-icon *ngIf="!showFirst">play_circle_outline</mat-icon>
             <mat-icon *ngIf="showFirst">pause_circle_outline</mat-icon>
           </button>
@@ -357,7 +357,6 @@
                   <option
                     *ngFor="let item of Project"
                     class="form-control"
-                    formControlName="fname"
                   >
                     {{ item.pname }}
                   </option>
@@ -366,30 +365,29 @@
                   <option
                     *ngFor="let item of Tasks"
                     class="form-control"
-                    formControlName="fname"
                   >
                     {{ item.tname }}
                   </option>
                 </optgroup>
                 <optgroup label="Period">
-                  <option class="form-control" formControlName="fname">
+                  <option value="yesterday" class="form-control">
                     Yesterday
                   </option>
-                  <option class="form-control" formControlName="fname">
+                  <option value="this_week" class="form-control">
                     This Week
                   </option>
-                  <option class="form-control" formControlName="fname">
+                  <option value="this_month" class="form-control">
                     This Month
                   </option>
-                  <option class="form-control" formControlName="fname">
+                  <!-- <option class="form-control">
                     This Year
                   </option>
-                  <option class="form-control" formControlName="fname">
+                  <option class="form-control">
                     Last Week
                   </option>
-                  <option class="form-control" formControlName="fname">
+                  <option class="form-control">
                     Last month
-                  </option>
+                  </option> -->
                 </optgroup>
                 <option value="" *ngIf="authservice.HaveAccess()">
                   Add New Filter
@@ -423,7 +421,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of trackers">
+          <tr *ngFor="let item of trackers;let i=index">
             <td scope="col">{{ item.tdate }}</td>
             <td scope="col">{{ item.tproject }}</td>
             <td scope="col">{{ item.ttask }}</td>
@@ -434,7 +432,10 @@
             <td scope="col">
               {{ this.timetaken }}
               <!--newly added timer button-->
-
+              <button (click)=" startstopTimer(i)">
+                <mat-icon *ngIf="!item.isTimer">play_circle_outline</mat-icon>
+                <mat-icon *ngIf="item.isTimer">pause_circle_outline</mat-icon>
+              </button>
               <!--end-->
             </td>
           </tr>
@@ -450,3 +451,10 @@
 
   <div class="calendar__container bd-grid"></div>
 </section>
+<!-- footer starts here -->
+<footer style="background-color: #240c30; margin-top: 267px" class="p-2"  >
+  <div class="text-center">
+    <h5 class="text-muted text-light">Copyright @2022</h5>
+  </div>
+</footer>
+<!-- footer ends here -->

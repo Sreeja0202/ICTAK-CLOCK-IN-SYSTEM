@@ -50,7 +50,9 @@ export class TimetrackerpageComponent implements OnInit {
 
   startTimer: any;
   myDate: any = new Date();
-  yesterday: any = new Date();
+  yesterday: Date = new Date();
+  thisWeek: Date = new Date();
+  thisMonth: Date = new Date();
   constructor(
     private router: Router,
     public authservice: AuthService,
@@ -60,6 +62,10 @@ export class TimetrackerpageComponent implements OnInit {
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
     this.yesterday = new Date(
       this.yesterday.setDate(this.yesterday.getDate() - 1)
+    );
+    this.thisWeek = this.getMonday(new Date());
+    this.thisMonth = new Date(
+      new Date(this.thisMonth.getFullYear(), this.thisMonth.getMonth(), 1)
     );
   }
 
@@ -79,6 +85,7 @@ export class TimetrackerpageComponent implements OnInit {
       tmode: ['', [Validators.required]],
       ttime: ['', [Validators.required]],
       tdesc: ['', [Validators.required]],
+      tbill: ['', [Validators.required]],
     });
 
     this.FilterForm = this.fb.group({
@@ -97,6 +104,14 @@ export class TimetrackerpageComponent implements OnInit {
       _id: '',
       tname: ['', [Validators.required]],
     });
+
+  }
+
+  getMonday(d: Date) {
+    d = new Date(d);
+    let day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+    return new Date(d.setDate(diff));
   }
 
   getTasks() {
@@ -120,21 +135,22 @@ export class TimetrackerpageComponent implements OnInit {
 
   // filter based functions
   filter(filter_data: any) {
+
     const variables = this.authservice.userData.email;
-    if (filter_data === 'Yesterday') {
-      filter_data = this.yesterday.getDate();
-      console.log(filter_data);
-      console.log('i am in yesterday');
-    }
+    console.log(filter_data);
+    console.log(this.yesterday);
+    if (filter_data === 'yesterday') filter_data = this.yesterday.getTime();
+    if (filter_data === 'this_week') filter_data = this.thisWeek.getTime();
+    if (filter_data === 'this_month') filter_data = this.thisMonth.getTime();
     this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
       var newdoc = res.filter((element) => {
-        // console.log(element.tdate.split('-')[2]);
-        // console.log(filter_data);
-        // console.log(element.tdate);
+        console.log('tDate', new Date(element.tdate));
+        console.log('filterdata', filter_data);
+
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
-          (element.tdate.split('-')[2] === filter_data &&
+          (new Date(element.tdate).getTime() > filter_data &&
             element.empmail === variables)
         );
       });
@@ -197,11 +213,7 @@ export class TimetrackerpageComponent implements OnInit {
           this.onCloseTrackerModal();
           this.onReset();
           Swal.fire('', 'Project Details successfully added!!!', 'success');
-<<<<<<< Updated upstream
-          this.startstopTimer();
-=======
           this.startTimer();
->>>>>>> Stashed changes
         },
         (err) => {
           console.log(err);
@@ -286,9 +298,15 @@ export class TimetrackerpageComponent implements OnInit {
 
   // tracker modal based functions ends here
 
-  startstopTimer(): void {
-    if (!this.showFirst) {
-      this.showFirst = true;
+  startstopTimer(index: number): void {
+    console.log('index', index, 'tracker=', this.trackers[index].isTimer);
+    if (!this.trackers[index].isTimer) {
+      this.stop();
+      this.trackers = this.trackers.map(tracker => {
+        tracker.isTimer = false;
+        return tracker;
+      });
+      this.trackers[index].isTimer = true;
       this.startTimer = setInterval(() => {
         this.ms++;
         this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
@@ -318,6 +336,7 @@ export class TimetrackerpageComponent implements OnInit {
 
       this.timetaken = this.hr + ':' + this.min + ':' + this.sec;
       console.log(this.timetaken);
+      this.trackers[index].isTimer = false;
     }
   }
 
@@ -325,6 +344,10 @@ export class TimetrackerpageComponent implements OnInit {
     // this.submittime();
     clearInterval(this.startTimer);
     this.showFirst = false;
+    this.ms = '0' + 0;
+    this.sec = '0' + 0;
+    this.min = '0' + 0;
+    this.hr = '0' + 0;
   }
   // submittime() {
   //   this.authservice.addtime(this.timetaken).subscribe((res: any) => {

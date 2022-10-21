@@ -10,6 +10,19 @@ import { AuthService } from '../auth.service';
 export class HomeComponent implements OnInit {
   showFiller = false;
   userData: any;
+  showtoggle = false;
+  url="https://img.icons8.com/ios/100/000000/contract-job.png";
+  onSelect(event: any){
+    if(event.target.files[0]){
+      let reader= new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event:any)=>{
+        this.url = event.target.result;
+      };
+    }
+
+  }
+
   constructor(private router: Router, public authservice: AuthService) {}
 
   ngOnInit(): void {
@@ -20,5 +33,8 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
     this.router.navigate(['/login']);
+  }
+  mydetailstoggle(){
+    this.showtoggle = true;
   }
 }

@@ -15,7 +15,7 @@ app.use("/employees", emprouter);
 app.use("/projects", prorouter);
 app.use("/trackers", trackerrouter);
 app.use("/tasks", taskrouter);
-app.use("filters", filterrouter);
+app.use("/filters", filterrouter);
 
 app.listen(3000, function () {
   console.log("Server ready in  3000");

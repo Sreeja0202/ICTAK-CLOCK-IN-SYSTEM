@@ -9,4 +9,5 @@ export interface Tracker {
   ttime: string;
   tdesc: string;
   totaltime: string;
+  isTimer: boolean;
 }
