@@ -97,26 +97,27 @@ mat-card-subtitle {
   display: block;
 }
 
-.example-container {
-  border: 1px solid rgba(0, 0, 0, 0.5);
+.example{
+
+
   position: absolute;
   right: 0;
-  top: 40px;
-  bottom: 80px;
-  margin-top: 50px;
-  height: 490px;
-}
+  top: 30px;
 
+  margin-top: 30px;
+  height: 400px;
+
+}
 .example-sidenav-content {
   display: flex;
-  height: 100%;
+  height: 100;
   align-items: center;
   justify-content: center;
 }
 
 .profilecard {
   width: 200px;
-  height: 400px;
+  height: 288px;
   background-color: #efefef;
   border: none;
   cursor: pointer;
@@ -309,4 +310,9 @@ div.content {
 }
 .filter_option {
   outline: none;
+}
+
+.mat-drawer-side.mat-drawer-end
+{
+border-left: none;
 }

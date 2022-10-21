@@ -14,7 +14,7 @@
 
 .example-container {
 
-  border: 1px solid rgba(0, 0, 0, 0.5);
+
   position: absolute;
   right: 0;
   top: 30px;
@@ -258,3 +258,8 @@ h2{
   background-color: #a0a0a0;
 }
 
+
+.mat-drawer-side.mat-drawer-end
+{
+border-left: none;
+}
