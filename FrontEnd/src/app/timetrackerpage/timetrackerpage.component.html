@@ -92,16 +92,78 @@
 
     <a class="active" routerLink="#filter-nav">Time Sheet</a>
     <a routerLink="#">My Calendar</a>
+    <a routerLink="#" (click)="addFilter()" *ngIf="authservice.HaveAccess()"
+      >Manage Filter Options</a
+    >
   </div>
   <!-- ////sidenav end -->
   <!-- tracker modal form -->
   <div class="content">
+    <!-- tracker modal form -->
     <div class="modal fade show" [class.show]="showTrackerModal">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Details</h5>
+            <button
+              (click)="onCloseTrackerModal()"
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="TrackerForm" (ngSubmit)="onTrackSubmit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="tdate">Date</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="tdate"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="tproject">Projects</label>
+                <select
+                  class="form-select form-control"
+                  formControlName="tproject"
+                >
+                  <option *ngFor="let item of Project">
+                    {{ item.pname }}
+                  </option>
+                  <option
+                    *ngIf="authservice.HaveAccess()"
+                    (click)="onAddProject()"
+                  >
+                    Add Project
+                  </option>
+                </select>
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="ttask">Jobs</label>
+                <select
+                  class="form-select form-control"
+                  formControlName="ttask"
+                >
+                  <option *ngFor="let item of Tasks">
+                    {{ item.tname }}
+                  </option>
+                  <option
+                    *ngIf="authservice.HaveAccess()"
+                    (click)="onAddTask()"
+                  >
+                    Add Task
+                  </option>
+                </select>
+              </div>
+              <br />
 
+<<<<<<< Updated upstream
             <!-- tracker modal form -->
             <div class="modal fade show" [class.show]="showTrackerModal">
               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -220,23 +282,168 @@
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
+=======
+              <div class="form-group">
+                <label for="tmode">Mode of Work</label>
+                <select
+                  class="form-select form-control"
+                  formControlName="tmode"
+                >
+                  <option>Work from Home</option>
+                  <option>Work from Office</option>
+                  <option>Leave</option>
+                </select>
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="tbill">Billable/ Non-Billable</label>
+                <select
+                  class="form-select form-control"
+                  formControlName="tbill"
+                >
+                  <option>Billable</option>
+                  <option>Non-Billable</option>
+                </select>
+              </div>
+              <br />
+>>>>>>> Stashed changes
 
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </div>
+              <div class="form-group">
+                <label for="ttime">Time</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  formControlName="ttime"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="tdesc">Description</label>
+                <textarea
+                  class="text-area form-control"
+                  formControlName="tdesc"
+                >
+                </textarea>
               </div>
             </div>
-          </div>
+            <br />
+            <div class="modal-footer">
+              <button
+                (click)="onCloseTrackerModal()"
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                Close
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+
     <!-- tracker modal form ends here -->
 
+<<<<<<< Updated upstream
     <!-- main body starts here-->
+=======
+    <!-- project modal form starts here -->
+    <div class="modal fade show" [class.show]="showProjectModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Project</h5>
+            <button
+              (click)="onCloseProjectModal()"
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="pname">Enter Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="pname"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onCloseProjectModal()"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
+    <!-- project modal form ends here -->
+
+    <!-- task modal form starts here -->
+    <div class="modal fade show" [class.show]="showTaskModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Task</h5>
+            <button
+              (click)="onCloseTaskModal()"
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="taskForm" (ngSubmit)="onTaskSubmit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="tname">Enter Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="tname"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onCloseTaskModal()"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- task modal form ends here -->
+>>>>>>> Stashed changes
+
+    <!-- main body starts here-->
+    <!-- filter nav after main nav starts here -->
     <section id="filter-nav" class="filter_nav mt-3">
       <div class="work_details d-flex p-3" id="emp-details">
         <div class="emp_details d-flex">
@@ -257,19 +464,52 @@
           <div class="m-2 filter_button d-flex">
             <i class="uil uil-filter me-2 mt-1"></i>
             <div class="filter_option">
-              <select class="form-select">
-                <option value="Filter" selected>Filter</option>
-                <optgroup label="Period">
-                  Period
-
-                  <option>Yesterday</option>
-                  <option>Last Week</option>
-                  <option>This Week</option>
-                  <option>This Month</option>
-                  <option>This Year</option>
+              <select
+                class="form-select"
+                [(ngModel)]="filter_details"
+                (ngModelChange)="filter($event)"
+              >
+                <optgroup label="Projects">
+                  <option
+                    *ngFor="let item of Project"
+                    class="form-control"
+                    formControlName="fname"
+                  >
+                    {{ item.pname }}
+                  </option>
                 </optgroup>
-                <option>Projects</option>
-                <option>Jobs</option>
+                <optgroup label="Tasks">
+                  <option
+                    *ngFor="let item of Tasks"
+                    class="form-control"
+                    formControlName="fname"
+                  >
+                    {{ item.tname }}
+                  </option>
+                </optgroup>
+                <optgroup label="Period">
+                  <option class="form-control" formControlName="fname">
+                    Yesterday
+                  </option>
+                  <option class="form-control" formControlName="fname">
+                    This Week
+                  </option>
+                  <option class="form-control" formControlName="fname">
+                    This Month
+                  </option>
+                  <option class="form-control" formControlName="fname">
+                    This Year
+                  </option>
+                  <option class="form-control" formControlName="fname">
+                    Last Week
+                  </option>
+                  <option class="form-control" formControlName="fname">
+                    Last month
+                  </option>
+                </optgroup>
+                <option value="" *ngIf="authservice.HaveAccess()">
+                  Add New Filter
+                </option>
               </select>
             </div>
           </div>
@@ -280,6 +520,7 @@
         </div>
       </div>
     </section>
+    <!-- filter nav after main nav starts here -->
 
     <!-- table body starts here -->
     <section class="mt-3 table_details">

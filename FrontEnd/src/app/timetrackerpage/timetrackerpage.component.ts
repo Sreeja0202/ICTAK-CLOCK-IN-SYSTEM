@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { Project } from '../project.model';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Job } from '../task.model';
+import { Filter } from '../filter.model';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -22,16 +23,21 @@ export class TimetrackerpageComponent implements OnInit {
   project = `Project Details`;
   trackers!: Tracker[];
   Project!: Project[];
+  FilterForm!: FormGroup;
+
   proForm!: FormGroup;
   taskForm!: FormGroup;
   showTrackerModal: boolean = false;
   showProjectModal: boolean = false;
   selected: any;
   showTaskModal: boolean = false;
+  showFilterModal: boolean = false;
 
   showFirst: boolean = false;
   userData: any;
   userdetails: any;
+  filters!: Filter[];
+  filter_details: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
 
@@ -57,6 +63,7 @@ export class TimetrackerpageComponent implements OnInit {
 
     this.getTrackers();
     this.getTasks();
+    this.getFilters();
     this.TrackerForm = this.fb.group({
       _id: '',
       empmail: this.authservice.userData.email,
@@ -66,6 +73,13 @@ export class TimetrackerpageComponent implements OnInit {
       tmode: ['', [Validators.required]],
       tdesc: ['', [Validators.required]],
       ttime: ['', [Validators.required]],
+    });
+
+    this.FilterForm = this.fb.group({
+      _id: '',
+      fproject: ['', [Validators.required]],
+      ftask: ['', [Validators.required]],
+      fperiod: ['', [Validators.required]],
     });
 
     this.getProjects();
@@ -85,10 +99,32 @@ export class TimetrackerpageComponent implements OnInit {
       this.Tasks = res;
     });
   }
+  getFilters() {
+    this.authservice.getFilterList().subscribe((res: Filter[]) => {
+      // console.log(res);
+      this.filters = res;
+    });
+  }
   getProjects() {
     this.authservice.getProjectList().subscribe((res: Project[]) => {
       // console.log(res);
       this.Project = res;
+    });
+  }
+
+  // filter based functions
+  filter(filter_data: any) {
+    const variables = this.authservice.userData.email;
+    console.log(filter_data);
+    this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
+      var newdoc = res.filter((element) => {
+        return (
+          (element.ttask === filter_data && element.empmail === variables) ||
+          (element.tproject === filter_data && element.empmail === variables)
+        );
+      });
+      this.trackers = newdoc;
+      console.log(this.trackers);
     });
   }
 
@@ -99,7 +135,7 @@ export class TimetrackerpageComponent implements OnInit {
     if (confirm('Are you sure you want to delete this project?')) {
       this.authservice.deleteTracker(id).subscribe(
         (res) => {
-          console.log(res);
+          // console.log(res);
           this.getTrackers();
         },
         (err) => {
@@ -111,7 +147,7 @@ export class TimetrackerpageComponent implements OnInit {
 
   // to filter the tracker list for that specific employee
   getTrackers() {
-    console.log(this.authservice.userData.email);
+    // console.log(this.authservice.userData.email);
     const variables = this.authservice.userData.email;
 
     this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
@@ -129,9 +165,16 @@ export class TimetrackerpageComponent implements OnInit {
     });
   }
 
+  onFilterSubmit() {
+    this.authservice.addFilter(this.FilterForm.value).subscribe((res) => {
+      this.getFilters();
+      this.onCloseFilterModal();
+      Swal.fire('', 'Project Details successfully added!!!', 'success');
+    });
+  }
   onTrackSubmit() {
     if (this.TrackerForm.valid) {
-      console.log(this.TrackerForm.value);
+      // console.log(this.TrackerForm.value);
       this.authservice.addTracker(this.TrackerForm.value).subscribe(
         (res) => {
           this.getTrackers();
@@ -156,9 +199,16 @@ export class TimetrackerpageComponent implements OnInit {
     this.showTaskModal = true;
   }
 
+  addFilter() {
+    this.showFilterModal = true;
+  }
+
   onCloseProjectModal() {
     this.showProjectModal = false;
     this.proForm.reset();
+  }
+  onCloseFilterModal() {
+    this.showFilterModal = false;
   }
 
   onProSubmit() {
