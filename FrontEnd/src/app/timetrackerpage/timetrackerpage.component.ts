@@ -280,11 +280,12 @@ export class TimetrackerpageComponent implements OnInit {
         }
         if (this.sec === 60) {
           this.min++;
-          this.min = this.min < 10 ? '0' + this.sec : this.sec;
+          this.min = this.min < 10 ? '0' + this.min : this.min;
+          this.sec='0'+0;
         }
         if (this.min === 60) {
           this.hr++;
-          this.hr < 10 ? '0' + this.hr : this.hr;
+          this.hr=this.hr < 10 ? '0' + this.hr : this.hr;
           this.min = '0' + 0;
         }
       }, 10);
