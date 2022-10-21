@@ -24,6 +24,8 @@ export class TimetrackerpageComponent implements OnInit {
   trackers!: Tracker[];
   Project!: Project[];
   FilterForm!: FormGroup;
+  timetaken: any;
+  totaltimetaken: any;
 
   proForm!: FormGroup;
   taskForm!: FormGroup;
@@ -75,8 +77,8 @@ export class TimetrackerpageComponent implements OnInit {
       tproject: ['', [Validators.required]],
       ttask: ['', [Validators.required]],
       tmode: ['', [Validators.required]],
-      tdesc: ['', [Validators.required]],
       ttime: ['', [Validators.required]],
+      tdesc: ['', [Validators.required]],
     });
 
     this.FilterForm = this.fb.group({
@@ -119,23 +121,27 @@ export class TimetrackerpageComponent implements OnInit {
   // filter based functions
   filter(filter_data: any) {
     const variables = this.authservice.userData.email;
-    console.log(filter_data);
-    if (filter_data === 'Yesterday') filter_data = this.yesterday.getDate();
+    if (filter_data === 'Yesterday') {
+      filter_data = this.yesterday.getDate();
+      console.log(filter_data);
+      console.log('i am in yesterday');
+    }
     this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
       var newdoc = res.filter((element) => {
-        console.log(element.tdate);
-        console.log(this.yesterday.getDate());
-        console.log(element.tdate.split('-')[2]);
+        // console.log(element.tdate.split('-')[2]);
+        // console.log(filter_data);
+        // console.log(element.tdate);
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
-          (element.tdate.split('-')[2] === this.yesterday.getDate() &&
+          (element.tdate.split('-')[2] === filter_data &&
             element.empmail === variables)
         );
       });
       this.trackers = newdoc;
-      console.log(this.trackers);
     });
+
+    console.log(this.trackers);
   }
 
   // tracker modal based functions starts here
@@ -191,6 +197,7 @@ export class TimetrackerpageComponent implements OnInit {
           this.onCloseTrackerModal();
           this.onReset();
           Swal.fire('', 'Project Details successfully added!!!', 'success');
+          this.startstopTimer();
         },
         (err) => {
           console.log(err);
@@ -290,30 +297,43 @@ export class TimetrackerpageComponent implements OnInit {
         if (this.sec === 60) {
           this.min++;
           this.min = this.min < 10 ? '0' + this.min : this.min;
-          this.sec='0'+0;
+          this.sec = '0' + 0;
         }
         if (this.min === 60) {
           this.hr++;
-          this.hr=this.hr < 10 ? '0' + this.hr : this.hr;
+          this.hr = this.hr < 10 ? '0' + this.hr : this.hr;
           this.min = '0' + 0;
         }
       }, 10);
+
+      this.totaltimetaken =
+        this.timetaken + this.hr + ':' + this.min + ':' + this.sec;
+      console.log(this.totaltimetaken);
     } else {
       this.stop();
+
+      this.timetaken = this.hr + ':' + this.min + ':' + this.sec;
+      console.log(this.timetaken);
     }
   }
 
   stop(): void {
+    // this.submittime();
     clearInterval(this.startTimer);
     this.showFirst = false;
   }
+  // submittime() {
+  //   this.authservice.addtime(this.timetaken).subscribe((res: any) => {
+  //     console.log('Successfully added totaltime');
+  //   }),
+  //     (err: any) => {
+  //       console.log(err);
+  //     };
+  // }
 
   reset(): void {
     clearInterval(this.startTimer);
     this.showFirst = false;
     this.hr = this.min = this.sec = this.ms = '0' + 0;
   }
-
-  
- 
 }

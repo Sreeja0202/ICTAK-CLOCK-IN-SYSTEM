@@ -15,10 +15,13 @@ const Tracker = mongoose.model("tracker", {
   tmode: {
     type: String,
   },
+  ttime: {
+    type: String,
+  },
   tdesc: {
     type: String,
   },
-  ttime: {
+  ttotal: {
     type: String,
   },
 });

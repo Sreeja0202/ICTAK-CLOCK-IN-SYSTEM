@@ -25,8 +25,9 @@ trackerrouter.post("/", (req, res) => {
     tproject: req.body.tproject,
     ttask: req.body.ttask,
     tmode: req.body.tmode,
-    tdesc: req.body.tdesc,
     ttime: req.body.ttime,
+    tdesc: req.body.tdesc,
+    ttotal: req.body.ttotal,
   });
   track.save((err, doc) => {
     if (err) {

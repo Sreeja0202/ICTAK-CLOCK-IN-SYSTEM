@@ -5,6 +5,8 @@ export interface Tracker {
   tproject: string;
   ttask: string;
   tmode: string;
-  tdesc: string;
+  tbill: string;
   ttime: string;
+  tdesc: string;
+  totaltime: string;
 }

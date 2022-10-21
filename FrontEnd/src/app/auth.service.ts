@@ -24,6 +24,9 @@ export class AuthService {
       this.userData = JSON.parse(data);
     }
   }
+  // addtime(timetracker: TimeTracker) {
+  //   return this.http.post(this.timetrackerurl, timetracker);
+  // }
 
   getTaskList() {
     return this.http.get<Job[]>(this.taskurl);
