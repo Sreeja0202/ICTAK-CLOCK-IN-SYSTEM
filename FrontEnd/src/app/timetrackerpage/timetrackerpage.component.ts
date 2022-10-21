@@ -5,6 +5,9 @@ import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
 import { Tracker } from '../tracker.model';
 import { DatePipe } from '@angular/common';
+import { Project } from '../project.model';
+import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
+import { Job } from '../task.model';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -13,11 +16,18 @@ import { DatePipe } from '@angular/common';
 })
 export class TimetrackerpageComponent implements OnInit {
   cardtitle = `USER`;
+  Tasks!: Job[];
   cardcontent = `User details`;
   name = 'Name';
   project = `Project Details`;
   trackers!: Tracker[];
+  Project!: Project[];
+  proForm!: FormGroup;
+  taskForm!: FormGroup;
   showTrackerModal: boolean = false;
+  showProjectModal: boolean = false;
+  selected: any;
+  showTaskModal: boolean = false;
 
   showFirst: boolean = false;
   userData: any;
@@ -46,6 +56,7 @@ export class TimetrackerpageComponent implements OnInit {
     console.log(' ', this.userData);
 
     this.getTrackers();
+    this.getTasks();
     this.TrackerForm = this.fb.group({
       _id: '',
       empmail: this.authservice.userData.email,
@@ -55,6 +66,29 @@ export class TimetrackerpageComponent implements OnInit {
       tmode: ['', [Validators.required]],
       tdesc: ['', [Validators.required]],
       ttime: ['', [Validators.required]],
+    });
+
+    this.getProjects();
+    this.proForm = this.fb.group({
+      _id: '',
+      pname: ['', [Validators.required]],
+    });
+    this.taskForm = this.fb.group({
+      _id: '',
+      tname: ['', [Validators.required]],
+    });
+  }
+
+  getTasks() {
+    this.authservice.getTaskList().subscribe((res: Job[]) => {
+      // console.log(res);
+      this.Tasks = res;
+    });
+  }
+  getProjects() {
+    this.authservice.getProjectList().subscribe((res: Project[]) => {
+      // console.log(res);
+      this.Project = res;
     });
   }
 
@@ -114,12 +148,65 @@ export class TimetrackerpageComponent implements OnInit {
     }
   }
 
+  onAddProject() {
+    this.showProjectModal = true;
+  }
+
+  onAddTask() {
+    this.showTaskModal = true;
+  }
+
+  onCloseProjectModal() {
+    this.showProjectModal = false;
+    this.proForm.reset();
+  }
+
+  onProSubmit() {
+    if (this.proForm.valid) {
+      this.authservice.addProject(this.proForm.value).subscribe(
+        (res) => {
+          this.getProjects();
+          this.onCloseProjectModal();
+          this.proForm.reset();
+          Swal.fire('', 'Project Details successfully added!!!', 'success');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      Swal.fire('', 'Please enter valid Credentials', 'error');
+    }
+  }
+
+  onTaskSubmit() {
+    if (this.taskForm.valid) {
+      this.authservice.addTask(this.taskForm.value).subscribe(
+        (res) => {
+          this.getTasks();
+          this.onCloseTaskModal();
+          this.taskForm.reset();
+          Swal.fire('', 'Task successfully added!!!', 'success');
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } else {
+      Swal.fire('', 'Please enter valid Credentials', 'error');
+    }
+  }
+
   onStart() {
     this.showTrackerModal = true;
   }
 
   onCloseTrackerModal() {
     this.showTrackerModal = false;
+  }
+
+  onCloseTaskModal() {
+    this.showTaskModal = false;
   }
   logoutUser() {
     localStorage.removeItem('token');

@@ -11,13 +11,13 @@
           TIME TRACKER
         </button>
 
-        <button
+        <!-- <button
           class="btn btn-outline-warning"
           routerLink="/timetrackerpage"
           (click)="onStart()"
         >
           Start
-        </button>
+        </button> -->
         <div class="nav_right">
           <ul class="navlist d-flex">
             <li>
@@ -69,10 +69,6 @@
               </div>
 
               <div class="d-flex mt-2">
-                <div>
-                  <i class="uil uil-bell"></i>
-                </div>
-
                 <button class="btn1" routerLink="">Logout</button>
               </div>
             </div>
@@ -131,83 +127,80 @@
 
                       <div class="form-group">
                         <label for="tproject">Projects</label>
-                        <input
-                          type="text"
-                          list="projects"
-                          class="form-control"
+                        <select
+                          class="form-select form-control"
                           formControlName="tproject"
-                        />
-                        <datalist id="projects">
-                          <option value="Academic"></option>
-                          <option value="Corporate"></option>
-                          <option value="Government"></option>
-                          <option value="Knowledge Office"></option>
-                          <option value="Retail"></option>
-                          <option value="Administration"></option>
-                          <!-- <option
-                value="Add New Project"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option> -->
-                        </datalist>
+                        >
+                          <option *ngFor="let item of Project">
+                            {{ item.pname }}
+                          </option>
+                          <option
+                            *ngIf="authservice.HaveAccess()"
+                            (click)="onAddProject()"
+                          >
+                            Add Project
+                          </option>
+                        </select>
                       </div>
 
                       <div class="form-group">
                         <label for="ttask">Tasks</label>
-                        <input
-                          type="text"
-                          list="tasks"
-                          class="form-control"
+                        <select
+                          class="form-select form-control"
                           formControlName="ttask"
-                        />
-                        <datalist id="tasks">
-                          <option value="Training"></option>
-                          <option value="Meeting and Discussions"></option>
-                          <option value="Lark Activity"></option>
-                          <option value="Content Development"></option>
-                          <!-- <option
-                value="Add New Task"
-                *ngIf="authservice.HaveAccess()"
-                routerLink="/projects"
-              ></option> -->
-                        </datalist>
+                        >
+                          <option *ngFor="let item of Tasks">
+                            {{ item.tname }}
+                          </option>
+                          <option
+                            *ngIf="authservice.HaveAccess()"
+                            (click)="onAddTask()"
+                          >
+                            Add Task
+                          </option>
+                        </select>
                       </div>
 
                       <div class="form-group">
-                        <label for="tmode">Mode</label>
-                        <input
-                          type="text"
-                          list="modes"
-                          class="form-control"
+                        <label for="tmode">Mode of Work</label>
+                        <select
+                          class="form-select form-control"
                           formControlName="tmode"
-                        />
-                        <datalist id="modes">
-                          <option value="Work from Home"></option>
-                          <option value="Work from Office"></option>
-                        </datalist>
+                        >
+                          <option>Mode</option>
+                          <option>Work from Home</option>
+                          <option>Work from Office</option>
+                          <option>Leave</option>
+                        </select>
                       </div>
 
                       <div class="form-group">
-                        <label for="tdesc">Description</label>
-                        <input
-                          type="text"
-                          list="description"
-                          class="form-control"
-                          formControlName="tdesc"
-                        />
-                        <datalist id="description">
-                          <option value="Billable"></option>
-                          <option value="Non-Billable"></option>
-                        </datalist>
+                        <label for="tbill">Billable/ Non-Billable</label>
+                        <select
+                          class="form-select form-control"
+                          formControlName="tbill"
+                        >
+                          <option>Billable</option>
+                          <option>Non-Billable</option>
+                        </select>
                       </div>
 
                       <div class="form-group">
-                        <label for="tmode">Time</label>
+                        <label for="ttime">Time</label>
                         <input
                           type="time"
                           class="form-control"
                           formControlName="ttime"
                         />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="tdesc">Description</label>
+                        <textarea
+                          class="text-area form-control"
+                          formControlName="tdesc"
+                        >
+                        </textarea>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -218,6 +211,7 @@
                         data-dismiss="modal"
                         aria-label="Close"
                       >
+                        Close
                         <span aria-hidden="true">&times;</span>
                       </button>
 
@@ -235,6 +229,95 @@
     </div>
     <!-- tracker modal form ends here -->
 
+    <!-- project modal form starts here -->
+    <div class="modal fade show" [class.show]="showProjectModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Project</h5>
+            <button
+              (click)="onCloseProjectModal()"
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="pname">Enter Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="pname"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onCloseProjectModal()"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- project modal form ends here -->
+
+    <!-- task modal form starts here -->
+    <div class="modal fade show" [class.show]="showTaskModal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Task</h5>
+            <button
+              (click)="onCloseTaskModal()"
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="taskForm" (ngSubmit)="onTaskSubmit()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="tname">Enter Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="tname"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                (click)="onCloseTaskModal()"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- task modal form ends here -->
     <!-- main body starts here-->
 
     <section id="filter-nav" class="filter_nav mt-3">
@@ -276,7 +359,9 @@
         </div>
 
         <div class="start_project">
-          <button class="btn btn-success mt-2">Start</button>
+          <button class="btn btn-success mt-2" (click)="onStart()">
+            Start
+          </button>
         </div>
       </div>
     </section>

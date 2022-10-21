@@ -20,7 +20,6 @@ prorouter.get("/", (req, res) => {
 prorouter.post("/", (req, res) => {
   let pro = new Project({
     pname: req.body.pname,
-    pcategory: req.body.pcategory,
   });
   pro.save((err, doc) => {
     if (err) {

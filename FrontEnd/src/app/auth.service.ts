@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Employee } from './employee.model';
 import { Project } from './project.model';
 import { Tracker } from './tracker.model';
+import { Job } from './task.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class AuthService {
   loginurl = 'http://localhost:3000/employees/login';
   prourl = 'http://localhost:3000/projects';
   trackerurl = 'http://localhost:3000/trackers';
+  taskurl = 'http://localhost:3000/tasks';
 
   userData: any;
 
@@ -22,8 +24,16 @@ export class AuthService {
     }
   }
 
+  getTaskList() {
+    return this.http.get<Job[]>(this.taskurl);
+  }
+
   addEmployee(emp: Employee) {
     return this.http.post(this.url, emp);
+  }
+
+  addTask(task: Job) {
+    return this.http.post(this.taskurl, task);
   }
 
   addTracker(trac: Tracker) {
