@@ -1,8 +1,9 @@
 <main>
   <!--top nav-->
   <div>
-    <nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+    <nav class="navbar navbar-expand-lg" style="background-color: #000000">
       <div class="container-fluid ms-5">
+        <img src="  /assets/images/logo black (2).jpg" />
         <button
           class="btn btn-outline-warning"
           routerLink="/timetrackerpage"
@@ -18,16 +19,19 @@
         >
           Start
         </button>
-<!--newly added timer -->
+        <!--newly added timer -->
 
-<div class="stopwatch" style="border: 1px solid white; border-radius:10px; padding: 5px;">
-  <mat-icon >access_alarm</mat-icon>
-       <span  style="color: rgb(214, 154, 25);"> {{hr}} :</span>
-       <span style="color: rgb(214, 154, 25);"> {{min}} :</span>
-       <span style="color: rgb(214, 154, 25);" > {{sec}} </span>
-</div>                  
+        <div
+          class="stopwatch"
+          style="border: 1px solid white; border-radius: 10px; padding: 5px"
+        >
+          <mat-icon>access_alarm</mat-icon>
+          <span style="color: rgb(214, 154, 25)"> {{ hr }} :</span>
+          <span style="color: rgb(214, 154, 25)"> {{ min }} :</span>
+          <span style="color: rgb(214, 154, 25)"> {{ sec }} </span>
+        </div>
 
-<!--end-->
+        <!--end-->
         <div class="nav_right">
           <ul class="navlist d-flex">
             <div class="fw-bold text-white mt-2 ps-3">
@@ -431,10 +435,10 @@
             <td scope="col">{{ item.ttime }}</td>
             <td scope="col">
               <!--newly added timer button-->
-              <button (click)="start()"  >
+              <button (click)="start()">
                 <mat-icon *ngIf="!showFirst">play_circle_outline</mat-icon>
                 <mat-icon *ngIf="showFirst">pause_circle_outline</mat-icon>
-              </button> 
+              </button>
               <!--end-->
             </td>
           </tr>
