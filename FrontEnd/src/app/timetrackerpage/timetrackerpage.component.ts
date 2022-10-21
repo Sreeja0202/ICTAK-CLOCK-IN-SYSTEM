@@ -33,14 +33,15 @@ export class TimetrackerpageComponent implements OnInit {
   showTaskModal: boolean = false;
   showFilterModal: boolean = false;
 
-  showFirst: boolean = false;
+  
   userData: any;
   userdetails: any;
   filters!: Filter[];
   filter_details: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
-
+ 
+  showFirst: boolean = false;
   ms: any = '0' + 0;
   sec: any = '0' + 0;
   min: any = '0' + 0;

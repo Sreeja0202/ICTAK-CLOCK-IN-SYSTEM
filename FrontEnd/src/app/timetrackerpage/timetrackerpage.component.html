@@ -18,6 +18,16 @@
         >
           Start
         </button>
+<!--newly added timer -->
+
+<div class="stopwatch" style="border: 1px solid white; border-radius:10px; padding: 5px;">
+  <mat-icon >access_alarm</mat-icon>
+       <span  style="color: rgb(214, 154, 25);"> {{hr}} :</span>
+       <span style="color: rgb(214, 154, 25);"> {{min}} :</span>
+       <span style="color: rgb(214, 154, 25);" > {{sec}} </span>
+</div>                  
+
+<!--end-->
         <div class="nav_right">
           <ul class="navlist d-flex">
             <div class="fw-bold text-white mt-2 ps-3">
@@ -420,10 +430,12 @@
             <td scope="col">{{ item.tdesc }}</td>
             <td scope="col">{{ item.ttime }}</td>
             <td scope="col">
-              <i
-                class="uil uil-play ms-4 timer_icon"
-                (click)="startstopTimer()"
-              ></i>
+              <!--newly added timer button-->
+              <button (click)="start()"  >
+                <mat-icon *ngIf="!showFirst">play_circle_outline</mat-icon>
+                <mat-icon *ngIf="showFirst">pause_circle_outline</mat-icon>
+              </button> 
+              <!--end-->
             </td>
           </tr>
         </tbody>
