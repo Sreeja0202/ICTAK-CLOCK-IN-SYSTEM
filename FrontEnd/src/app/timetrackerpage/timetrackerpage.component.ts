@@ -197,7 +197,11 @@ export class TimetrackerpageComponent implements OnInit {
           this.onCloseTrackerModal();
           this.onReset();
           Swal.fire('', 'Project Details successfully added!!!', 'success');
+<<<<<<< Updated upstream
           this.startstopTimer();
+=======
+          this.startTimer();
+>>>>>>> Stashed changes
         },
         (err) => {
           console.log(err);
