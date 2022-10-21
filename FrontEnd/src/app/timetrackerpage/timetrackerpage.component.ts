@@ -275,7 +275,7 @@ export class TimetrackerpageComponent implements OnInit {
 
   // tracker modal based functions ends here
 
-  start(): void {
+  startstopTimer(): void {
     if (!this.showFirst) {
       this.showFirst = true;
       this.startTimer = setInterval(() => {
@@ -314,6 +314,6 @@ export class TimetrackerpageComponent implements OnInit {
     this.hr = this.min = this.sec = this.ms = '0' + 0;
   }
 
-  // timer related functions
-  startstopTimer() {}
+  
+ 
 }

@@ -439,7 +439,7 @@
             <td scope="col">{{ item.ttime }}</td>
             <td scope="col">
               <!--newly added timer button-->
-              <button (click)="start()">
+              <button (click)=" startstopTimer()">
                 <mat-icon *ngIf="!showFirst">play_circle_outline</mat-icon>
                 <mat-icon *ngIf="showFirst">pause_circle_outline</mat-icon>
               </button>
