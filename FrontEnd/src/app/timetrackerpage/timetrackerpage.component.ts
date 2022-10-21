@@ -33,14 +33,13 @@ export class TimetrackerpageComponent implements OnInit {
   showTaskModal: boolean = false;
   showFilterModal: boolean = false;
 
-  
   userData: any;
   userdetails: any;
   filters!: Filter[];
   filter_details: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
- 
+
   showFirst: boolean = false;
   ms: any = '0' + 0;
   sec: any = '0' + 0;
@@ -49,6 +48,7 @@ export class TimetrackerpageComponent implements OnInit {
 
   startTimer: any;
   myDate: any = new Date();
+  yesterday: any = new Date();
   constructor(
     private router: Router,
     public authservice: AuthService,
@@ -56,6 +56,9 @@ export class TimetrackerpageComponent implements OnInit {
     private datePipe: DatePipe
   ) {
     this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
+    this.yesterday = new Date(
+      this.yesterday.setDate(this.yesterday.getDate() - 1)
+    );
   }
 
   ngOnInit(): void {
@@ -117,11 +120,17 @@ export class TimetrackerpageComponent implements OnInit {
   filter(filter_data: any) {
     const variables = this.authservice.userData.email;
     console.log(filter_data);
+    if (filter_data === 'Yesterday') filter_data = this.yesterday.getDate();
     this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
       var newdoc = res.filter((element) => {
+        console.log(element.tdate);
+        console.log(this.yesterday.getDate());
+        console.log(element.tdate.split('-')[2]);
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
-          (element.tproject === filter_data && element.empmail === variables)
+          (element.tproject === filter_data && element.empmail === variables) ||
+          (element.tdate.split('-')[2] === this.yesterday.getDate() &&
+            element.empmail === variables)
         );
       });
       this.trackers = newdoc;
