@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from './employee.model';
@@ -116,4 +115,3 @@ export class AuthService {
     return this.http.put(`${this.prourl}/${pro._id}`, pro);
   }
 }
-
