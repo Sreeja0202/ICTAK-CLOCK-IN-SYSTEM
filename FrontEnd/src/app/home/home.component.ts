@@ -35,6 +35,6 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   mydetailstoggle(){
-    this.showtoggle = true;
+    this.showtoggle = !this.showtoggle;
   }
 }
