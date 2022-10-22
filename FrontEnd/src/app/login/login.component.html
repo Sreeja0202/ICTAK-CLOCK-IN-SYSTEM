@@ -1,87 +1,104 @@
-<!-- further enhancements 
-
-1. Login authentication field wise
-2. ui change
-3. eye-slash for password
--->
-
 <!-- navbar starts here -->
 <nav class="navbar navbar-expand-lg" style="background-color: #000000">
   <div class="container-fluid p-3">
-    <img src="  /assets/images/logo black (2).jpg" />
+    <div class="d-flex">
+      <img src="  /assets/images/logo black (2).jpg" />
+      <h3 class="text-light mt-4 ms-3">
+        T<span class="text-danger">i</span><span class="text-warning">m</span
+        ><span class="text-primary">e</span> Tracker
+      </h3>
+    </div>
   </div>
 </nav>
 
 <!-- navbar ends here -->
 
-<!-- login form starts here -->
-<div class="container">
-  <form
-    class="col-md-5 mt-5 loginform p-3"
-    [formGroup]="loginForm"
-    (ngSubmit)="logIn()"
-  >
-    <div class="text-center mt-3">
-      <h1>LOGIN HERE</h1>
+<section class="login_section_main">
+  <div class="d-flex justify-content-between col-10 m-auto login_page">
+    <div class="quotes col-5 mt-5">
+      <p class="h1 text-center mt-5 p-5 text-light">
+        "The key is in not spending time, but in investing it."
+      </p>
     </div>
-    <div class="form-floating mb-3 mt-5">
-      <input
-        type="email"
-        class="form-control"
-        id="floatingInput"
-        placeholder="name@example.com"
-        formControlName="eemail"
-      />
-      <label for="floatingInput">Email address</label>
-      <span
-        class="text-danger"
-        *ngIf="
-          loginForm.get('eemail').hasError('required') &&
-          loginForm.get('eemail').touched
-        "
-        ><b>Email is required</b></span
-      >
-    </div>
-    <div class="form-floating">
-      <input
-        type="password"
-        class="form-control"
-        id="floatingPassword"
-        placeholder="Password"
-        formControlName="epassword"
-      />
+    <div class="login_form col-5">
+      <!-- login form starts here -->
+      <div class="container">
+        <form
+          class="col-12 mt-5 loginform p-3"
+          [formGroup]="loginForm"
+          (ngSubmit)="logIn()"
+        >
+          <div class="text-center mt-3">
+            <h1 class="text-light">LOGIN HERE</h1>
+          </div>
+          <div class="form-floating mb-3 mt-5">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+              formControlName="eemail"
+            />
+            <label for="floatingInput">Email address</label>
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.get('eemail').hasError('required') &&
+                loginForm.get('eemail').touched
+              "
+              ><b>Email is required</b></span
+            >
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+              formControlName="epassword"
+            />
 
-      <label for="floatingPassword">Password</label>
-      <span
-        class="text-danger"
-        *ngIf="
-          loginForm.get('epassword').hasError('required') &&
-          loginForm.get('epassword').touched
-        "
-        ><b>Password is required</b></span
-      >
+            <label for="floatingPassword">Password</label>
+            <span
+              class="text-danger"
+              *ngIf="
+                loginForm.get('epassword').hasError('required') &&
+                loginForm.get('epassword').touched
+              "
+              ><b>Password is required</b></span
+            >
+          </div>
+          <br />
+          <br />
+          <div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-lg"
+              style="width: 100%"
+            >
+              Submit
+            </button>
+          </div>
+          <br />
+          <div class="text-center">
+            <small class="text-primary"
+              ><a
+                routerLink="/login"
+                class="text-light"
+                style="text-decoration: none"
+                >Forgot Password</a
+              ></small
+            >
+          </div>
+        </form>
+      </div>
+      <!-- login form ends here -->
     </div>
-    <br />
-    <br />
-    <div>
-      <button type="submit" class="btn btn-primary btn-lg" style="width: 100%">
-        Submit
-      </button>
-    </div>
-    <br />
-    <div class="text-center">
-      <small class="text-primary"
-        ><a routerLink="/login" style="text-decoration: none"
-          >Forgot Password</a
-        ></small
-      >
-    </div>
-  </form>
-</div>
-<!-- login form ends here -->
+  </div>
+</section>
 
 <!-- footer starts here -->
-<footer style="background-color: #000000; margin-top: 200px" class="p-2">
+<footer style="background-color: #000000" class="p-2">
   <div class="text-center">
     <h5 class="text-muted text-light">Copyright @2022</h5>
   </div>

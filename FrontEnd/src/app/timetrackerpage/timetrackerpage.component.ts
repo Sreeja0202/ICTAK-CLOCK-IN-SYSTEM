@@ -85,7 +85,6 @@ export class TimetrackerpageComponent implements OnInit {
       tmode: ['', [Validators.required]],
       ttime: ['', [Validators.required]],
       tdesc: ['', [Validators.required]],
-      tbill: ['', [Validators.required]],
     });
 
     this.FilterForm = this.fb.group({
@@ -104,13 +103,12 @@ export class TimetrackerpageComponent implements OnInit {
       _id: '',
       tname: ['', [Validators.required]],
     });
-
   }
 
   getMonday(d: Date) {
     d = new Date(d);
     let day = d.getDay(),
-        diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+      diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
     return new Date(d.setDate(diff));
   }
 
@@ -135,13 +133,13 @@ export class TimetrackerpageComponent implements OnInit {
 
   // filter based functions
   filter(filter_data: any) {
-
     const variables = this.authservice.userData.email;
     console.log(filter_data);
     console.log(this.yesterday);
     if (filter_data === 'yesterday') filter_data = this.yesterday.getTime();
     if (filter_data === 'this_week') filter_data = this.thisWeek.getTime();
     if (filter_data === 'this_month') filter_data = this.thisMonth.getTime();
+    console.log(this.thisMonth.getTime());
     this.authservice.getTrackerList().subscribe((res: Tracker[]) => {
       var newdoc = res.filter((element) => {
         console.log('tDate', new Date(element.tdate));
@@ -302,7 +300,7 @@ export class TimetrackerpageComponent implements OnInit {
     console.log('index', index, 'tracker=', this.trackers[index].isTimer);
     if (!this.trackers[index].isTimer) {
       this.stop();
-      this.trackers = this.trackers.map(tracker => {
+      this.trackers = this.trackers.map((tracker) => {
         tracker.isTimer = false;
         return tracker;
       });

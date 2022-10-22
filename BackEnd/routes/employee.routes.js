@@ -5,6 +5,7 @@ const app = new express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const objectId = require("mongoose").Types.ObjectId;
+const bcrypt = require("bcrypt");
 // bcrypt password - next modification
 
 app.use(cors());
@@ -22,7 +23,9 @@ emprouter.post("/login", (req, res) => {
       } else {
         if (!user) {
           res.status(401).send("Invalid Email");
-        } else if (user.epassword !== userData.epassword) {
+        } else if (!bcrypt.compareSync(userData.epassword, user.epassword)) {
+          console.log(userData.epassword);
+          console.log(user.epassword);
           res.status(401).send("Invalid Password");
         } else {
           let payload = {
@@ -43,11 +46,15 @@ emprouter.post("/login", (req, res) => {
 // Posting all data
 
 emprouter.post("/", (req, res) => {
+  var pass = req.body.epassword;
+  var hash = bcrypt.hashSync(pass, 10);
+  console.log(pass);
+  console.log(hash);
   let emp = new Employee({
     ename: req.body.ename,
     erole: req.body.erole,
     eemail: req.body.eemail,
-    epassword: req.body.epassword,
+    epassword: hash,
   });
   emp.save((err, doc) => {
     if (err) {

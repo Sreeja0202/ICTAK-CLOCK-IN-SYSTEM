@@ -3,23 +3,14 @@
   <div>
     <nav class="navbar navbar-expand-lg" style="background-color: #000000">
       <div class="container-fluid ms-5">
-        <img src="  /assets/images/logo black (2).jpg" />
-        <!-- <button
-          class="btn btn-outline-warning"
-          routerLink="/timetrackerpage"
-          routerLinkActive="active"
-        >
-          TIME TRACKER
-        </button> -->
-
-        <!-- <button
-          class="btn btn-outline-warning"
-          routerLink="/timetrackerpage"
-
-        >
-          Start
-        </button> -->
-        <!--newly added timer -->
+        <div class="d-flex">
+          <img src="  /assets/images/logo black (2).jpg" />
+          <h3 class="text-light mt-4 ms-3">
+            T<span class="text-danger">i</span
+            ><span class="text-warning">m</span
+            ><span class="text-primary">e</span> Tracker
+          </h3>
+        </div>
 
         <div
           class="stopwatch"
@@ -64,12 +55,11 @@
 
     <mat-drawer-container class="example">
       <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
-        <div class="container  mb-4 d-flex justify-content-center">
-          <div class="profilecard ">
+        <div class="container mb-4 d-flex justify-content-center">
+          <div class="profilecard">
             <div
               class="image d-flex flex-column justify-content-center align-items-center"
             >
-
               <br /><br />
               <span class="name mt-3" style="color: black">{{
                 userData?.name
@@ -81,7 +71,7 @@
                 class="d-flex flex-row justify-content-center align-items-center gap-2"
               ></div>
               <br />
-              <div class="text ">
+              <div class="text">
                 <span style="color: black">{{ userData?.roles }}</span>
               </div>
 
@@ -349,18 +339,12 @@
                 (ngModelChange)="filter($event)"
               >
                 <optgroup label="Projects">
-                  <option
-                    *ngFor="let item of Project"
-                    class="form-control"
-                  >
+                  <option *ngFor="let item of Project" class="form-control">
                     {{ item.pname }}
                   </option>
                 </optgroup>
                 <optgroup label="Tasks">
-                  <option
-                    *ngFor="let item of Tasks"
-                    class="form-control"
-                  >
+                  <option *ngFor="let item of Tasks" class="form-control">
                     {{ item.tname }}
                   </option>
                 </optgroup>
@@ -416,7 +400,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of trackers;let i=index">
+          <tr *ngFor="let item of trackers; let i = index">
             <td scope="col">{{ item.tdate }}</td>
             <td scope="col">{{ item.tproject }}</td>
             <td scope="col">{{ item.ttask }}</td>
@@ -427,7 +411,7 @@
             <td scope="col">
               {{ this.timetaken }}
               <!--newly added timer button-->
-              <button (click)=" startstopTimer(i)">
+              <button (click)="startstopTimer(i)">
                 <mat-icon *ngIf="!item.isTimer">play_circle_outline</mat-icon>
                 <mat-icon *ngIf="item.isTimer">pause_circle_outline</mat-icon>
               </button>
@@ -447,7 +431,7 @@
   <div class="calendar__container bd-grid"></div>
 </section>
 <!-- footer starts here -->
-<footer style="background-color: #240c30; margin-top: 267px" class="p-2"  >
+<footer style="background-color: #240c30; margin-top: 267px" class="p-2">
   <div class="text-center">
     <h5 class="text-muted text-light">Copyright @2022</h5>
   </div>

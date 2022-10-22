@@ -2,6 +2,16 @@
   margin: 0;
   padding: 0;
 }
+.login_section_main {
+  background-image: url("https://images.pexels.com/photos/960137/pexels-photo-960137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  background-size: cover;
+  width: 100%;
+  height: 600px;
+}
+.login_section_main img {
+  width: 100%;
+  height: 100%;
+}
 
 .container {
   display: flex;
@@ -9,7 +19,7 @@
 }
 
 .loginform {
-  box-shadow: 2px 3px 2px 3px gray;
+  /* box-shadow: 2px 3px 2px 3px gray; */
   border-radius: 10px;
   margin-top: 50px;
 }
