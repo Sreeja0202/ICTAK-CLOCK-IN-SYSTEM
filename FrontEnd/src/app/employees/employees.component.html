@@ -1,13 +1,20 @@
 <!-- navbar starts here -->
-<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
-  <div class="container-fluid p-2">
-    <button
-      class="navbar-brand text-light btn btn-outline-warning mx-2"
-      routerLink="/employees"
-      routerLinkActive="active"
-    >
-      EMPLOYEES
-    </button>
+<nav class="navbar navbar-expand-lg" style="background-color: #000000">
+  <div class="container-fluid p-1">
+    <div class="ms-5">
+      <img src="  /assets/images/logo black (2).jpg" />
+    </div>
+    <h3 class="text-light mt-4 ms-3">
+      T<span class="text-danger">i</span><span class="text-warning">m</span
+      ><span class="text-primary">e</span> <span class="text-light">T</span
+      ><span class="text-warning">r</span><span class="text-danger">a</span
+      ><span class="text-primary">c</span><span class="text-danger">k</span
+      ><span class="text-warning">e</span><span class="text-light">r</span>
+    </h3>
+    <img
+      src="https://img.icons8.com/external-itim2101-flat-itim2101/64/000000/external-employee-human-resource-itim2101-flat-itim2101-1.png"
+      class="px-3"
+    />
     <button
       class="navbar-toggler"
       type="button"
@@ -21,22 +28,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <button
-            class="nav-link text-light btn btn-outline-warning mx-2"
-            routerLink="/home"
-          >
-            HOME
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="nav-link btn btn-outline-warning mx-2 text-light"
-            (click)="onAddEmployee()"
-          >
-            Add Employee
-          </button>
-        </li>
+        <li class="nav-item"></li>
+        <li class="nav-item"></li>
       </ul>
       <div class="d-flex">
         <button
@@ -53,13 +46,27 @@
 
 <!-- navbar ends here -->
 
+<!-- side bar starts here -->
+<!-- /////sidenav -->
+<div class="sidebar">
+  <p class="m-3 h4">Dashboard</p>
+  <!-- <a class="active" routerLink="/timetrackerpage">Time Tracker</a> -->
+
+  <a class="active" routerLink="#"> Employee</a>
+
+  <a class="" (click)="onAddEmployee()"> Add Project</a>
+  <a routerLink="/home"> Home</a>
+</div>
+<!-- ////sidenav end -->
+<!-- side bar ends here -->
+
 <!-- card for employees -->
 
 <div class="container py-3">
   <div class="row">
     <div class="col-md-4" *ngFor="let item of employees">
       <!-- where item just a variable to hold employee details and employees is the main array -->
-      <div class="card mb-3">
+      <div class="card mb-5">
         <div class="card-body">
           <h5 class="card-title">{{ item.ename }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ item.erole }}</h6>

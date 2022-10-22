@@ -1,9 +1,9 @@
 <!-- navbar starts here -->
-<nav class="navbar navbar-expand-lg" style="background-color: #240c30">
+<nav class="navbar navbar-expand-lg" style="background-color: #000000">
   <div class="container-fluid p-2">
     <div class="d-flex">
       <div class="ms-5">
-        <img src="/assets/images/logo black (2).jpg" />
+        <img src="  /assets/images/logo black (2).jpg" />
       </div>
       <h3 class="text-light mt-4 ms-3">
         T<span class="text-danger">i</span><span class="text-warning">m</span
@@ -12,14 +12,12 @@
         ><span class="text-primary">c</span><span class="text-danger">k</span
         ><span class="text-warning">e</span><span class="text-light">r</span>
       </h3>
+      <img
+        src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/FAB005/external-project-web-development-flaticons-flat-flat-icons.png"
+        class="px-3"
+      />
     </div>
-    <button
-      class="navbar-brand text-light btn btn-outline-warning ms-5"
-      routerLink="/projects"
-      routerLinkActive="active"
-    >
-      PROJECTS
-    </button>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -33,22 +31,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <button
-            class="nav-link text-light btn btn-outline-warning mx-2"
-            routerLink="/home"
-          >
-            HOME
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="nav-link btn btn-outline-warning mx-2 text-light"
-            (click)="onAddProject()"
-          >
-            Add Project
-          </button>
-        </li>
+        <li class="nav-item"></li>
+        <li class="nav-item"></li>
       </ul>
       <div class="d-flex me-5">
         <button
@@ -65,53 +49,63 @@
 
 <!-- navbar ends here -->
 <!-- side bar starts here -->
+<!-- /////sidenav -->
+<div class="sidebar">
+  <p class="m-3 h4">Dashboard</p>
+  <!-- <a class="active" routerLink="/timetrackerpage">Time Tracker</a> -->
 
+  <a class="active" routerLink="#"> PROJECTS</a>
+
+  <a class="" (click)="onAddProject()"> Add Project</a>
+  <a routerLink="/home"> Home</a>
+</div>
+<!-- ////sidenav end -->
 <!-- side bar ends here -->
 
 <!--  add project modal starts here-->
-
-<div class="modal fade show" [class.show]="showProjectModal">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">
-          {{ editProjectMode ? "Update Project" : "Add Project" }}
-        </h5>
-        <button
-          (click)="onCloseProjectModal()"
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="pname">Enter Name</label>
-            <input type="text" class="form-control" formControlName="pname" />
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            (click)="onCloseProjectModal()"
-            class="btn btn-secondary"
-            data-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="submit" class="btn btn-primary">
+<div class="container">
+  <div class="modal fade show" [class.show]="showProjectModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
             {{ editProjectMode ? "Update Project" : "Add Project" }}
+          </h5>
+          <button
+            (click)="onCloseProjectModal()"
+            class="close"
+            type="button"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      </form>
+        <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="pname">Enter Name</label>
+              <input type="text" class="form-control" formControlName="pname" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              (click)="onCloseProjectModal()"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">
+              {{ editProjectMode ? "Update Project" : "Add Project" }}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-
 <!-- project modal ends here -->
 
 <!-- footer starts here -->
