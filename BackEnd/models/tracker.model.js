@@ -21,9 +21,6 @@ const Tracker = mongoose.model("tracker", {
   tdesc: {
     type: String,
   },
-  ttotal: {
-    type: String,
-  },
 });
 
 module.exports = Tracker;

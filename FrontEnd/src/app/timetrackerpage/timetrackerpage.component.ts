@@ -31,6 +31,7 @@ export class TimetrackerpageComponent implements OnInit {
   taskForm!: FormGroup;
   showTrackerModal: boolean = false;
   showProjectModal: boolean = false;
+  editTrackerMode: boolean = false;
   selected: any;
   showTaskModal: boolean = false;
   showFilterModal: boolean = false;
@@ -160,10 +161,14 @@ export class TimetrackerpageComponent implements OnInit {
   }
 
   // tracker modal based functions starts here
-  OnEditTracker() {}
-  onDeleteTracker(id: any) {
+  onEditTracker(trac: Tracker) {
+    this.editTrackerMode = true;
+    this.showTrackerModal = true;
+    this.TrackerForm.patchValue(trac);
+  }
+  onDeleterTracker(id: any) {
     console.log(id);
-    if (confirm('Are you sure you want to delete this project?')) {
+    if (confirm('Are you sure you want to delete this work?')) {
       this.authservice.deleteTracker(id).subscribe(
         (res) => {
           // console.log(res);
@@ -205,18 +210,31 @@ export class TimetrackerpageComponent implements OnInit {
   }
   onTrackSubmit() {
     if (this.TrackerForm.valid) {
-      // console.log(this.TrackerForm.value);
-      this.authservice.addTracker(this.TrackerForm.value).subscribe(
-        (res) => {
-          this.getTrackers();
-          this.onCloseTrackerModal();
-          this.onReset();
-          Swal.fire('', 'Project successfully added!!!', 'success');
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      console.log(this.TrackerForm.value);
+      if (this.editTrackerMode) {
+        this.authservice.updateTracker(this.TrackerForm.value).subscribe(
+          (res) => {
+            this.getTrackers();
+            this.onCloseTrackerModal();
+            Swal.fire('', 'Tracker details successfully updated!!!', 'success');
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      } else {
+        this.authservice.addTracker(this.TrackerForm.value).subscribe(
+          (res) => {
+            this.getTrackers();
+            this.onCloseTrackerModal();
+            this.onReset();
+            Swal.fire('', 'Project successfully added!!!', 'success');
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
     } else {
       Swal.fire('', 'Enter All Fields', 'error');
     }

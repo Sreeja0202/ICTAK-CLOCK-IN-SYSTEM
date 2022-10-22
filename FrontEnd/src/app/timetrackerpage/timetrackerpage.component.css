@@ -283,6 +283,9 @@ div.content {
 
 /* body */
 
+.table_icon {
+  cursor: pointer;
+}
 .filter_nav,
 .table_details {
   width: 100%;

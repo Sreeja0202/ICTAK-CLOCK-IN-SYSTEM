@@ -99,7 +99,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Details</h5>
+            <h5 class="modal-title">
+              {{ editTrackerMode ? "Update Tracker" : "Add Tracker" }}
+            </h5>
             <button
               (click)="onCloseTrackerModal()"
               class="close"
@@ -203,7 +205,7 @@
               </button>
 
               <button type="submit" class="btn btn-primary" (click)="reset()">
-                Submit
+                {{ editTrackerMode ? "Update Tracker" : "Add Tracker" }}
               </button>
             </div>
           </form>
@@ -398,9 +400,10 @@
             <th scope="col">Mode</th>
             <th scope="col">Time</th>
             <th scope="col">Description</th>
+            <th scope="col">Start/Stop</th>
             <th scope="col">Time Taken</th>
-            <th scope="col">Start Time</th>
-            <th scope="col">Stop Time</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -425,6 +428,18 @@
             <td scope="col" *ngIf="!this.trackers[i].isTimer">
               {{ this.stoptime }}
               <!--newly added timer button-->
+            </td>
+            <td>
+              <i
+                class="uil uil-pen table_icon"
+                (click)="onEditTracker(item)"
+              ></i>
+            </td>
+            <td>
+              <i
+                class="uil uil-trash-alt table_icon"
+                (click)="onDeleterTracker(item._id)"
+              ></i>
             </td>
           </tr>
         </tbody>

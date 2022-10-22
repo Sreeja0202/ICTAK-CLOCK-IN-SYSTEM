@@ -55,6 +55,9 @@ export class AuthService {
   getTrackerList() {
     return this.http.get<Tracker[]>(this.trackerurl);
   }
+  updateTracker(trac: Tracker) {
+    return this.http.put(`${this.trackerurl}/${trac._id}`, trac);
+  }
 
   loginUser(user: any) {
     return this.http.post(this.loginurl, user);
