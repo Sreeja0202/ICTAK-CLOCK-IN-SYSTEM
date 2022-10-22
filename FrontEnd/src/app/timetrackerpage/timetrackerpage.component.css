@@ -97,16 +97,13 @@ mat-card-subtitle {
   display: block;
 }
 
-.example{
-
-
+.example {
   position: absolute;
   right: 0;
   top: 30px;
 
   margin-top: 30px;
   height: 400px;
-
 }
 .example-sidenav-content {
   display: flex;
@@ -288,7 +285,7 @@ div.content {
 
 .filter_nav,
 .table_details {
-  width: 90%;
+  width: 100%;
 }
 .emp_details,
 .date_details,
@@ -312,7 +309,6 @@ div.content {
   outline: none;
 }
 
-.mat-drawer-side.mat-drawer-end
-{
-border-left: none;
+.mat-drawer-side.mat-drawer-end {
+  border-left: none;
 }

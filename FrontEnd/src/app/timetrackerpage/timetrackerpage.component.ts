@@ -53,6 +53,7 @@ export class TimetrackerpageComponent implements OnInit {
   yesterday: Date = new Date();
   thisWeek: Date = new Date();
   thisMonth: Date = new Date();
+  stoptime: any;
   constructor(
     private router: Router,
     public authservice: AuthService,
@@ -210,8 +211,7 @@ export class TimetrackerpageComponent implements OnInit {
           this.getTrackers();
           this.onCloseTrackerModal();
           this.onReset();
-          Swal.fire('', 'Project Details successfully added!!!', 'success');
-          this.startTimer();
+          Swal.fire('', 'Project successfully added!!!', 'success');
         },
         (err) => {
           console.log(err);
@@ -298,13 +298,19 @@ export class TimetrackerpageComponent implements OnInit {
 
   startstopTimer(index: number): void {
     console.log('index', index, 'tracker=', this.trackers[index].isTimer);
+
+    console.log(this.timetaken);
     if (!this.trackers[index].isTimer) {
       this.stop();
       this.trackers = this.trackers.map((tracker) => {
         tracker.isTimer = false;
         return tracker;
       });
+      this.totaltimetaken = this.hr + ':' + this.min + ':' + this.sec;
+
+      console.log(this.timetaken);
       this.trackers[index].isTimer = true;
+
       this.startTimer = setInterval(() => {
         this.ms++;
         this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
@@ -326,20 +332,19 @@ export class TimetrackerpageComponent implements OnInit {
         }
       }, 10);
 
-      this.totaltimetaken =
-        this.timetaken + this.hr + ':' + this.min + ':' + this.sec;
-      console.log(this.totaltimetaken);
+      // this.totaltimetaken =
+      //   this.timetaken + this.hr + ':' + this.min + ':' + this.sec;
+      // console.log(this.totaltimetaken);
     } else {
+      this.stoptime = this.hr + ':' + this.min + ':' + this.sec;
       this.stop();
 
-      this.timetaken = this.hr + ':' + this.min + ':' + this.sec;
-      console.log(this.timetaken);
       this.trackers[index].isTimer = false;
     }
   }
 
   stop(): void {
-    // this.submittime();
+    this.timetaken = this.hr + ':' + this.min + ':' + this.sec;
     clearInterval(this.startTimer);
     this.showFirst = false;
     this.ms = '0' + 0;
