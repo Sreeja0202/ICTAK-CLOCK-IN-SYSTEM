@@ -9,6 +9,7 @@ import { Project } from '../project.model';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Job } from '../task.model';
 import { Filter } from '../filter.model';
+import { Employee } from '../employee.model';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -26,6 +27,7 @@ export class TimetrackerpageComponent implements OnInit {
   FilterForm!: FormGroup;
   timetaken: any;
   totaltimetaken: any;
+  searchEmployee: any;
 
   proForm!: FormGroup;
   taskForm!: FormGroup;
@@ -40,6 +42,7 @@ export class TimetrackerpageComponent implements OnInit {
   userdetails: any;
   filters!: Filter[];
   filter_details: any;
+  search_details: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
 
@@ -55,6 +58,8 @@ export class TimetrackerpageComponent implements OnInit {
   thisWeek: Date = new Date();
   thisMonth: Date = new Date();
   stoptime: any;
+  searchemps!: Employee[];
+  employees!: Employee[];
   constructor(
     private router: Router,
     public authservice: AuthService,
@@ -81,7 +86,7 @@ export class TimetrackerpageComponent implements OnInit {
     this.TrackerForm = this.fb.group({
       _id: '',
       empmail: this.authservice.userData.email,
-      tdate: ['', [Validators.required]],
+      tdate: this.myDate,
       tproject: ['', [Validators.required]],
       ttask: ['', [Validators.required]],
       tmode: ['', [Validators.required]],
@@ -134,6 +139,18 @@ export class TimetrackerpageComponent implements OnInit {
   }
 
   // filter based functions
+
+  search(search_data: any) {
+    this.authservice.getEmployeeList().subscribe((res: Employee[]) => {
+      var newdoc = res.filter((element) => {
+        return element.ename === search_data;
+      });
+      this.searchemps = newdoc;
+      console.log(this.searchemps);
+      console.log(search_data);
+    });
+  }
+
   filter(filter_data: any) {
     const variables = this.authservice.userData.email;
     console.log(filter_data);
@@ -181,6 +198,14 @@ export class TimetrackerpageComponent implements OnInit {
     }
   }
 
+  // to get all employees
+
+  getEmployees() {
+    this.authservice.getEmployeeList().subscribe((res: Employee[]) => {
+      console.log(res);
+      this.employees = res;
+    });
+  }
   // to filter the tracker list for that specific employee
   getTrackers() {
     // console.log(this.authservice.userData.email);
@@ -191,12 +216,12 @@ export class TimetrackerpageComponent implements OnInit {
         return element.empmail === variables;
       });
       this.trackers = newdoc;
-      this.trackers.map(item => {
+      this.trackers.map((item) => {
         item.sec = 0;
         item.min = 0;
         item.hr = 0;
         return item;
-      })
+      });
       console.log(this.trackers);
     });
   }
@@ -336,8 +361,8 @@ export class TimetrackerpageComponent implements OnInit {
       this.trackers[index].isTimer = true;
 
       this.startTimer = setInterval(() => {
-        this.trackers = this.trackers.map(item => {
-          if(!item.isTimer) return item;
+        this.trackers = this.trackers.map((item) => {
+          if (!item.isTimer) return item;
           // increment time if isTimer is true
           item.sec++;
           if (item.sec === 60) {
@@ -345,8 +370,8 @@ export class TimetrackerpageComponent implements OnInit {
             item.min++;
           }
 
-          if(item.min === 60) {
-            item.min=0;
+          if (item.min === 60) {
+            item.min = 0;
             item.hr++;
           }
           return item;

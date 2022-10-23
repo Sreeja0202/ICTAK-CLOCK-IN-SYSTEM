@@ -79,11 +79,9 @@ mat-card-subtitle {
 .buttoncontainer {
   height: 250px;
 }
-.btn {
-  color: white;
-  border-radius: 70px;
+.search_button {
+  margin-left: 230px;
 }
-
 .modal.fade.show {
   display: block;
   background: rgba(0, 0, 0, 0.4);
