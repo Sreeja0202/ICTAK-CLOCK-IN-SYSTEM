@@ -386,7 +386,34 @@
             </div>
           </div>
         </div>
+        <!-- !calendar- -->
 
+        <form [formGroup]="rangeFormGroup">
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-date-range-input [rangePicker]="picker">
+                <input
+                  matStartDate
+                  placeholder="Start date"
+                  formControlName="start"
+                />
+                <input
+                  matEndDate
+                  placeholder="End date"
+                  formControlName="end"
+                />
+              </mat-date-range-input>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+              <!-- <mat-error>Date Range is mandatory</mat-error> -->
+            </mat-form-field>
+          </div>
+        </form>
+
+        <!-- !calendar -->
         <div class="start_project">
           <button class="btn btn-success mt-2" (click)="onStart()">
             Start
@@ -415,7 +442,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of trackers; let i = index" class="text-center">
-            <td scope="col">{{ item.tdate }}</td>
+            <td scope="col">{{ item.tdate | date: "dd/MM/yyyy" }}</td>
             <td scope="col">{{ item.tproject }}</td>
             <td scope="col">{{ item.ttask }}</td>
             <td scope="col">{{ item.tmode }}</td>
@@ -449,6 +476,12 @@
         </tbody>
       </table>
     </section>
+    <!-- !!!!!!!!!!! -->
+    <!-- <div class="json">
+      <code>
+        <pre>{{ rangeFormGroup.value | json }}</pre>
+      </code>
+    </div> -->
   </div>
 </main>
 

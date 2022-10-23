@@ -313,3 +313,25 @@ div.content {
 .mat-drawer-side.mat-drawer-end {
   border-left: none;
 }
+
+/* css for calendar */
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(0, 112, 0) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(0, 152, 0) !important;
+}
+
+::ng-deep.mat-form-field {
+  /*change color of underline when focused*/
+  background-color: #efefef !important;
+}
+
+/* ::ng-deep.mat-date-range-input {
+
+  background-color: rgb(0, 0, 0) !important;
+} */

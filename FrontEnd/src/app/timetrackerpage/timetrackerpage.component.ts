@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
@@ -52,6 +57,7 @@ export class TimetrackerpageComponent implements OnInit {
   min: any = '0' + 0;
   hr: any = '0' + 0;
 
+  rangeFormGroup!: FormGroup;
   startTimer: any;
   myDate: any = new Date();
   yesterday: Date = new Date();
@@ -79,6 +85,14 @@ export class TimetrackerpageComponent implements OnInit {
   ngOnInit(): void {
     this.userData = this.authservice.getUserData();
     console.log(' ', this.userData);
+    3;
+    //! calendar
+    this.rangeFormGroup = this.fb.group({
+      start: ['', [Validators.required]],
+      end: ['', [Validators.required]],
+    });
+
+    //!
 
     this.getTrackers();
     this.getTasks();
@@ -155,6 +169,7 @@ export class TimetrackerpageComponent implements OnInit {
     const variables = this.authservice.userData.email;
     console.log(filter_data);
     console.log(this.yesterday);
+
     if (filter_data === 'yesterday') filter_data = this.yesterday.getTime();
     if (filter_data === 'this_week') filter_data = this.thisWeek.getTime();
     if (filter_data === 'this_month') filter_data = this.thisMonth.getTime();
@@ -163,12 +178,15 @@ export class TimetrackerpageComponent implements OnInit {
       var newdoc = res.filter((element) => {
         console.log('tDate', new Date(element.tdate));
         console.log('filterdata', filter_data);
-
+        const dateTime = element.tdate;
+        const startDate = this.rangeFormGroup.value.start.get();
+        const endDate = this.rangeFormGroup.value.end.get();
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
           (new Date(element.tdate).getTime() > filter_data &&
-            element.empmail === variables)
+            element.empmail === variables) ||
+          (startDate < dateTime && dateTime < endDate)
         );
       });
       this.trackers = newdoc;
