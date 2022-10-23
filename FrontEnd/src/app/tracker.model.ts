@@ -10,4 +10,7 @@ export interface Tracker {
   tdesc: string;
   totaltime: string;
   isTimer: boolean;
+  hr: number;
+  min: number;
+  sec: number;
 }

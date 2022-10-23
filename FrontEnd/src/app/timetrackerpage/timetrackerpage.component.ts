@@ -191,6 +191,12 @@ export class TimetrackerpageComponent implements OnInit {
         return element.empmail === variables;
       });
       this.trackers = newdoc;
+      this.trackers.map(item => {
+        item.sec = 0;
+        item.min = 0;
+        item.hr = 0;
+        return item;
+      })
       console.log(this.trackers);
     });
   }
@@ -324,31 +330,46 @@ export class TimetrackerpageComponent implements OnInit {
         tracker.isTimer = false;
         return tracker;
       });
-      this.totaltimetaken = this.hr + ':' + this.min + ':' + this.sec;
+      // this.totaltimetaken = this.hr + ':' + this.min + ':' + this.sec;
 
-      console.log(this.timetaken);
+      // console.log(this.timetaken);
       this.trackers[index].isTimer = true;
 
       this.startTimer = setInterval(() => {
-        this.ms++;
-        this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
+        this.trackers = this.trackers.map(item => {
+          if(!item.isTimer) return item;
+          // increment time if isTimer is true
+          item.sec++;
+          if (item.sec === 60) {
+            item.sec = 0;
+            item.min++;
+          }
 
-        if (this.ms === 100) {
-          this.sec++;
-          this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
-          this.ms = '0' + 0;
-        }
-        if (this.sec === 60) {
-          this.min++;
-          this.min = this.min < 10 ? '0' + this.min : this.min;
-          this.sec = '0' + 0;
-        }
-        if (this.min === 60) {
-          this.hr++;
-          this.hr = this.hr < 10 ? '0' + this.hr : this.hr;
-          this.min = '0' + 0;
-        }
-      }, 10);
+          if(item.min === 60) {
+            item.min=0;
+            item.hr++;
+          }
+          return item;
+        });
+        // this.ms++;
+        // this.ms = this.ms < 10 ? '0' + this.ms : this.ms;
+
+        // if (this.ms === 100) {
+        //   this.sec++;
+        //   this.sec = this.sec < 10 ? '0' + this.sec : this.sec;
+        //   this.ms = '0' + 0;
+        // }
+        // if (this.sec === 60) {
+        //   this.min++;
+        //   this.min = this.min < 10 ? '0' + this.min : this.min;
+        //   this.sec = '0' + 0;
+        // }
+        // if (this.min === 60) {
+        //   this.hr++;
+        //   this.hr = this.hr < 10 ? '0' + this.hr : this.hr;
+        //   this.min = '0' + 0;
+        // }
+      }, 1000);
 
       // this.totaltimetaken =
       //   this.timetaken + this.hr + ':' + this.min + ':' + this.sec;

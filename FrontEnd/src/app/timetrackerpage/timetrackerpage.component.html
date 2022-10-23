@@ -421,14 +421,11 @@
               </button>
               <!--end-->
             </td>
-            <td scope="col" *ngIf="this.trackers[i].isTimer">
-              {{ this.timetaken }}
+            <td scope="col">
+              {{ item.hr }} : {{item.min}} : {{item.sec}}
               <!--newly added timer button-->
             </td>
-            <td scope="col" *ngIf="!this.trackers[i].isTimer">
-              {{ this.stoptime }}
-              <!--newly added timer button-->
-            </td>
+            
             <td>
               <i
                 class="uil uil-pen table_icon"
