@@ -1,4 +1,3 @@
-
 .modal.fade.show {
   display: block;
   background: rgba(0, 0, 0, 0.4);
@@ -13,15 +12,12 @@
 }
 
 .example-container {
-
-
   position: absolute;
   right: 0;
   top: 30px;
 
   margin-top: 30px;
   height: 400px;
-
 }
 
 .example-sidenav-content {
@@ -31,7 +27,7 @@
   justify-content: center;
 }
 
-.new{
+.new {
   border-radius: 50px;
 }
 .profilecard {
@@ -120,13 +116,12 @@ hr .new1 {
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .navlist {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-.help{
+.help {
   margin-left: 10px;
-
 }
 
 /* The side navigation menu */
@@ -193,35 +188,32 @@ div.content {
   }
 }
 
-
 /*user details*/
 .my-details-container {
-
 }
-.main{
+.main {
   padding: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.card{
+.card {
   position: relative;
-  height: 221px;
-
+  height: 250px;
 
   flex-direction: column;
 }
-.about{
+.about {
   text-align: center;
   background-color: black;
-    color: white
+  color: white;
 }
-.use{
+.use {
   height: 616px;
   margin-left: 200px;
   width: 400px;
 }
 
-label{
+label {
   background-color: rgb(255, 255, 255);
   border: solid 4px rgb(10, 112, 10);
   border-radius: 10px;
@@ -238,28 +230,25 @@ label{
   height: 42px;
 }
 
-.con{
+.con {
   display: flex;
   flex-direction: column;
 }
 
-.lab{
+.lab {
   text-align: center;
 }
 
-.imag
-{
+.imag {
   padding-left: 268px;
 }
-h2{
+h2 {
   text-align: center;
 }
-.background{
+.background {
   background-color: #a0a0a0;
 }
 
-
-.mat-drawer-side.mat-drawer-end
-{
-border-left: none;
+.mat-drawer-side.mat-drawer-end {
+  border-left: none;
 }

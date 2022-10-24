@@ -31,7 +31,7 @@ mat-label {
 }
 
 .container {
-  height: 600px;
+  height: 2px;
 }
 
 .employeedetail {
@@ -53,7 +53,7 @@ mat-card-subtitle {
   color: white;
   background-color: #240c30;
   margin-top: 4%;
-  height: 600px;
+  height: 500px;
   border: 1px solid black;
   border-radius: 5px;
   margin-left: 5%;
@@ -248,7 +248,7 @@ hr .new1 {
 div.content {
   margin-left: 200px;
   padding: 1px 16px;
-  height: 500px;
+  height: 90px;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */

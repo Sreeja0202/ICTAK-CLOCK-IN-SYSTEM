@@ -27,7 +27,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +60,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     Ng2SearchPipeModule,
     MatSidenavModule,
   ],
-  providers: [AuthService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

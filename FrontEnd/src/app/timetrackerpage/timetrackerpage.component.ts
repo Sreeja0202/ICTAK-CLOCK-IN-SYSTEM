@@ -188,15 +188,12 @@ url: any;
       var newdoc = res.filter((element) => {
         console.log('tDate', new Date(element.tdate));
         console.log('filterdata', filter_data);
-        const dateTime = element.tdate;
-        const startDate = this.rangeFormGroup.value.start.get();
-        const endDate = this.rangeFormGroup.value.end.get();
+
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
           (new Date(element.tdate).getTime() > filter_data &&
-            element.empmail === variables) ||
-          (startDate < dateTime && dateTime < endDate)
+            element.empmail === variables)
         );
       });
       this.trackers = newdoc;

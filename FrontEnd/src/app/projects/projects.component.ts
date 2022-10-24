@@ -29,7 +29,6 @@ export class ProjectsComponent implements OnInit {
     this.proForm = this.fb.group({
       _id: '',
       pname: ['', [Validators.required]],
-      pcategory: ['', [Validators.required]],
     });
   }
 

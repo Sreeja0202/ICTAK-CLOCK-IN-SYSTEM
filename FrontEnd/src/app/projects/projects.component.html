@@ -62,6 +62,38 @@
 <!-- ////sidenav end -->
 <!-- side bar ends here -->
 
+<!-- card for employees -->
+
+<div class="container py-3">
+  <div class="row">
+    <div class="col-md-5" *ngFor="let item of Project">
+      <!-- where item just a variable to hold employee details and employees is the main array -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.pname }}</h5>
+          <h6 class="card-subtitle mb-4 text-muted">{{ item.pcategory }}</h6>
+          <hr />
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-primary mx-2"
+            (click)="onEditProject(item)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger mx-2"
+            (click)="onDeleteProject(item._id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- card for employee ends here -->
+
 <!--  add project modal starts here-->
 <div class="container">
   <div class="modal fade show" [class.show]="showProjectModal">
@@ -84,9 +116,19 @@
         <form [formGroup]="proForm" (ngSubmit)="onProSubmit()">
           <div class="modal-body">
             <div class="form-group">
-              <label for="pname">Enter Name</label>
+              <label for="pname">Enter Project</label>
               <input type="text" class="form-control" formControlName="pname" />
             </div>
+
+            <!-- !its for adding any new task or anything -->
+            <!-- <div class="form-group">
+              <label for="pcaregory">Enter Project</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="pcategory"
+              />
+            </div> -->
           </div>
           <div class="modal-footer">
             <button
