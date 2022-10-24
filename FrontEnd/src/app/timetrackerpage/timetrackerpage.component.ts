@@ -16,6 +16,9 @@ import { Filter } from '../filter.model';
   providers: [DatePipe],
 })
 export class TimetrackerpageComponent implements OnInit {
+
+
+url: any;
   cardtitle = `USER`;
   Tasks!: Job[];
   cardcontent = `User details`;
@@ -72,6 +75,11 @@ export class TimetrackerpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.userData = this.authservice.getUserData();
+    this.url = `http://localhost:3000/${this.userData.profile_picture}`;
+    console.log('userdata =================>', this.userData);
+
     this.userData = this.authservice.getUserData();
     console.log(' ', this.userData);
 
@@ -105,6 +113,8 @@ export class TimetrackerpageComponent implements OnInit {
       _id: '',
       tname: ['', [Validators.required]],
     });
+
+
   }
 
   getMonday(d: Date) {
@@ -155,6 +165,12 @@ export class TimetrackerpageComponent implements OnInit {
         );
       });
       this.trackers = newdoc;
+      this.trackers = this.trackers.map(item => {
+        item.sec = 0;
+        item.min = 0;
+        item.hr = 0;
+        return item;
+      });
     });
 
     console.log(this.trackers);
@@ -191,7 +207,7 @@ export class TimetrackerpageComponent implements OnInit {
         return element.empmail === variables;
       });
       this.trackers = newdoc;
-      this.trackers.map(item => {
+      this.trackers = this.trackers.map(item => {
         item.sec = 0;
         item.min = 0;
         item.hr = 0;
@@ -327,6 +343,7 @@ export class TimetrackerpageComponent implements OnInit {
     if (!this.trackers[index].isTimer) {
       this.stop();
       this.trackers = this.trackers.map((tracker) => {
+
         tracker.isTimer = false;
         return tracker;
       });

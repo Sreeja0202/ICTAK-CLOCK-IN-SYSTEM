@@ -21,6 +21,7 @@ const Tracker = mongoose.model("tracker", {
   tdesc: {
     type: String,
   },
+  
 });
 
 module.exports = Tracker;

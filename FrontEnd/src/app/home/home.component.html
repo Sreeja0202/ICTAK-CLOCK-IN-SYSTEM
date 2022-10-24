@@ -47,7 +47,7 @@
               (click)="drawer.toggle()"
               class="me-5"
             >
-              <img src="/assets/images/usericon.webp" alt="" class="prof" />
+              <img [src]="url" alt="" class="prof" />
             </button>
           </li>
         </ul>
@@ -130,11 +130,9 @@
           <h2>Upload</h2>
 
           <img
-            [src]="url"
-            title="profile picture"
-            height="150px"
-            width="150px"
-          />
+            [src]= "url"
+            title="profile picture" height="150px" width="150px" />
+
           <input
             type="file"
             id="img"

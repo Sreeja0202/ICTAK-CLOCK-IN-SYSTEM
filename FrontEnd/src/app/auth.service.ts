@@ -10,12 +10,14 @@ import { Filter } from './filter.model';
   providedIn: 'root',
 })
 export class AuthService {
-  url = 'http://13.235.244.124:3000/employees';
-  loginurl = 'http://13.235.244.124:3000/employees/login';
-  prourl = 'http://13.235.244.124:3000/projects';
-  trackerurl = 'http://13.235.244.124:3000/trackers';
-  taskurl = 'http://13.235.244.124:3000/tasks';
-  filterurl = 'http://13.235.244.124:3000/filters';
+  url = 'http://localhost:3000/employees';
+  loginurl = 'http://localhost:3000/employees/login';
+  prourl = 'http://localhost:3000/projects';
+  trackerurl = 'http://localhost:3000/trackers';
+  taskurl = 'http://localhost:3000/tasks';
+  filterurl = 'http://localhost:3000/filters';
+  uploadurl = 'http://localhost:3000/uploadimage';
+
   userData: any;
 
   constructor(private http: HttpClient) {
@@ -119,5 +121,18 @@ export class AuthService {
   }
   updateProject(pro: Project) {
     return this.http.put(`${this.prourl}/${pro._id}`, pro);
+  }
+
+  upload(file: File) {
+
+    // Create form data
+    const formData = new FormData();
+
+    // Store form name as "file" with file data
+    formData.append("profile_picture", file, file.name);
+
+    // Make http post request over api
+    // with formData as req
+    return this.http.post(`${this.uploadurl}/${this.userData.id}`, formData)
   }
 }

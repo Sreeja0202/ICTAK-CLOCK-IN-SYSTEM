@@ -48,6 +48,9 @@ trackerrouter.put("/:id", (req, res) => {
       tmode: req.body.tmode,
       ttime: req.body.ttime,
       tdesc: req.body.tdesc,
+      hr: req.body.hr,
+      min: req.body.min,
+      sec: req.body.sec,
     };
     Tracker.findByIdAndUpdate(
       req.params.id,

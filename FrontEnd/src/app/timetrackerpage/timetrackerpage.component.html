@@ -37,7 +37,7 @@
             </div>
             <li>
               <button type="button" mat-button (click)="drawer.toggle()">
-                <img src="/assets/images/usericon.webp" alt="" class="prof" />
+                <img [src]="url" alt="" class="prof" />
               </button>
             </li>
           </ul>
@@ -425,7 +425,7 @@
               {{ item.hr }} : {{item.min}} : {{item.sec}}
               <!--newly added timer button-->
             </td>
-            
+
             <td>
               <i
                 class="uil uil-pen table_icon"

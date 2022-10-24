@@ -4,4 +4,5 @@ export interface Employee {
   erole: string;
   eemail: string;
   epassword: string;
+  eprofile_picture: string;
 }

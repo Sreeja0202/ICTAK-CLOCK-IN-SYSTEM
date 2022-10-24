@@ -8,6 +8,7 @@ const objectId = require("mongoose").Types.ObjectId;
 const bcrypt = require("bcrypt");
 // bcrypt password - next modification
 
+
 app.use(cors());
 
 // login
@@ -28,13 +29,16 @@ emprouter.post("/login", (req, res) => {
           console.log(user.epassword);
           res.status(401).send("Invalid Password");
         } else {
+          console.log(user);
           let payload = {
-            id: user.ObjectId,
+            id: user._id,
             name: user.ename,
             email: user.eemail,
             // password: user.epassword,
             roles: user.erole,
+            profile_picture: user.eprofile_picture
           };
+          console.log(payload);
           let token = jwt.sign(payload, "secretKey");
           res.status(200).send({ token });
         }
@@ -139,5 +143,6 @@ emprouter.put("/:id", (req, res) => {
       .send(`No record found with Employee with id ${req.params.id}`);
   }
 });
+
 
 module.exports = emprouter;

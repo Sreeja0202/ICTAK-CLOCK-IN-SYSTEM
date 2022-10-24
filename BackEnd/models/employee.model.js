@@ -12,6 +12,9 @@ const Employee = mongoose.model("employee", {
   epassword: {
     type: String,
   },
+  eprofile_picture: {
+    type: String
+  }
 });
 
 module.exports = Employee;

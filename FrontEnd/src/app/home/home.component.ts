@@ -12,13 +12,22 @@ export class HomeComponent implements OnInit {
   userData: any;
   showtoggle = false;
   url="https://img.icons8.com/ios/100/000000/contract-job.png";
+
   onSelect(event: any){
     if(event.target.files[0]){
       let reader= new FileReader();
+      console.log(event.target.files[0]);
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (event:any)=>{
         this.url = event.target.result;
       };
+
+      this.authservice.upload(event.target.files[0]).subscribe((item: any) => {
+        console.log('item ===> ', item);
+        let userdata = JSON.parse(localStorage.getItem('userData') || "");
+        userdata = {...userdata, profile_picture: item.eprofile_picture}
+        this.authservice.userData = userdata
+      });
     }
 
   }
@@ -27,7 +36,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData = this.authservice.getUserData();
-    console.log('', this.userData);
+    this.url = `http://localhost:3000/${this.userData.profile_picture}`;
+    console.log('userdata =================>', this.userData);
   }
   logoutUser() {
     localStorage.removeItem('token');
