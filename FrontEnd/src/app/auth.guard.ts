@@ -15,12 +15,12 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authservice: AuthService, private router: Router) {}
   canActivate(): boolean {
-    if (this.authservice.IsloggedIn()) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
+    if (!this.authservice.IsloggedIn()) {
       alert('You are not Logged In');
+      this.router.navigate(['/login']);
       return false;
     }
+
+    return this.authservice.IsloggedIn();
   }
 }

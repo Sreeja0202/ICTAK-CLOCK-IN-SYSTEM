@@ -192,8 +192,9 @@ url: any;
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
-          (new Date(element.tdate).getTime() > filter_data &&
+          (new Date(element.tdate).getTime() >= filter_data &&
             element.empmail === variables)
+
         );
       });
       this.trackers = newdoc;

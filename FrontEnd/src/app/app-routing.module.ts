@@ -11,10 +11,10 @@ import { TimetrackerpageComponent } from './timetrackerpage/timetrackerpage.comp
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'timetrackerpage', component: TimetrackerpageComponent },
-  { path: 'employees', component: EmployeesComponent },
-  { path: 'projects', component: ProjectsComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'timetrackerpage', component: TimetrackerpageComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeesComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   {
     path: 'login',
     component: LoginComponent,
