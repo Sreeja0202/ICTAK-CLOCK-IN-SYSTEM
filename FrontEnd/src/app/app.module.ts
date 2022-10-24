@@ -24,8 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EmployeesComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -55,7 +60,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng2SearchPipeModule,
     MatSidenavModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

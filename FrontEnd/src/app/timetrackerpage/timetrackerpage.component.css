@@ -79,11 +79,9 @@ mat-card-subtitle {
 .buttoncontainer {
   height: 250px;
 }
-.btn {
-  color: white;
-  border-radius: 70px;
+.search_button {
+  margin-left: 230px;
 }
-
 .modal.fade.show {
   display: block;
   background: rgba(0, 0, 0, 0.4);
@@ -315,3 +313,25 @@ div.content {
 .mat-drawer-side.mat-drawer-end {
   border-left: none;
 }
+
+/* css for calendar */
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(0, 112, 0) !important;
+}
+
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(0, 152, 0) !important;
+}
+
+::ng-deep.mat-form-field {
+  /*change color of underline when focused*/
+  background-color: #efefef !important;
+}
+
+/* ::ng-deep.mat-date-range-input {
+
+  background-color: rgb(0, 0, 0) !important;
+} */

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import Swal from 'sweetalert2';
@@ -9,6 +14,7 @@ import { Project } from '../project.model';
 import { throwMatDuplicatedDrawerError } from '@angular/material/sidenav';
 import { Job } from '../task.model';
 import { Filter } from '../filter.model';
+import { Employee } from '../employee.model';
 @Component({
   selector: 'app-timetrackerpage',
   templateUrl: './timetrackerpage.component.html',
@@ -29,6 +35,7 @@ url: any;
   FilterForm!: FormGroup;
   timetaken: any;
   totaltimetaken: any;
+  searchEmployee: any;
 
   proForm!: FormGroup;
   taskForm!: FormGroup;
@@ -43,6 +50,7 @@ url: any;
   userdetails: any;
   filters!: Filter[];
   filter_details: any;
+  search_details: any;
   // editTrackerMode: boolean = false;
   TrackerForm: any = FormGroup;
 
@@ -52,12 +60,15 @@ url: any;
   min: any = '0' + 0;
   hr: any = '0' + 0;
 
+  rangeFormGroup!: FormGroup;
   startTimer: any;
   myDate: any = new Date();
   yesterday: Date = new Date();
   thisWeek: Date = new Date();
   thisMonth: Date = new Date();
   stoptime: any;
+  searchemps!: Employee[];
+  employees!: Employee[];
   constructor(
     private router: Router,
     public authservice: AuthService,
@@ -82,6 +93,14 @@ url: any;
 
     this.userData = this.authservice.getUserData();
     console.log(' ', this.userData);
+    3;
+    //! calendar
+    this.rangeFormGroup = this.fb.group({
+      start: ['', [Validators.required]],
+      end: ['', [Validators.required]],
+    });
+
+    //!
 
     this.getTrackers();
     this.getTasks();
@@ -89,7 +108,7 @@ url: any;
     this.TrackerForm = this.fb.group({
       _id: '',
       empmail: this.authservice.userData.email,
-      tdate: ['', [Validators.required]],
+      tdate: this.myDate,
       tproject: ['', [Validators.required]],
       ttask: ['', [Validators.required]],
       tmode: ['', [Validators.required]],
@@ -144,10 +163,23 @@ url: any;
   }
 
   // filter based functions
+
+  search(search_data: any) {
+    this.authservice.getEmployeeList().subscribe((res: Employee[]) => {
+      var newdoc = res.filter((element) => {
+        return element.ename === search_data;
+      });
+      this.searchemps = newdoc;
+      console.log(this.searchemps);
+      console.log(search_data);
+    });
+  }
+
   filter(filter_data: any) {
     const variables = this.authservice.userData.email;
     console.log(filter_data);
     console.log(this.yesterday);
+
     if (filter_data === 'yesterday') filter_data = this.yesterday.getTime();
     if (filter_data === 'this_week') filter_data = this.thisWeek.getTime();
     if (filter_data === 'this_month') filter_data = this.thisMonth.getTime();
@@ -156,12 +188,15 @@ url: any;
       var newdoc = res.filter((element) => {
         console.log('tDate', new Date(element.tdate));
         console.log('filterdata', filter_data);
-
+        const dateTime = element.tdate;
+        const startDate = this.rangeFormGroup.value.start.get();
+        const endDate = this.rangeFormGroup.value.end.get();
         return (
           (element.ttask === filter_data && element.empmail === variables) ||
           (element.tproject === filter_data && element.empmail === variables) ||
           (new Date(element.tdate).getTime() > filter_data &&
-            element.empmail === variables)
+            element.empmail === variables) ||
+          (startDate < dateTime && dateTime < endDate)
         );
       });
       this.trackers = newdoc;
@@ -197,6 +232,14 @@ url: any;
     }
   }
 
+  // to get all employees
+
+  getEmployees() {
+    this.authservice.getEmployeeList().subscribe((res: Employee[]) => {
+      console.log(res);
+      this.employees = res;
+    });
+  }
   // to filter the tracker list for that specific employee
   getTrackers() {
     // console.log(this.authservice.userData.email);
@@ -212,7 +255,7 @@ url: any;
         item.min = 0;
         item.hr = 0;
         return item;
-      })
+      });
       console.log(this.trackers);
     });
   }
@@ -353,8 +396,8 @@ url: any;
       this.trackers[index].isTimer = true;
 
       this.startTimer = setInterval(() => {
-        this.trackers = this.trackers.map(item => {
-          if(!item.isTimer) return item;
+        this.trackers = this.trackers.map((item) => {
+          if (!item.isTimer) return item;
           // increment time if isTimer is true
           item.sec++;
           if (item.sec === 60) {
@@ -362,8 +405,8 @@ url: any;
             item.min++;
           }
 
-          if(item.min === 60) {
-            item.min=0;
+          if (item.min === 60) {
+            item.min = 0;
             item.hr++;
           }
           return item;

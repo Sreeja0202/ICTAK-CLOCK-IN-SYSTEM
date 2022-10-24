@@ -2,8 +2,8 @@
   <!--top nav-->
   <div>
     <nav class="navbar navbar-expand-lg" style="background-color: #000000">
-      <div class="container-fluid ms-5">
-        <div class="d-flex">
+      <div class="container-fluid ms-5 mb-3">
+        <div class="d-flex mt-2">
           <img src="  /assets/images/logo black (2).jpg" />
           <h3 class="text-light mt-4 ms-3">
             T<span class="text-danger">i</span
@@ -16,6 +16,26 @@
             ><span class="text-warning">e</span
             ><span class="text-light">r</span>
           </h3>
+          <div>
+            <div class="form-group d-flex mt-3 search_button">
+              <input
+                placeholder="Search Employee"
+                type="text"
+                class="form-control"
+                name="search"
+                [(ngModel)]="searchEmployee"
+              />
+              <div>
+                <button
+                  type="submit"
+                  class="btn btn-success ms-3"
+                  (click)="getEmployees()"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!--end-->
@@ -87,9 +107,6 @@
 
     <a class="active" routerLink="#filter-nav">Time Sheet</a>
     <a routerLink="#">My Calendar</a>
-    <a routerLink="#" (click)="addFilter()" *ngIf="authservice.HaveAccess()"
-      >Manage Filter Options</a
-    >
   </div>
   <!-- ////sidenav end -->
   <!-- tracker modal form -->
@@ -369,21 +386,38 @@
             </div>
           </div>
         </div>
+        <!-- !calendar- -->
 
+        <form [formGroup]="rangeFormGroup">
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-date-range-input [rangePicker]="picker">
+                <input
+                  matStartDate
+                  placeholder="Start date"
+                  formControlName="start"
+                />
+                <input
+                  matEndDate
+                  placeholder="End date"
+                  formControlName="end"
+                />
+              </mat-date-range-input>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+              <!-- <mat-error>Date Range is mandatory</mat-error> -->
+            </mat-form-field>
+          </div>
+        </form>
+
+        <!-- !calendar -->
         <div class="start_project">
           <button class="btn btn-success mt-2" (click)="onStart()">
             Start
           </button>
-        </div>
-
-        <div
-          class="stopwatch"
-          style="border: 1px solid white; border-radius: 10px; padding: 5px"
-        >
-          <mat-icon>access_alarm</mat-icon>
-          <span style="color: rgb(214, 154, 25)"> {{ hr }} :</span>
-          <span style="color: rgb(214, 154, 25)"> {{ min }} :</span>
-          <span style="color: rgb(214, 154, 25)"> {{ sec }} </span>
         </div>
       </div>
     </section>
@@ -408,7 +442,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of trackers; let i = index" class="text-center">
-            <td scope="col">{{ item.tdate }}</td>
+            <td scope="col">{{ item.tdate | date: "dd/MM/yyyy" }}</td>
             <td scope="col">{{ item.tproject }}</td>
             <td scope="col">{{ item.ttask }}</td>
             <td scope="col">{{ item.tmode }}</td>
@@ -422,7 +456,7 @@
               <!--end-->
             </td>
             <td scope="col">
-              {{ item.hr }} : {{item.min}} : {{item.sec}}
+              {{ item.hr }} : {{ item.min }} : {{ item.sec }}
               <!--newly added timer button-->
             </td>
 
@@ -442,19 +476,43 @@
         </tbody>
       </table>
     </section>
+    <!-- !!!!!!!!!!! -->
+    <!-- <div class="json">
+      <code>
+        <pre>{{ rangeFormGroup.value | json }}</pre>
+      </code>
+    </div> -->
   </div>
 </main>
 
-<!--! calendar -->
-<section class="calendar" id="calendar">
-  <span><h3>Calendar</h3></span>
-
-  <div class="calendar__container bd-grid"></div>
-</section>
-<!-- footer starts here -->
-<footer style="background-color: #240c30; margin-top: 267px" class="p-2">
-  <div class="text-center">
-    <h5 class="text-muted text-light">Copyright @2022</h5>
+<!-- search employee card starts here -->
+<section class="search_employee col-6 m-auto">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let item of employees | filter: searchEmployee"
+      >
+        <!-- where item just a variable to hold employee details and employees is the main array -->
+        <div class="card mb-5">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.ename }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ item.erole }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ item.eemail }}</h6>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">{{ item.epassword }}</h6> -->
+            <hr />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
-<!-- footer ends here -->
+  <!-- card for search employee ends here -->
+
+  <!-- footer starts here -->
+  <footer style="background-color: #240c30; margin-top: 267px" class="p-2">
+    <div class="text-center">
+      <h5 class="text-muted text-light">Copyright @2022</h5>
+    </div>
+  </footer>
+  <!-- footer ends here -->
+</section>
