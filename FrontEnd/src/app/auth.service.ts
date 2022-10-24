@@ -10,13 +10,13 @@ import { Filter } from './filter.model';
   providedIn: 'root',
 })
 export class AuthService {
-  url = 'http://localhost:3000/employees';
-  loginurl = 'http://localhost:3000/employees/login';
-  prourl = 'http://localhost:3000/projects';
-  trackerurl = 'http://localhost:3000/trackers';
-  taskurl = 'http://localhost:3000/tasks';
-  filterurl = 'http://localhost:3000/filters';
-  uploadurl = 'http://localhost:3000/uploadimage';
+  url = 'http://13.235.244.124:3000/employees';
+  loginurl = 'http://13.235.244.124:3000/employees/login';
+  prourl = 'http://13.235.244.124:3000/projects';
+  trackerurl = 'http://13.235.244.124:3000/trackers';
+  taskurl = 'http://13.235.244.124:3000/tasks';
+  filterurl = 'http://13.235.244.124:3000/filters';
+  uploadurl = 'http://13.235.244.124:3000/uploadimage';
 
   userData: any;
 

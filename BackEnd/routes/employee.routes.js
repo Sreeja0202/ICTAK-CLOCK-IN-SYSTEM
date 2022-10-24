@@ -5,7 +5,7 @@ const app = new express();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const objectId = require("mongoose").Types.ObjectId;
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 // bcrypt password - next modification
 
 

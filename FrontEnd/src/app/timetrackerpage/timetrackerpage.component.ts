@@ -88,7 +88,7 @@ url: any;
   ngOnInit(): void {
 
     this.userData = this.authservice.getUserData();
-    this.url = `http://localhost:3000/${this.userData.profile_picture}`;
+    this.url = `http://13.235.244.124:3000/${this.userData.profile_picture}`;
     console.log('userdata =================>', this.userData);
 
     this.userData = this.authservice.getUserData();
